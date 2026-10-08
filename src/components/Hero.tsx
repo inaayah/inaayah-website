@@ -40,6 +40,8 @@ const PLATFORMS: Record<'mac' | 'windows' | 'linux', PlatformOption> = {
 export const Hero: React.FC = () => {
   const [detectedOs, setDetectedOs] = useState<'mac' | 'windows' | 'linux'>('mac');
   const [showAllPlatforms, setShowAllPlatforms] = useState(false);
+  const [platforms, setPlatforms] = useState(PLATFORMS);
+  const [latestVersion, setLatestVersion] = useState('v0.2.1');
 
   useEffect(() => {
     const ua = window.navigator.userAgent.toLowerCase();
@@ -50,9 +52,43 @@ export const Hero: React.FC = () => {
     } else {
       setDetectedOs('mac');
     }
+
+    fetch('https://api.github.com/repos/inaayah/inaayah-launcher/releases/latest')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((release) => {
+        if (!release || !Array.isArray(release.assets)) return;
+        if (release.tag_name) setLatestVersion(release.tag_name);
+
+        const formatSize = (bytes: number) => bytes ? `${Math.round(bytes / (1024 * 1024))} MB` : '';
+        const macAsset = release.assets.find((a: any) => a.name.endsWith('.dmg'));
+        const winAsset = release.assets.find((a: any) => a.name.endsWith('.exe'));
+        const linuxAsset = release.assets.find((a: any) => a.name.endsWith('.AppImage'));
+
+        setPlatforms((prev) => ({
+          mac: macAsset ? {
+            ...prev.mac,
+            filename: macAsset.name,
+            url: macAsset.browser_download_url,
+            size: formatSize(macAsset.size) || prev.mac.size
+          } : prev.mac,
+          windows: winAsset ? {
+            ...prev.windows,
+            filename: winAsset.name,
+            url: winAsset.browser_download_url,
+            size: formatSize(winAsset.size) || prev.windows.size
+          } : prev.windows,
+          linux: linuxAsset ? {
+            ...prev.linux,
+            filename: linuxAsset.name,
+            url: linuxAsset.browser_download_url,
+            size: formatSize(linuxAsset.size) || prev.linux.size
+          } : prev.linux,
+        }));
+      })
+      .catch(() => {});
   }, []);
 
-  const activePlatform = PLATFORMS[detectedOs];
+  const activePlatform = platforms[detectedOs];
 
   return (
     <section id="launcher" className="hero-section">
@@ -60,7 +96,7 @@ export const Hero: React.FC = () => {
         <div className="hero-pill">
           <span className="badge badge-cyan">
             <Sparkles size={12} />
-            Official Desktop Client · v0.2.1 Released
+            Official Desktop Client · {latestVersion} Released
           </span>
         </div>
 
@@ -110,8 +146,8 @@ export const Hero: React.FC = () => {
                 marginTop: 8
               }}
             >
-              {(Object.keys(PLATFORMS) as Array<'mac' | 'windows' | 'linux'>).map((key) => {
-                const p = PLATFORMS[key];
+              {(Object.keys(platforms) as Array<'mac' | 'windows' | 'linux'>).map((key) => {
+                const p = platforms[key];
                 return (
                   <a
                     key={key}
@@ -129,7 +165,7 @@ export const Hero: React.FC = () => {
                 );
               })}
               <a
-                href="https://github.com/inaayah/inaayah-launcher/releases/tag/v0.2.1"
+                href="https://github.com/inaayah/inaayah-launcher/releases/latest"
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-secondary"
@@ -167,7 +203,7 @@ export const Hero: React.FC = () => {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: 'var(--text-secondary)' }}>
                 <img src="/icon.png" alt="Inaayah" style={{ width: 14, height: 14, borderRadius: 3 }} />
-                <span style={{ fontWeight: 600, letterSpacing: '0.05em' }}>INAAYAH LAUNCHER v0.2.1</span>
+                <span style={{ fontWeight: 600, letterSpacing: '0.05em' }}>INAAYAH LAUNCHER {latestVersion.toUpperCase()}</span>
               </div>
               <div style={{ width: 48 }} />
             </div>
