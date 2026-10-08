@@ -15,25 +15,25 @@ const PLATFORMS: Record<'mac' | 'windows' | 'linux', PlatformOption> = {
     os: 'mac',
     name: 'macOS',
     ext: '.dmg',
-    filename: 'Inaayah-Launcher-0.2.1-arm64.dmg',
-    url: 'https://github.com/inaayah/inaayah-launcher/releases/download/v0.2.1/Inaayah-Launcher-0.2.1-arm64.dmg',
-    size: '109 MB'
+    filename: 'Inaayah-Launcher-mac.dmg',
+    url: 'https://releases.inaayah.dev/api/launcher/download/mac',
+    size: 'Latest'
   },
   windows: {
     os: 'windows',
     name: 'Windows',
     ext: '.exe',
-    filename: 'Inaayah-Launcher-Setup-0.2.1.exe',
-    url: 'https://github.com/inaayah/inaayah-launcher/releases/download/v0.2.1/Inaayah-Launcher-Setup-0.2.1.exe',
-    size: '89 MB'
+    filename: 'Inaayah-Launcher-Setup.exe',
+    url: 'https://releases.inaayah.dev/api/launcher/download/windows',
+    size: 'Latest'
   },
   linux: {
     os: 'linux',
     name: 'Linux',
     ext: '.AppImage',
-    filename: 'Inaayah-Launcher-0.2.1.AppImage',
-    url: 'https://github.com/inaayah/inaayah-launcher/releases/download/v0.2.1/Inaayah-Launcher-0.2.1.AppImage',
-    size: '116 MB'
+    filename: 'Inaayah-Launcher.AppImage',
+    url: 'https://releases.inaayah.dev/api/launcher/download/linux',
+    size: 'Latest'
   }
 };
 
@@ -53,39 +53,56 @@ export const Hero: React.FC = () => {
       setDetectedOs('mac');
     }
 
-    fetch('https://api.github.com/repos/inaayah/inaayah-launcher/releases/latest')
-      .then((res) => (res.ok ? res.json() : null))
-      .then((release) => {
-        if (!release || !Array.isArray(release.assets)) return;
-        if (release.tag_name) setLatestVersion(release.tag_name);
+    // Fetch latest release metadata from edge gateway (with GitHub API fallback)
+    const fetchLatest = async () => {
+      try {
+        let release: any = null;
+        try {
+          const edgeRes = await fetch('https://releases.inaayah.dev/api/launcher/latest');
+          if (edgeRes.ok) release = await edgeRes.json();
+        } catch {}
+
+        if (!release) {
+          const ghRes = await fetch('https://api.github.com/repos/inaayah/inaayah-launcher/releases/latest');
+          if (ghRes.ok) release = await ghRes.json();
+        }
+
+        if (!release) return;
+        const ver = release.version || release.tag_name;
+        if (ver) setLatestVersion(ver.startsWith('v') ? ver : `v${ver}`);
 
         const formatSize = (bytes: number) => bytes ? `${Math.round(bytes / (1024 * 1024))} MB` : '';
-        const macAsset = release.assets.find((a: any) => a.name.endsWith('.dmg'));
-        const winAsset = release.assets.find((a: any) => a.name.endsWith('.exe'));
-        const linuxAsset = release.assets.find((a: any) => a.name.endsWith('.AppImage'));
+        const assets: any[] = release.assets || [];
+        const macAsset = assets.find((a: any) => a.name.endsWith('.dmg'));
+        const winAsset = assets.find((a: any) => a.name.endsWith('.exe'));
+        const linuxAsset = assets.find((a: any) => a.name.endsWith('.AppImage'));
 
         setPlatforms((prev) => ({
-          mac: macAsset ? {
+          mac: {
             ...prev.mac,
-            filename: macAsset.name,
-            url: macAsset.browser_download_url,
-            size: formatSize(macAsset.size) || prev.mac.size
-          } : prev.mac,
-          windows: winAsset ? {
+            filename: macAsset?.name || prev.mac.filename,
+            url: 'https://releases.inaayah.dev/api/launcher/download/mac',
+            size: macAsset ? formatSize(macAsset.size) : prev.mac.size
+          },
+          windows: {
             ...prev.windows,
-            filename: winAsset.name,
-            url: winAsset.browser_download_url,
-            size: formatSize(winAsset.size) || prev.windows.size
-          } : prev.windows,
-          linux: linuxAsset ? {
+            filename: winAsset?.name || prev.windows.filename,
+            url: 'https://releases.inaayah.dev/api/launcher/download/windows',
+            size: winAsset ? formatSize(winAsset.size) : prev.windows.size
+          },
+          linux: {
             ...prev.linux,
-            filename: linuxAsset.name,
-            url: linuxAsset.browser_download_url,
-            size: formatSize(linuxAsset.size) || prev.linux.size
-          } : prev.linux,
+            filename: linuxAsset?.name || prev.linux.filename,
+            url: 'https://releases.inaayah.dev/api/launcher/download/linux',
+            size: linuxAsset ? formatSize(linuxAsset.size) : prev.linux.size
+          }
         }));
-      })
-      .catch(() => {});
+      } catch (e) {
+        console.warn('Could not resolve latest release dynamically:', e);
+      }
+    };
+
+    fetchLatest();
   }, []);
 
   const activePlatform = platforms[detectedOs];
