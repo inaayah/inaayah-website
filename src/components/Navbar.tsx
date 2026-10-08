@@ -78,18 +78,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollTo }) => {
 
         {/* Top-Right Download Action with Platform Dropdown */}
         <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+          <div className="navbar-split-btn">
             <a 
               href={downloadUrl}
-              className="btn btn-secondary"
-              style={{ 
-                padding: '8px 14px', 
-                fontSize: 13,
-                borderTopRightRadius: 0,
-                borderBottomRightRadius: 0,
-                borderRight: 'none',
-                background: 'rgba(255, 255, 255, 0.08)'
-              }}
+              className="split-btn-action"
               title={`Direct download for ${osName} (${version})`}
             >
               <Download size={14} color="var(--accent-cyan)" />
@@ -99,15 +91,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollTo }) => {
             <button
               type="button"
               onClick={() => setShowDropdown(!showDropdown)}
-              className="btn btn-secondary"
-              style={{
-                padding: '8px 9px',
-                fontSize: 13,
-                borderTopLeftRadius: 0,
-                borderBottomLeftRadius: 0,
-                borderLeft: '1px solid rgba(255, 255, 255, 0.1)',
-                background: 'rgba(255, 255, 255, 0.08)'
-              }}
+              className="split-btn-dropdown"
               title="Choose operating system or view formats"
             >
               <ChevronDown 
