@@ -9,7 +9,7 @@ export const GamesSection: React.FC = () => {
           <div className="section-tag">
             <span className="badge badge-cyan">
               <Gamepad2 size={13} />
-              Studio Releases
+              Gaming Division · Shipped Titles
             </span>
           </div>
           <h2 className="section-title">

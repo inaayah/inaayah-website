@@ -20,18 +20,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollTo }) => {
 
         <nav className="nav-links">
           <a 
-            href="#launcher" 
+            href="#builder" 
             className="nav-link" 
-            onClick={(e) => { e.preventDefault(); onScrollTo('launcher'); }}
+            onClick={(e) => { e.preventDefault(); onScrollTo('builder'); }}
+            style={{ display: 'flex', alignItems: 'center', gap: 6 }}
           >
-            Launcher
+            <span>Website Builder</span>
+            <span className="badge badge-gold" style={{ fontSize: 9, padding: '1px 6px' }}>Pre-Alpha</span>
           </a>
           <a 
             href="#games" 
             className="nav-link" 
             onClick={(e) => { e.preventDefault(); onScrollTo('games'); }}
           >
-            Games
+            Games & Launcher
           </a>
           <a 
             href="#technology" 
@@ -40,27 +42,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollTo }) => {
           >
             Engineering
           </a>
-          <a 
-            href="#labs" 
-            className="nav-link" 
-            onClick={(e) => { e.preventDefault(); onScrollTo('labs'); }}
-            style={{ display: 'flex', alignItems: 'center', gap: 5 }}
-          >
-            <span>Labs</span>
-            <span className="badge badge-gold" style={{ fontSize: 9, padding: '1px 6px' }}>Beta</span>
-          </a>
         </nav>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <a 
-            href="https://github.com/inaayah/inaayah-launcher/releases/tag/v0.2.1" 
-            target="_blank" 
-            rel="noreferrer"
+            href="#launcher" 
+            onClick={(e) => { e.preventDefault(); onScrollTo('launcher'); }}
             className="btn btn-secondary"
             style={{ padding: '8px 16px', fontSize: 13 }}
           >
             <Download size={15} color="var(--accent-cyan)" />
-            <span>Get Launcher</span>
+            <span>Launcher v0.2.1</span>
           </a>
         </div>
       </div>

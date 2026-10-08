@@ -1,9 +1,9 @@
 import React from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { BuilderSection } from './components/BuilderSection';
 import { GamesSection } from './components/GamesSection';
 import { TechSection } from './components/TechSection';
-import { LabsSection } from './components/LabsSection';
 import { Footer } from './components/Footer';
 
 export const App: React.FC = () => {
@@ -18,10 +18,10 @@ export const App: React.FC = () => {
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar onScrollTo={scrollTo} />
       <main style={{ flex: 1 }}>
-        <Hero />
+        <Hero onScrollTo={scrollTo} />
+        <BuilderSection />
         <GamesSection />
         <TechSection />
-        <LabsSection />
       </main>
       <Footer />
     </div>

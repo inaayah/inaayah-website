@@ -16,8 +16,8 @@ export const TechSection: React.FC = () => {
             Built for Speed, Privacy, <span className="gradient-text-cyan">& Edge Performance.</span>
           </h2>
           <p className="section-subtitle">
-            We reject predatory monetization, telemetry bloat, and DRM middleware. 
-            Our games run on open standards and modern distributed systems.
+            We reject surveillance telemetry, vendor lock-in, and bloatware. 
+            Whether deploying edge web builders or compiling native 3D games, our software runs on open standards and modern distributed systems.
           </p>
         </div>
 
@@ -48,10 +48,10 @@ export const TechSection: React.FC = () => {
             <div className="feature-icon-wrapper" style={{ background: 'rgba(255, 183, 0, 0.1)', color: 'var(--accent-gold)' }}>
               <Globe size={24} />
             </div>
-            <h3 style={{ fontSize: 20 }}>Edge Durable Objects</h3>
+            <h3 style={{ fontSize: 20 }}>Edge Compute & Workers</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.6 }}>
-              Web table games powered by Cloudflare edge compute. Zero cold-starts and real-time WebSocket 
-              rooms execute directly at edge data centers closest to every player.
+              Cloudflare edge compute powers both our upcoming visual web builder deployments and real-time 
+              Durable Object game rooms with sub-millisecond global cold starts.
             </p>
           </div>
 
@@ -59,10 +59,10 @@ export const TechSection: React.FC = () => {
             <div className="feature-icon-wrapper" style={{ background: 'rgba(0, 255, 136, 0.1)', color: 'var(--accent-green)' }}>
               <ShieldCheck size={24} />
             </div>
-            <h3 style={{ fontSize: 20 }}>Zero Telemetry / DRM-Free</h3>
+            <h3 style={{ fontSize: 20 }}>Zero Telemetry / Privacy-First</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.6 }}>
-              No ad tracking, no analytics trackers, and no background spyware. Playtime and settings 
-              remain 100% on your local disk. Once downloaded, your games are yours forever.
+              No ad tracking, third-party analytics pixels, or spyware. Across every Inaayah tool, webapp, and 
+              game, your drafts, configurations, and playtime remain 100% on your local machine.
             </p>
           </div>
 

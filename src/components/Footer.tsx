@@ -12,17 +12,23 @@ export const Footer: React.FC = () => {
               <span style={{ fontWeight: 800, letterSpacing: '0.05em' }}>INAAYAH STUDIO</span>
             </div>
             <p style={{ color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.6 }}>
-              Independent gaming studio crafting high-octane 3D arcade experiences, 
-              edge digital table games, and privacy-respecting desktop software.
+              Independent creative software studio engineering intelligent web tools, 
+              edge web applications, and privacy-respecting indie games.
             </p>
           </div>
 
           <div style={{ display: 'flex', gap: 48, flexWrap: 'wrap' }}>
             <div>
               <h4 style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)', marginBottom: 14 }}>
-                Products
+                Products & Tools
               </h4>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, fontSize: 13, color: 'var(--text-secondary)' }}>
+                <li>
+                  <a href="#builder" className="nav-link" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <span>Inaayah Builder</span>
+                    <span className="badge badge-gold" style={{ fontSize: 8, padding: '0 4px' }}>Pre-Alpha</span>
+                  </a>
+                </li>
                 <li><a href="#launcher" className="nav-link">Inaayah Launcher</a></li>
                 <li><a href="#games" className="nav-link">AetherRush 3D</a></li>
                 <li><a href="https://kettle-court.inaayah.dev/" target="_blank" rel="noreferrer" className="nav-link">Kettle Court</a></li>
