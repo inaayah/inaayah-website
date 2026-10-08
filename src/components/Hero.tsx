@@ -15,24 +15,24 @@ const PLATFORMS: Record<'mac' | 'windows' | 'linux', PlatformOption> = {
     os: 'mac',
     name: 'macOS',
     ext: '.dmg',
-    filename: 'Inaayah-Launcher-0.1.0-arm64.dmg',
-    url: 'https://github.com/inaayah/inaayah-launcher/releases/download/v0.1.0/Inaayah-Launcher-0.1.0-arm64.dmg',
+    filename: 'Inaayah-Launcher-0.2.1-arm64.dmg',
+    url: 'https://github.com/inaayah/inaayah-launcher/releases/download/v0.2.1/Inaayah-Launcher-0.2.1-arm64.dmg',
     size: '109 MB'
   },
   windows: {
     os: 'windows',
     name: 'Windows',
     ext: '.exe',
-    filename: 'Inaayah-Launcher-Setup-0.1.0.exe',
-    url: 'https://github.com/inaayah/inaayah-launcher/releases/download/v0.1.0/Inaayah-Launcher-Setup-0.1.0.exe',
+    filename: 'Inaayah-Launcher-Setup-0.2.1.exe',
+    url: 'https://github.com/inaayah/inaayah-launcher/releases/download/v0.2.1/Inaayah-Launcher-Setup-0.2.1.exe',
     size: '89 MB'
   },
   linux: {
     os: 'linux',
     name: 'Linux',
     ext: '.AppImage',
-    filename: 'Inaayah-Launcher-0.1.0.AppImage',
-    url: 'https://github.com/inaayah/inaayah-launcher/releases/download/v0.1.0/Inaayah-Launcher-0.1.0.AppImage',
+    filename: 'Inaayah-Launcher-0.2.1.AppImage',
+    url: 'https://github.com/inaayah/inaayah-launcher/releases/download/v0.2.1/Inaayah-Launcher-0.2.1.AppImage',
     size: '116 MB'
   }
 };
@@ -60,7 +60,7 @@ export const Hero: React.FC = () => {
         <div className="hero-pill">
           <span className="badge badge-cyan">
             <Sparkles size={12} />
-            Official Desktop Client · v0.1.0 Released
+            Official Desktop Client · v0.2.1 Released
           </span>
         </div>
 
@@ -129,7 +129,7 @@ export const Hero: React.FC = () => {
                 );
               })}
               <a
-                href="https://github.com/inaayah/inaayah-launcher/releases/tag/v0.1.0"
+                href="https://github.com/inaayah/inaayah-launcher/releases/tag/v0.2.1"
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-secondary"
@@ -167,7 +167,7 @@ export const Hero: React.FC = () => {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: 'var(--text-secondary)' }}>
                 <img src="/icon.png" alt="Inaayah" style={{ width: 14, height: 14, borderRadius: 3 }} />
-                <span style={{ fontWeight: 600, letterSpacing: '0.05em' }}>INAAYAH LAUNCHER v0.1.0</span>
+                <span style={{ fontWeight: 600, letterSpacing: '0.05em' }}>INAAYAH LAUNCHER v0.2.1</span>
               </div>
               <div style={{ width: 48 }} />
             </div>

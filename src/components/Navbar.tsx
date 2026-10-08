@@ -53,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollTo }) => {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <a 
-            href="https://github.com/inaayah/inaayah-launcher/releases/tag/v0.1.0" 
+            href="https://github.com/inaayah/inaayah-launcher/releases/tag/v0.2.1" 
             target="_blank" 
             rel="noreferrer"
             className="btn btn-secondary"
