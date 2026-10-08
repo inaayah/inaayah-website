@@ -182,7 +182,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
         </p>
 
         {/* Studio CTA Row */}
-        <div className="hero-cta-group">
+        <div id="launcher" className="hero-cta-group">
           <div className="download-cta-row">
             <button 
               onClick={() => handleScroll('builder')}
@@ -385,7 +385,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
 
               {/* TAB 2: GAMES & LAUNCHER */}
             {activeTab === 'games' && (
-              <div id="launcher" style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#0b0e14' }}>
+              <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#0b0e14' }}>
                 <img 
                   src="/images/aether-rush-banner.jpg" 
                   alt="Inaayah Launcher Interface" 
