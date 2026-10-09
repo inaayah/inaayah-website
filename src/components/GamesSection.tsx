@@ -198,6 +198,70 @@ export const GamesSection: React.FC = () => {
               </div>
             </div>
           </div>
+
+          {/* Game 4: Sundered Depths (Coming Soon / In Development) */}
+          <div className="glass-panel game-card-featured" style={{ marginTop: 24 }}>
+            <div className="game-card-img-wrapper" style={{ height: "auto", minHeight: 340 }}>
+              <img 
+                src="/images/sundered-depths-banner.jpg" 
+                alt="Sundered Depths" 
+                className="game-card-img" 
+                style={{ filter: "brightness(0.9)" }}
+              />
+              <div 
+                style={{ 
+                  position: "absolute", 
+                  top: 20, 
+                  left: 20, 
+                  display: "flex", 
+                  gap: 8, 
+                  flexWrap: "wrap" 
+                }}
+              >
+                <span className="badge badge-gold">In Development</span>
+                <span className="badge">Coming Soon</span>
+                <span className="badge badge-cyan">Godot 4.3</span>
+              </div>
+            </div>
+
+            <div className="game-card-content">
+              <div>
+                <span className="badge" style={{ marginBottom: 12 }}>Co-Op Action Roguelite · Endless Horde Survival</span>
+                <h3 style={{ fontSize: 30, marginBottom: 10 }}>Sundered Depths</h3>
+                <p style={{ color: "var(--text-secondary)", fontSize: 15, lineHeight: 1.6 }}>
+                  Plunge shoulder-to-shoulder into subterranean catacombs and abyssal rifts. 
+                  Fight off escalating 360-degree hordes, adapt to randomized floor objectives, 
+                  level up game-changing boons, and conquer terrifying dungeon lords in 
+                  couch co-op (dynamic shared screen &amp; split-screen) or online multiplayer.
+                </p>
+
+                <ul className="game-features-list">
+                  <li>
+                    <CheckCircle size={16} color="var(--accent-gold)" />
+                    <span><strong>5 Playable Classes:</strong> Swordsman, Axe Fighter, Archer, Mage, Rogue with melee defense</span>
+                  </li>
+                  <li>
+                    <CheckCircle size={16} color="var(--accent-gold)" />
+                    <span><strong>Dynamic Floor Variety:</strong> Survival surges, kill quotas, and runic keystone hunts</span>
+                  </li>
+                  <li>
+                    <CheckCircle size={16} color="var(--accent-gold)" />
+                    <span><strong>Multi-Biome Descent:</strong> The Vermin Catacombs, Abyssal Foundry &amp; Cursed Necropolis</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 24, paddingTop: 20, borderTop: "1px solid var(--border-subtle)" }}>
+                <button 
+                  disabled 
+                  className="btn btn-secondary" 
+                  style={{ flex: 1, opacity: 0.6, cursor: "not-allowed", padding: "12px 20px" }}
+                >
+                  <span>Coming Soon (In Development)</span>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
