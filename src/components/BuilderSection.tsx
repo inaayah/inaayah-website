@@ -5,13 +5,11 @@ import {
   ShoppingBag, 
   Palette, 
   CheckCircle2, 
-  Send,
-  Boxes,
-  FileCode2,
-  Workflow,
-  Layers,
-  Zap,
-  Sliders
+  Send, 
+  Boxes, 
+  Workflow, 
+  Globe, 
+  Bot 
 } from 'lucide-react';
 import { InaayahEditorPreview } from './InaayahEditorPreview';
 
@@ -38,18 +36,18 @@ export const BuilderSection: React.FC = () => {
           <div className="section-tag">
             <span className="badge badge-gold">
               <Sparkles size={13} />
-              Inaayah Builder · Visual Site Architecture
+              Inaayah Builder · Visual Web Creation with Live Co-Pilot
             </span>
           </div>
           <h2 className="section-title">
-            Websites crafted with editorial beauty, <br />
+            Websites built with editorial beauty, <br />
             <span style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', color: '#14b8a6' }}>
-              precision blocks, and zero bloat.
+              an integrated co-pilot, and custom domains.
             </span>
           </h2>
           <p className="section-subtitle">
-            Design with clean visual blocks, showcase your portfolio or catalog with flexible direct payment links, 
-            and publish lightning-fast static sites to the edge—clean, responsive, and completely under your control.
+            Design with clean visual blocks or let the integrated site co-pilot draft copy, announce updates, and organize sections. 
+            Hosted directly on the web with instant custom domain and subdomain setup—fast, responsive, and completely under your control.
           </p>
         </div>
 
@@ -90,29 +88,29 @@ export const BuilderSection: React.FC = () => {
         <div className="features-grid" style={{ marginBottom: 48 }}>
           <div className="feature-box" style={{ border: '1px solid rgba(20, 184, 166, 0.25)', background: 'linear-gradient(145deg, rgba(19, 78, 74, 0.2) 0%, rgba(11, 14, 20, 0.7) 100%)' }}>
             <div className="feature-icon-wrapper" style={{ background: 'rgba(20, 184, 166, 0.15)', color: '#14b8a6' }}>
-              <Layers size={24} />
+              <Bot size={24} />
             </div>
-            <h3 style={{ fontSize: 20, color: '#fff' }}>Tactile Block Architecture</h3>
+            <h3 style={{ fontSize: 20, color: '#fff' }}>Integrated Live Site Co-Pilot</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.6 }}>
-              Direct visual editing with structured block primitives. Compose heroes, editorial spreads, galleries, and product showcases with deterministic layout rules and clean semantic HTML under the hood.
+              Never struggle with an empty canvas or tedious page updates. Inaayah’s live co-pilot drafts case studies, updates promotional banners, adds showcase products, and refines typography on demand—always respecting your layout constraints.
             </p>
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 'auto' }}>
-              <span className="badge" style={{ fontSize: 10 }}>Structured Primitives</span>
-              <span className="badge" style={{ fontSize: 10 }}>Semantic HTML5</span>
+              <span className="badge" style={{ fontSize: 10 }}>Conversational Edits</span>
+              <span className="badge" style={{ fontSize: 10 }}>Design System Aware</span>
             </div>
           </div>
 
           <div className="feature-box">
             <div className="feature-icon-wrapper" style={{ background: 'rgba(0, 255, 136, 0.1)', color: 'var(--accent-green)' }}>
-              <Zap size={24} />
+              <Globe size={24} />
             </div>
-            <h3 style={{ fontSize: 20 }}>Zero-Bloat Edge Deployments</h3>
+            <h3 style={{ fontSize: 20 }}>Live Edge Hosting & Custom Domains</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.6 }}>
-              Compiled directly into featherweight static assets deployed across Cloudflare edge workers. No bulky client runtimes, zero tracking scripts, sub-second cold starts, and zero recurring plugin fees.
+              Your website lives directly on our global edge network. Connect your own custom domain or get a free .inaayah.dev subdomain in seconds, complete with automated SSL certificates and zero server maintenance.
             </p>
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 'auto' }}>
-              <span className="badge" style={{ fontSize: 10 }}>Sub-Second Edge</span>
-              <span className="badge" style={{ fontSize: 10 }}>Zero Telemetry</span>
+              <span className="badge" style={{ fontSize: 10 }}>Custom Domains</span>
+              <span className="badge" style={{ fontSize: 10 }}>Free Subdomains</span>
             </div>
           </div>
 
@@ -167,11 +165,11 @@ export const BuilderSection: React.FC = () => {
               </div>
 
               <h3 style={{ fontSize: 24, color: '#fff', marginBottom: 10 }}>
-                Open Development & Architecture Testing
+                Open Development & Contributor Testing
               </h3>
 
               <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.6, marginBottom: 16 }}>
-                Inaayah Builder is actively running in our internal QA environment. We are testing the block reconciliation engine, visual layout inspector, and edge deployment pipelines.
+                Inaayah Builder is actively running in our internal QA environment. We are testing the block reconciliation engine, the integrated live co-pilot, custom domain routing, and direct checkout workflows.
               </p>
 
               <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
@@ -252,11 +250,11 @@ export const BuilderSection: React.FC = () => {
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
                   <span className="badge badge-gold" style={{ fontSize: 10 }}>In Development</span>
-                  <Sliders size={20} color="#14b8a6" />
+                  <Bot size={20} color="#14b8a6" />
                 </div>
-                <h4 style={{ fontSize: 17, marginBottom: 8, color: '#fff' }}>Visual Theme & Token Designer</h4>
+                <h4 style={{ fontSize: 17, marginBottom: 8, color: '#fff' }}>Live Site Co-Pilot Expansion</h4>
                 <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                  Fine-tune typography scales, margin rhythms, and color tokens with live CSS variable synchronization across every block.
+                  Contextual drafting, seasonal promo automation, and continuous content updates directly inside your site editor.
                 </p>
               </div>
               <div style={{ marginTop: 16, paddingTop: 12, borderTop: '1px solid var(--border-subtle)', fontSize: 12, color: '#14b8a6' }}>
@@ -268,11 +266,11 @@ export const BuilderSection: React.FC = () => {
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
                   <span className="badge badge-purple" style={{ fontSize: 10 }}>Architecture Phase</span>
-                  <FileCode2 size={20} color="#c084fc" />
+                  <Globe size={20} color="#c084fc" />
                 </div>
-                <h4 style={{ fontSize: 17, marginBottom: 8, color: '#fff' }}>Edge Markdown & Docs</h4>
+                <h4 style={{ fontSize: 17, marginBottom: 8, color: '#fff' }}>Custom Domain & Edge SSL</h4>
                 <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                  Zero-config technical documentation and blog generator compiled directly to Cloudflare edge workers with syntax highlighting.
+                  Automated DNS validation, edge SSL provisioning, and instant domain mapping for every published site.
                 </p>
               </div>
               <div style={{ marginTop: 16, paddingTop: 12, borderTop: '1px solid var(--border-subtle)', fontSize: 12, color: '#c084fc' }}>

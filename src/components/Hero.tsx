@@ -177,8 +177,8 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
         {/* Expanded Subtitle */}
         <p className="hero-subtitle">
           Inaayah is an independent creative software studio. We design high-energy 3D games, 
-          typography-driven visual site builders, and edge-native web utilities—built with human care, 
-          zero telemetry, and open standards.
+          a visual website builder with an integrated live co-pilot, and edge-native web utilities—hosted 
+          directly on the web with custom domain support.
         </p>
 
         {/* Studio CTA Row */}

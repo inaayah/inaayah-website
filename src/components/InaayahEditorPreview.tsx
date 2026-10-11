@@ -11,7 +11,9 @@ import {
   AlignCenter,
   AlignRight,
   Palette,
-  Layers
+  Layers,
+  Sparkles,
+  Globe
 } from 'lucide-react';
 
 interface InaayahEditorPreviewProps {
@@ -160,6 +162,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
   const [viewport, setViewport] = useState<'desktop' | 'mobile'>('desktop');
   const [selectedBlock, setSelectedBlock] = useState<string>('hero');
   const [activePage, setActivePage] = useState<string>('home');
+  const [rightTab, setRightTab] = useState<'copilot' | 'inspector'>('copilot');
 
   const blocks = [
     { id: 'announcementBar', label: 'announcementBar' },
@@ -280,7 +283,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
             }}
           >
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
-            Static Edge Preview
+            Live at aurastudio.inaayah.dev
           </span>
           <a
             href="https://qa.inaayah.dev/"
@@ -383,7 +386,10 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                 {blocks.map((b) => (
                   <li 
                     key={b.id}
-                    onClick={() => setSelectedBlock(b.id)}
+                    onClick={() => {
+                      setSelectedBlock(b.id);
+                      setRightTab('inspector');
+                    }}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -418,7 +424,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                 <span style={{ fontWeight: 600, color: '#1c1917' }}>Deterministic CSS</span>
               </div>
               <p style={{ margin: 0, fontSize: 10, lineHeight: 1.4 }}>
-                Strict layout primitives ensure no overflow or broken mobile viewports.
+                Structured primitives ensure zero overflow and clean mobile layouts.
               </p>
             </div>
           </div>
@@ -449,7 +455,10 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
           >
             {/* Block 1: Announcement Bar */}
             <div 
-              onClick={() => setSelectedBlock('announcementBar')}
+              onClick={() => {
+                setSelectedBlock('announcementBar');
+                setRightTab('inspector');
+              }}
               style={{
                 background: '#134e4a',
                 color: '#ffffff',
@@ -468,7 +477,10 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
 
             {/* Block 2: Site Nav */}
             <div 
-              onClick={() => setSelectedBlock('navbar')}
+              onClick={() => {
+                setSelectedBlock('navbar');
+                setRightTab('inspector');
+              }}
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -508,7 +520,10 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
 
             {/* Block 3: Hero Section */}
             <div 
-              onClick={() => setSelectedBlock('hero')}
+              onClick={() => {
+                setSelectedBlock('hero');
+                setRightTab('inspector');
+              }}
               style={{
                 padding: viewport === 'mobile' ? '24px 16px' : '36px 24px',
                 textAlign: 'center',
@@ -576,7 +591,10 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
 
             {/* Block 4: Product Showcase Grid */}
             <div 
-              onClick={() => setSelectedBlock('productList')}
+              onClick={() => {
+                setSelectedBlock('productList');
+                setRightTab('inspector');
+              }}
               style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
@@ -618,7 +636,10 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
 
             {/* Block 5: Newsletter Block */}
             <div 
-              onClick={() => setSelectedBlock('newsletter')}
+              onClick={() => {
+                setSelectedBlock('newsletter');
+                setRightTab('inspector');
+              }}
               style={{
                 padding: '24px 20px',
                 background: '#ffffff',
@@ -653,7 +674,10 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
 
             {/* Block 6: Colophon Footer */}
             <div 
-              onClick={() => setSelectedBlock('footer')}
+              onClick={() => {
+                setSelectedBlock('footer');
+                setRightTab('inspector');
+              }}
               style={{
                 padding: '16px 20px',
                 background: '#f5f5f4',
@@ -678,7 +702,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
           </div>
         </div>
 
-        {/* RIGHT COLUMN: Tactile Block & Style Inspector */}
+        {/* RIGHT COLUMN: Dual Mode (Live Site Co-Pilot / Block Inspector) */}
         {!compact && (
           <div 
             style={{
@@ -692,130 +716,237 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
             }}
           >
             <div>
-              {/* Inspector Header */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #e7e5e4', paddingBottom: 10, marginBottom: 12 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <Sliders size={14} color="#0d9488" />
-                  <span style={{ fontSize: 12, fontWeight: 700, color: '#1c1917' }}>Block Inspector</span>
-                </div>
-                <span style={{ fontSize: 10, fontWeight: 600, color: '#115e59', background: '#f0fdfa', border: '1px solid rgba(20, 184, 166, 0.3)', padding: '2px 7px', borderRadius: 4 }}>
-                  {currentConfig.name}
-                </span>
+              {/* Tab Switcher: Co-Pilot vs Inspector */}
+              <div style={{ display: 'flex', background: '#f5f5f4', borderRadius: 8, padding: 3, marginBottom: 14, border: '1px solid #e7e5e4' }}>
+                <button
+                  type="button"
+                  onClick={() => setRightTab('copilot')}
+                  style={{
+                    flex: 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 6,
+                    padding: '5px 8px',
+                    fontSize: 11,
+                    fontWeight: 600,
+                    borderRadius: 6,
+                    border: 'none',
+                    cursor: 'pointer',
+                    background: rightTab === 'copilot' ? '#ffffff' : 'transparent',
+                    color: rightTab === 'copilot' ? '#115e59' : '#78716c',
+                    boxShadow: rightTab === 'copilot' ? '0 1px 3px rgba(0,0,0,0.08)' : 'none',
+                    transition: 'all 0.15s ease'
+                  }}
+                >
+                  <Sparkles size={12} color={rightTab === 'copilot' ? '#0d9488' : '#78716c'} />
+                  <span>Site Co-Pilot</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setRightTab('inspector')}
+                  style={{
+                    flex: 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 6,
+                    padding: '5px 8px',
+                    fontSize: 11,
+                    fontWeight: 600,
+                    borderRadius: 6,
+                    border: 'none',
+                    cursor: 'pointer',
+                    background: rightTab === 'inspector' ? '#ffffff' : 'transparent',
+                    color: rightTab === 'inspector' ? '#115e59' : '#78716c',
+                    boxShadow: rightTab === 'inspector' ? '0 1px 3px rgba(0,0,0,0.08)' : 'none',
+                    transition: 'all 0.15s ease'
+                  }}
+                >
+                  <Sliders size={12} color={rightTab === 'inspector' ? '#0d9488' : '#78716c'} />
+                  <span>Inspector</span>
+                </button>
               </div>
 
-              {/* Tag & Category */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, fontSize: 11 }}>
-                <span style={{ color: '#78716c' }}>{currentConfig.category}</span>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: '#0f766e', background: '#f0fdfa', padding: '1px 5px', borderRadius: 3 }}>
-                  {currentConfig.htmlTag}
-                </span>
-              </div>
-
-              {/* Inspector Section 1: Typography */}
-              <div style={{ background: '#fafaf9', border: '1px solid #e7e5e4', borderRadius: 8, padding: '10px', marginBottom: 12 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, fontWeight: 600, color: '#292524', marginBottom: 8 }}>
-                  <Type size={12} color="#0d9488" />
-                  <span>Typography & Hierarchy</span>
-                </div>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 11 }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#57534e' }}>
-                    <span>Typeface</span>
-                    <span style={{ fontWeight: 600, color: '#1c1917' }}>{currentConfig.font}</span>
-                  </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#57534e' }}>
-                    <span>Scale / Leading</span>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: '#1c1917' }}>{currentConfig.fontSize}</span>
-                  </div>
-
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 4, paddingTop: 6, borderTop: '1px solid #e7e5e4' }}>
-                    <span style={{ color: '#57534e' }}>Alignment</span>
-                    <div style={{ display: 'flex', gap: 2, background: '#e7e5e4', borderRadius: 4, padding: 2 }}>
-                      <button 
-                        type="button" 
-                        title="Align Left"
-                        style={{ border: 'none', background: currentConfig.alignment === 'left' ? '#fff' : 'transparent', borderRadius: 3, padding: '2px 4px', cursor: 'pointer', display: 'flex' }}
-                      >
-                        <AlignLeft size={11} color={currentConfig.alignment === 'left' ? '#0d9488' : '#78716c'} />
-                      </button>
-                      <button 
-                        type="button" 
-                        title="Align Center"
-                        style={{ border: 'none', background: currentConfig.alignment === 'center' ? '#fff' : 'transparent', borderRadius: 3, padding: '2px 4px', cursor: 'pointer', display: 'flex' }}
-                      >
-                        <AlignCenter size={11} color={currentConfig.alignment === 'center' ? '#0d9488' : '#78716c'} />
-                      </button>
-                      <button 
-                        type="button" 
-                        title="Align Right"
-                        style={{ border: 'none', background: currentConfig.alignment === 'right' ? '#fff' : 'transparent', borderRadius: 3, padding: '2px 4px', cursor: 'pointer', display: 'flex' }}
-                      >
-                        <AlignRight size={11} color={currentConfig.alignment === 'right' ? '#0d9488' : '#78716c'} />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Inspector Section 2: Colors & Surface Tokens */}
-              <div style={{ background: '#fafaf9', border: '1px solid #e7e5e4', borderRadius: 8, padding: '10px', marginBottom: 12 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, fontWeight: 600, color: '#292524', marginBottom: 8 }}>
-                  <Palette size={12} color="#0d9488" />
-                  <span>Surface & Color Tokens</span>
-                </div>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 11 }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ color: '#57534e' }}>Background</span>
+              {/* VIEW 1: LIVE SITE CO-PILOT */}
+              {rightTab === 'copilot' && (
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #e7e5e4', paddingBottom: 8, marginBottom: 12 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                      <span style={{ width: 12, height: 12, borderRadius: 3, background: currentConfig.bgHex, border: '1px solid #d6d3d1' }} />
-                      <span style={{ fontWeight: 500, color: '#1c1917' }}>{currentConfig.bgName}</span>
+                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#0d9488', boxShadow: '0 0 6px #0d9488' }} />
+                      <span style={{ fontSize: 12, fontWeight: 700, color: '#1c1917' }}>Live Site Co-Pilot</span>
                     </div>
+                    <span style={{ fontSize: 10, fontWeight: 600, color: '#115e59', background: '#f0fdfa', padding: '2px 6px', borderRadius: 4 }}>
+                      Ready to Assist
+                    </span>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ color: '#57534e' }}>Padding Y/X</span>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: '#1c1917' }}>{currentConfig.padding}</span>
-                  </div>
-                </div>
-              </div>
 
-              {/* Inspector Section 3: Live Block Attributes */}
-              <div style={{ background: '#ffffff', border: '1px solid #e7e5e4', borderRadius: 8, padding: '10px' }}>
-                <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#78716c', marginBottom: 6 }}>
-                  Block Configuration
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 5, fontSize: 11 }}>
-                  {currentConfig.details.map((item, idx) => (
-                    <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: idx < currentConfig.details.length - 1 ? '1px solid #f5f5f4' : 'none', paddingBottom: 4 }}>
-                      <span style={{ color: '#78716c', fontSize: 10 }}>{item.label}</span>
-                      <span style={{ fontWeight: 500, color: '#1c1917', fontSize: 11 }}>{item.value}</span>
+                  {/* Chat / Action History */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                    <div style={{ background: '#f5f5f4', borderRadius: 8, padding: '8px 10px', fontSize: 11, color: '#292524' }}>
+                      <div style={{ fontSize: 9, fontWeight: 700, color: '#78716c', marginBottom: 2 }}>Site Owner</div>
+                      Feature our new Autumn ceramics collection with a 15% discount announcement bar and update the hero headline.
                     </div>
-                  ))}
+
+                    <div style={{ background: '#f0fdfa', border: '1px solid rgba(13, 148, 136, 0.25)', borderRadius: 8, padding: '10px', fontSize: 11, color: '#134e4a' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontWeight: 700, fontSize: 11, color: '#115e59', marginBottom: 6 }}>
+                        <Check size={13} color="#0d9488" strokeWidth={3} />
+                        <span>Live Edits Applied</span>
+                      </div>
+                      <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 4, fontSize: 10, color: '#334155' }}>
+                        <li>• Activated announcement bar with code AUTUMN15.</li>
+                        <li>• Updated hero headline & specialty ceramics copy.</li>
+                        <li>• Connected catalog items with direct payment links.</li>
+                      </ul>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid rgba(13, 148, 136, 0.15)', marginTop: 8, paddingTop: 6, fontSize: 9 }}>
+                        <span style={{ color: '#0d9488', fontWeight: 600 }}>Design System Intact</span>
+                        <span style={{ background: '#115e59', color: '#ffffff', padding: '2px 6px', borderRadius: 4, fontWeight: 600 }}>
+                          Live on Web
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Quick Action Chips */}
+                  <div style={{ marginTop: 12 }}>
+                    <div style={{ fontSize: 10, fontWeight: 600, color: '#78716c', marginBottom: 6 }}>Quick Actions</div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+                      <span style={{ fontSize: 10, background: '#f5f5f4', padding: '3px 8px', borderRadius: 12, border: '1px solid #e7e5e4', color: '#57534e' }}>
+                        + Add newsletter form
+                      </span>
+                      <span style={{ fontSize: 10, background: '#f5f5f4', padding: '3px 8px', borderRadius: 12, border: '1px solid #e7e5e4', color: '#57534e' }}>
+                        + Reformat hero copy
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Prompt Input Box */}
+                  <div style={{ marginTop: 12 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#f5f5f4', borderRadius: 6, padding: '7px 10px', fontSize: 11, color: '#a8a29e', border: '1px solid #e7e5e4' }}>
+                      <span>Ask co-pilot to write or edit...</span>
+                      <Sparkles size={12} color="#0d9488" />
+                    </div>
+                  </div>
                 </div>
-              </div>
+              )}
+
+              {/* VIEW 2: GRANULAR BLOCK INSPECTOR */}
+              {rightTab === 'inspector' && (
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #e7e5e4', paddingBottom: 8, marginBottom: 12 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                      <Sliders size={13} color="#0d9488" />
+                      <span style={{ fontSize: 12, fontWeight: 700, color: '#1c1917' }}>Block Properties</span>
+                    </div>
+                    <span style={{ fontSize: 10, fontWeight: 600, color: '#115e59', background: '#f0fdfa', border: '1px solid rgba(20, 184, 166, 0.3)', padding: '2px 7px', borderRadius: 4 }}>
+                      {currentConfig.name}
+                    </span>
+                  </div>
+
+                  {/* Tag & Category */}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10, fontSize: 11 }}>
+                    <span style={{ color: '#78716c' }}>{currentConfig.category}</span>
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: '#0f766e', background: '#f0fdfa', padding: '1px 5px', borderRadius: 3 }}>
+                      {currentConfig.htmlTag}
+                    </span>
+                  </div>
+
+                  {/* Typography Card */}
+                  <div style={{ background: '#fafaf9', border: '1px solid #e7e5e4', borderRadius: 8, padding: '10px', marginBottom: 10 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, fontWeight: 600, color: '#292524', marginBottom: 6 }}>
+                      <Type size={12} color="#0d9488" />
+                      <span>Typography</span>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: 11 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', color: '#57534e' }}>
+                        <span>Typeface</span>
+                        <span style={{ fontWeight: 600, color: '#1c1917' }}>{currentConfig.font}</span>
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', color: '#57534e' }}>
+                        <span>Scale / Leading</span>
+                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: '#1c1917' }}>{currentConfig.fontSize}</span>
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 4, paddingTop: 4, borderTop: '1px solid #e7e5e4' }}>
+                        <span style={{ color: '#57534e' }}>Alignment</span>
+                        <div style={{ display: 'flex', gap: 2, background: '#e7e5e4', borderRadius: 4, padding: 2 }}>
+                          <button type="button" style={{ border: 'none', background: currentConfig.alignment === 'left' ? '#fff' : 'transparent', borderRadius: 3, padding: '2px 4px', cursor: 'pointer', display: 'flex' }}>
+                            <AlignLeft size={11} color={currentConfig.alignment === 'left' ? '#0d9488' : '#78716c'} />
+                          </button>
+                          <button type="button" style={{ border: 'none', background: currentConfig.alignment === 'center' ? '#fff' : 'transparent', borderRadius: 3, padding: '2px 4px', cursor: 'pointer', display: 'flex' }}>
+                            <AlignCenter size={11} color={currentConfig.alignment === 'center' ? '#0d9488' : '#78716c'} />
+                          </button>
+                          <button type="button" style={{ border: 'none', background: currentConfig.alignment === 'right' ? '#fff' : 'transparent', borderRadius: 3, padding: '2px 4px', cursor: 'pointer', display: 'flex' }}>
+                            <AlignRight size={11} color={currentConfig.alignment === 'right' ? '#0d9488' : '#78716c'} />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Surface & Color Tokens */}
+                  <div style={{ background: '#fafaf9', border: '1px solid #e7e5e4', borderRadius: 8, padding: '10px', marginBottom: 10 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, fontWeight: 600, color: '#292524', marginBottom: 6 }}>
+                      <Palette size={12} color="#0d9488" />
+                      <span>Surface & Spacing</span>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: 11 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span style={{ color: '#57534e' }}>Background</span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                          <span style={{ width: 12, height: 12, borderRadius: 3, background: currentConfig.bgHex, border: '1px solid #d6d3d1' }} />
+                          <span style={{ fontWeight: 500, color: '#1c1917' }}>{currentConfig.bgName}</span>
+                        </div>
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span style={{ color: '#57534e' }}>Padding Y/X</span>
+                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: '#1c1917' }}>{currentConfig.padding}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Attributes List */}
+                  <div style={{ background: '#ffffff', border: '1px solid #e7e5e4', borderRadius: 8, padding: '10px' }}>
+                    <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#78716c', marginBottom: 6 }}>
+                      Block Configuration
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: 11 }}>
+                      {currentConfig.details.map((item, idx) => (
+                        <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: idx < currentConfig.details.length - 1 ? '1px solid #f5f5f4' : 'none', paddingBottom: 3 }}>
+                          <span style={{ color: '#78716c', fontSize: 10 }}>{item.label}</span>
+                          <span style={{ fontWeight: 500, color: '#1c1917', fontSize: 11 }}>{item.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
-            {/* Bottom Quality & Build Status */}
+            {/* Bottom Hosting & Deployment Status */}
             <div style={{ borderTop: '1px solid #e7e5e4', paddingTop: 12, marginTop: 12 }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginBottom: 10 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, color: '#047857' }}>
                   <Check size={11} strokeWidth={3} />
-                  <span>Valid HTML5 & Accessible Semantics</span>
+                  <span>Hosted live on edge infrastructure</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, color: '#047857' }}>
                   <Check size={11} strokeWidth={3} />
-                  <span>Direct checkout links (No vendor lock-in)</span>
+                  <span>Custom domain & subdomain enabled</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, color: '#047857' }}>
                   <Check size={11} strokeWidth={3} />
-                  <span>Zero bloat · Cloudflare edge compiled</span>
+                  <span>Direct payment links & forms</span>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#f5f5f4', borderRadius: 6, padding: '6px 10px', fontSize: 11 }}>
-                <span style={{ color: '#57534e', fontSize: 10 }}>Output: Static bundle</span>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#f5f5f4', borderRadius: 6, padding: '6px 10px', fontSize: 11, border: '1px solid #e7e5e4' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <Globe size={13} color="#115e59" />
+                  <span style={{ color: '#1c1917', fontWeight: 600, fontSize: 11 }}>aurastudio.inaayah.dev</span>
+                </div>
                 <span style={{ background: '#115e59', color: '#ffffff', padding: '2px 6px', borderRadius: 4, fontSize: 10, fontWeight: 600 }}>
-                  Ready to Deploy
+                  Live Site
                 </span>
               </div>
             </div>
