@@ -18,13 +18,13 @@ export const LabsSection: React.FC = () => {
             </div>
 
             <h3 style={{ fontSize: 28, marginBottom: 12, color: '#fff' }}>
-              Inaayah Builder: AI-Powered Edge Web Creation
+              Inaayah Builder: Visual Publishing & Edge Web Tools
             </h3>
 
             <p style={{ color: 'var(--text-secondary)', fontSize: 15, lineHeight: 1.6, marginBottom: 20 }}>
-              Beyond games, our engineering team is developing an intelligent visual site builder that generates, 
-              customizes, and deploys production-grade web applications to edge infrastructure with custom domains. 
-              Currently undergoing internal testing and feature expansion.
+              Beyond games, our engineering team is developing a tactile visual site builder that lets 
+              creators compose, customize, and deploy fast, typography-rich web applications to edge infrastructure 
+              with zero bloat. Currently undergoing internal testing and feature expansion.
             </p>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>

@@ -1,6 +1,8 @@
 import React from 'react';
 
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 export const Footer: React.FC = () => {
   return (
     <footer className="footer">
@@ -12,8 +14,8 @@ export const Footer: React.FC = () => {
               <span style={{ fontWeight: 800, letterSpacing: '0.05em' }}>INAAYAH STUDIO</span>
             </div>
             <p style={{ color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.6 }}>
-              Independent creative software studio engineering intelligent web tools, 
-              edge web applications, and privacy-respecting indie games.
+              Independent creative software studio crafting high-energy indie games, 
+              tactile visual web tools, and open software.
             </p>
           </div>
 
@@ -76,7 +78,7 @@ export const Footer: React.FC = () => {
 
         <div className="footer-copy">
           <div>
-            © {new Date().getFullYear()} Inaayah Studio. Zero telemetry. 100% DRM-Free.
+            © {CURRENT_YEAR} Inaayah Studio. Zero telemetry. 100% DRM-Free.
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-muted)' }}>
             <span>Built with passion & precision</span>

@@ -170,15 +170,15 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
 
         {/* Elevated Title */}
         <h1 className="hero-title">
-          Engineering Intelligent Web Tools, <br />
-          <span className="gradient-text-cyan">Modern Webapps & Indie Worlds.</span>
+          Crafting High-Octane Indie Games, <br />
+          <span className="gradient-text-cyan">Tactile Web Tools & Open Software.</span>
         </h1>
 
         {/* Expanded Subtitle */}
         <p className="hero-subtitle">
-          Inaayah is a multidisciplinary digital studio. We build next-generation visual site builders, 
-          privacy-respecting web utilities, and high-octane indie games—grounded in zero telemetry, 
-          open standards, and extreme speed.
+          Inaayah is an independent creative software studio. We design high-energy 3D games, 
+          typography-driven visual site builders, and edge-native web utilities—built with human care, 
+          zero telemetry, and open standards.
         </p>
 
         {/* Studio CTA Row */}

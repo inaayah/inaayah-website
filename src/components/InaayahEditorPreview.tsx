@@ -2,15 +2,159 @@ import React, { useState } from 'react';
 import { 
   Monitor, 
   Smartphone, 
-  Sparkles, 
   Check, 
   ArrowUpRight,
-  ShoppingBag
+  ShoppingBag,
+  Sliders,
+  Type,
+  AlignLeft,
+  AlignCenter,
+  AlignRight,
+  Palette,
+  Layers
 } from 'lucide-react';
 
 interface InaayahEditorPreviewProps {
   compact?: boolean;
 }
+
+interface BlockDetail {
+  label: string;
+  value: string;
+}
+
+interface BlockConfig {
+  id: string;
+  name: string;
+  category: string;
+  htmlTag: string;
+  font: string;
+  fontSize: string;
+  alignment: 'left' | 'center' | 'right';
+  padding: string;
+  bgHex: string;
+  bgName: string;
+  textHex: string;
+  details: BlockDetail[];
+}
+
+const BLOCK_CONFIGS: Record<string, BlockConfig> = {
+  hero: {
+    id: 'hero',
+    name: 'Hero Section',
+    category: 'Display & Header',
+    htmlTag: '<section class="hero">',
+    font: 'Fraunces Serif',
+    fontSize: '28px / 1.25',
+    alignment: 'center',
+    padding: '36px 24px',
+    bgHex: '#ffffff',
+    bgName: 'Studio Canvas',
+    textHex: '#1c1917',
+    details: [
+      { label: 'Typography', value: 'Fraunces Display 500' },
+      { label: 'Max Width', value: '660px (Contained)' },
+      { label: 'Primary CTA', value: 'Explore collection' },
+      { label: 'Secondary CTA', value: 'Read story' },
+      { label: 'Responsive', value: 'Fluid clamp()' }
+    ]
+  },
+  announcementBar: {
+    id: 'announcementBar',
+    name: 'Announcement Bar',
+    category: 'Notice & Promo',
+    htmlTag: '<aside class="banner">',
+    font: 'Inter Sans',
+    fontSize: '11px / 1.4',
+    alignment: 'center',
+    padding: '7px 12px',
+    bgHex: '#134e4a',
+    bgName: 'Deep Forest',
+    textHex: '#ffffff',
+    details: [
+      { label: 'Promo Code', value: 'AUTUMN15 (-15%)' },
+      { label: 'Font Weight', value: '500 Medium' },
+      { label: 'Link Target', value: '/shop' },
+      { label: 'Dismissible', value: 'Optional' }
+    ]
+  },
+  navbar: {
+    id: 'navbar',
+    name: 'Site Navigation',
+    category: 'Header & Links',
+    htmlTag: '<nav class="site-nav">',
+    font: 'Fraunces & Inter',
+    fontSize: '16px / 12px',
+    alignment: 'left',
+    padding: '12px 20px',
+    bgHex: '#ffffff',
+    bgName: 'Clean Surface',
+    textHex: '#1c1917',
+    details: [
+      { label: 'Studio Mark', value: 'Aura Studio' },
+      { label: 'Nav Items', value: 'Works, Shop, Journal' },
+      { label: 'Cart Badge', value: 'Direct Checkout' },
+      { label: 'Border', value: '1px subtle stone' }
+    ]
+  },
+  productList: {
+    id: 'productList',
+    name: 'Product Showcase',
+    category: 'Catalog & Store',
+    htmlTag: '<section class="catalog">',
+    font: 'Inter Sans',
+    fontSize: '11px / 13px',
+    alignment: 'left',
+    padding: '16px',
+    bgHex: '#fafaf9',
+    bgName: 'Warm Sand',
+    textHex: '#1c1917',
+    details: [
+      { label: 'Grid Layout', value: '2-Column Responsive' },
+      { label: 'Catalog Items', value: '2 Curated Pieces' },
+      { label: 'Pricing Tokens', value: '$48 & $85' },
+      { label: 'Payment Mode', value: 'Direct Payment Link' },
+      { label: 'Inquiry Form', value: 'Custom Embed Supported' }
+    ]
+  },
+  newsletter: {
+    id: 'newsletter',
+    name: 'Journal & Newsletter',
+    category: 'Audience & Form',
+    htmlTag: '<section class="subscribe">',
+    font: 'Fraunces & Inter',
+    fontSize: '18px / 12px',
+    alignment: 'center',
+    padding: '24px 20px',
+    bgHex: '#ffffff',
+    bgName: 'Studio Canvas',
+    textHex: '#1c1917',
+    details: [
+      { label: 'Data Destination', value: 'Local CSV / Webhook' },
+      { label: 'Protection', value: 'Honeypot (No Captcha)' },
+      { label: 'Privacy', value: '0% Third-Party Trackers' },
+      { label: 'Export', value: 'One-Click Download' }
+    ]
+  },
+  footer: {
+    id: 'footer',
+    name: 'Colophon & Footer',
+    category: 'Footer & Links',
+    htmlTag: '<footer class="colophon">',
+    font: 'Inter Sans',
+    fontSize: '11px / 1.5',
+    alignment: 'left',
+    padding: '20px 20px',
+    bgHex: '#f5f5f4',
+    bgName: 'Stone Warm',
+    textHex: '#78716c',
+    details: [
+      { label: 'Colophon', value: 'Aura Studio · Kyoto & Global' },
+      { label: 'Links', value: 'Shipping, Care, Inquiries' },
+      { label: 'Licensing', value: '100% DRM-Free Open' }
+    ]
+  }
+};
 
 export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ compact = false }) => {
   const [viewport, setViewport] = useState<'desktop' | 'mobile'>('desktop');
@@ -20,11 +164,13 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
   const blocks = [
     { id: 'announcementBar', label: 'announcementBar' },
     { id: 'navbar', label: 'navbar' },
-    { id: 'hero', label: 'hero (selected)' },
+    { id: 'hero', label: 'hero' },
     { id: 'productList', label: 'productList' },
     { id: 'newsletter', label: 'newsletter' },
     { id: 'footer', label: 'footer' }
   ];
+
+  const currentConfig = BLOCK_CONFIGS[selectedBlock] || BLOCK_CONFIGS.hero;
 
   return (
     <div 
@@ -56,7 +202,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
             <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#34d399' }} />
           </div>
           <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, fontWeight: 600, color: '#57534e', marginLeft: 6 }}>
-            inaayah-editor · aura-studio
+            inaayah-builder · aura-studio
           </span>
         </div>
 
@@ -134,7 +280,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
             }}
           >
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
-            Live at aurastudio.dev
+            Static Edge Preview
           </span>
           <a
             href="https://qa.inaayah.dev/"
@@ -158,12 +304,12 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
         </div>
       </div>
 
-      {/* Editor Body Grid: Left Sidebar, Canvas, Right Co-Pilot */}
+      {/* Editor Body Grid: Left Sidebar, Canvas, Right Inspector */}
       <div 
         style={{
           display: 'grid',
-          gridTemplateColumns: compact ? '1fr' : '180px 1fr 280px',
-          minHeight: compact ? 420 : 500,
+          gridTemplateColumns: compact ? '1fr' : '180px 1fr 290px',
+          minHeight: compact ? 420 : 540,
           background: '#f7f3ea'
         }}
       >
@@ -171,7 +317,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
         {!compact && (
           <div 
             style={{
-              background: 'rgba(255, 255, 255, 0.85)',
+              background: 'rgba(255, 255, 255, 0.92)',
               borderRight: '1px solid #e7e5e4',
               padding: '16px 14px',
               display: 'flex',
@@ -200,7 +346,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                 >
                   <span>/ (Home)</span>
                   <span style={{ fontSize: 9, background: 'rgba(17, 94, 89, 0.15)', color: '#115e59', padding: '1px 5px', borderRadius: 4 }}>
-                    Draft
+                    Live
                   </span>
                 </li>
                 {['/about', '/shop', '/journal', '/contact'].map((p) => (
@@ -221,7 +367,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                     <span>{p}</span>
                     {p === '/shop' && (
                       <span style={{ fontSize: 8, background: '#e7e5e4', color: '#44403c', padding: '1px 4px', borderRadius: 3 }}>
-                        Cart
+                        Catalog
                       </span>
                     )}
                   </li>
@@ -231,7 +377,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
 
             <div>
               <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#57534e', marginBottom: 8 }}>
-                Layout Blocks
+                Page Blocks
               </div>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 3, fontFamily: 'var(--font-mono)', fontSize: 11 }}>
                 {blocks.map((b) => (
@@ -242,20 +388,38 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                       display: 'flex',
                       alignItems: 'center',
                       gap: 6,
-                      padding: '5px 8px',
+                      padding: '6px 8px',
                       borderRadius: 6,
                       background: selectedBlock === b.id ? '#ffffff' : 'transparent',
                       color: selectedBlock === b.id ? '#1c1917' : '#78716c',
                       fontWeight: selectedBlock === b.id ? 600 : 400,
                       boxShadow: selectedBlock === b.id ? '0 1px 3px rgba(0,0,0,0.06)' : 'none',
+                      border: selectedBlock === b.id ? '1px solid #e7e5e4' : '1px solid transparent',
                       cursor: 'pointer'
                     }}
                   >
-                    <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#0d9488' }} />
+                    <span 
+                      style={{ 
+                        width: 6, 
+                        height: 6, 
+                        borderRadius: '50%', 
+                        background: selectedBlock === b.id ? '#0d9488' : '#d6d3d1' 
+                      }} 
+                    />
                     <span>{b.label}</span>
                   </li>
                 ))}
               </ul>
+            </div>
+
+            <div style={{ marginTop: 'auto', paddingTop: 12, borderTop: '1px solid #e7e5e4', fontSize: 11, color: '#78716c' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+                <Layers size={13} color="#0d9488" />
+                <span style={{ fontWeight: 600, color: '#1c1917' }}>Deterministic CSS</span>
+              </div>
+              <p style={{ margin: 0, fontSize: 10, lineHeight: 1.4 }}>
+                Strict layout primitives ensure no overflow or broken mobile viewports.
+              </p>
             </div>
           </div>
         )}
@@ -283,7 +447,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
               transition: 'max-width 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
             }}
           >
-            {/* Announcement Bar */}
+            {/* Block 1: Announcement Bar */}
             <div 
               onClick={() => setSelectedBlock('announcementBar')}
               style={{
@@ -294,6 +458,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                 fontSize: 11,
                 fontWeight: 500,
                 outline: selectedBlock === 'announcementBar' ? '2px solid #0d9488' : 'none',
+                outlineOffset: -2,
                 cursor: 'pointer'
               }}
             >
@@ -301,7 +466,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
               <span style={{ fontWeight: 700, textDecoration: 'underline' }}>AUTUMN15</span>
             </div>
 
-            {/* Site Nav */}
+            {/* Block 2: Site Nav */}
             <div 
               onClick={() => setSelectedBlock('navbar')}
               style={{
@@ -311,6 +476,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                 padding: '12px 20px',
                 borderBottom: '1px solid #f5f5f4',
                 outline: selectedBlock === 'navbar' ? '2px solid #0d9488' : 'none',
+                outlineOffset: -2,
                 cursor: 'pointer'
               }}
             >
@@ -340,13 +506,14 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
               </div>
             </div>
 
-            {/* Hero Section */}
+            {/* Block 3: Hero Section */}
             <div 
               onClick={() => setSelectedBlock('hero')}
               style={{
                 padding: viewport === 'mobile' ? '24px 16px' : '36px 24px',
                 textAlign: 'center',
                 outline: selectedBlock === 'hero' ? '2px solid #0d9488' : 'none',
+                outlineOffset: -2,
                 cursor: 'pointer',
                 background: selectedBlock === 'hero' ? 'rgba(13, 148, 136, 0.02)' : 'transparent'
               }}
@@ -407,7 +574,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
               </div>
             </div>
 
-            {/* Product List Grid */}
+            {/* Block 4: Product Showcase Grid */}
             <div 
               onClick={() => setSelectedBlock('productList')}
               style={{
@@ -418,6 +585,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                 background: '#fafaf9',
                 borderTop: '1px solid #f5f5f4',
                 outline: selectedBlock === 'productList' ? '2px solid #0d9488' : 'none',
+                outlineOffset: -2,
                 cursor: 'pointer'
               }}
             >
@@ -429,6 +597,9 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                   <span>Tenmoku Yunomi</span>
                   <span style={{ color: '#115e59' }}>$48</span>
                 </div>
+                <div style={{ marginTop: 4, fontSize: 10, color: '#0d9488', fontWeight: 500 }}>
+                  Direct Pay Link / Inquire →
+                </div>
               </div>
 
               <div style={{ background: '#ffffff', border: '1px solid #e7e5e4', borderRadius: 8, padding: 10 }}>
@@ -439,68 +610,213 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                   <span>Shino Chawan</span>
                   <span style={{ color: '#115e59' }}>$85</span>
                 </div>
+                <div style={{ marginTop: 4, fontSize: 10, color: '#0d9488', fontWeight: 500 }}>
+                  Direct Pay Link / Inquire →
+                </div>
+              </div>
+            </div>
+
+            {/* Block 5: Newsletter Block */}
+            <div 
+              onClick={() => setSelectedBlock('newsletter')}
+              style={{
+                padding: '24px 20px',
+                background: '#ffffff',
+                borderTop: '1px solid #f5f5f4',
+                textAlign: 'center',
+                outline: selectedBlock === 'newsletter' ? '2px solid #0d9488' : 'none',
+                outlineOffset: -2,
+                cursor: 'pointer'
+              }}
+            >
+              <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: 16, fontWeight: 600, color: '#1c1917', marginBottom: 4 }}>
+                Join the Aura Studio Journal
+              </h4>
+              <p style={{ fontSize: 11, color: '#78716c', marginBottom: 12 }}>
+                Subtle notes on upcoming kiln releases and studio essays.
+              </p>
+              <div style={{ display: 'flex', maxWidth: 300, margin: '0 auto', gap: 6 }}>
+                <input 
+                  type="email" 
+                  readOnly 
+                  value="collector@domain.com" 
+                  style={{ flex: 1, padding: '6px 10px', fontSize: 11, border: '1px solid #e7e5e4', borderRadius: 6, background: '#fafaf9', color: '#78716c' }} 
+                />
+                <button 
+                  type="button" 
+                  style={{ background: '#134e4a', color: '#fff', border: 'none', borderRadius: 6, padding: '6px 12px', fontSize: 11, fontWeight: 600, cursor: 'pointer' }}
+                >
+                  Join
+                </button>
+              </div>
+            </div>
+
+            {/* Block 6: Colophon Footer */}
+            <div 
+              onClick={() => setSelectedBlock('footer')}
+              style={{
+                padding: '16px 20px',
+                background: '#f5f5f4',
+                borderTop: '1px solid #e7e5e4',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                fontSize: 10,
+                color: '#78716c',
+                outline: selectedBlock === 'footer' ? '2px solid #0d9488' : 'none',
+                outlineOffset: -2,
+                cursor: 'pointer'
+              }}
+            >
+              <span>© 2026 Aura Studio · Kyoto</span>
+              <div style={{ display: 'flex', gap: 10 }}>
+                <span>Shipping</span>
+                <span>Commissions</span>
+                <span>Inquiries</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* RIGHT COLUMN: The Living Website Co-Pilot (Gemini) */}
+        {/* RIGHT COLUMN: Tactile Block & Style Inspector */}
         {!compact && (
           <div 
             style={{
-              background: 'rgba(255, 255, 255, 0.9)',
+              background: 'rgba(255, 255, 255, 0.94)',
               borderLeft: '1px solid #e7e5e4',
               padding: '16px',
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'space-between'
+              justifyContent: 'space-between',
+              overflowY: 'auto'
             }}
           >
             <div>
+              {/* Inspector Header */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #e7e5e4', paddingBottom: 10, marginBottom: 12 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#0d9488', boxShadow: '0 0 6px #0d9488' }} />
-                  <span style={{ fontSize: 12, fontWeight: 700, color: '#1c1917' }}>Site Agent Co-Pilot</span>
+                  <Sliders size={14} color="#0d9488" />
+                  <span style={{ fontSize: 12, fontWeight: 700, color: '#1c1917' }}>Block Inspector</span>
                 </div>
-                <span style={{ fontSize: 10, fontWeight: 600, color: '#115e59', background: '#f0fdfa', padding: '2px 6px', borderRadius: 4 }}>
-                  Gemini 2.5
+                <span style={{ fontSize: 10, fontWeight: 600, color: '#115e59', background: '#f0fdfa', border: '1px solid rgba(20, 184, 166, 0.3)', padding: '2px 7px', borderRadius: 4 }}>
+                  {currentConfig.name}
                 </span>
               </div>
 
-              {/* Chat Thread */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                {/* User Prompt */}
-                <div style={{ background: '#f5f5f4', borderRadius: 8, padding: '8px 10px', fontSize: 11, color: '#292524' }}>
-                  <div style={{ fontSize: 9, fontWeight: 700, color: '#78716c', marginBottom: 2 }}>Site Owner</div>
-                  Feature our new Autumn ceramics collection with a 15% discount announcement bar and update the hero headline.
+              {/* Tag & Category */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, fontSize: 11 }}>
+                <span style={{ color: '#78716c' }}>{currentConfig.category}</span>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: '#0f766e', background: '#f0fdfa', padding: '1px 5px', borderRadius: 3 }}>
+                  {currentConfig.htmlTag}
+                </span>
+              </div>
+
+              {/* Inspector Section 1: Typography */}
+              <div style={{ background: '#fafaf9', border: '1px solid #e7e5e4', borderRadius: 8, padding: '10px', marginBottom: 12 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, fontWeight: 600, color: '#292524', marginBottom: 8 }}>
+                  <Type size={12} color="#0d9488" />
+                  <span>Typography & Hierarchy</span>
                 </div>
 
-                {/* Copilot Action Report */}
-                <div style={{ background: '#f0fdfa', border: '1px solid rgba(13, 148, 136, 0.25)', borderRadius: 8, padding: '10px', fontSize: 11, color: '#134e4a' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontWeight: 700, fontSize: 11, color: '#115e59', marginBottom: 6 }}>
-                    <Check size={13} color="#0d9488" strokeWidth={3} />
-                    <span>Draft Plan Applied (3 changes)</span>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 11 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#57534e' }}>
+                    <span>Typeface</span>
+                    <span style={{ fontWeight: 600, color: '#1c1917' }}>{currentConfig.font}</span>
                   </div>
-                  <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 4, fontSize: 10, color: '#334155' }}>
-                    <li>• Activated announcement bar with code AUTUMN15.</li>
-                    <li>• Refined hero heading and typography.</li>
-                    <li>• Populated featured ceramics from CMS.</li>
-                  </ul>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid rgba(13, 148, 136, 0.15)', marginTop: 8, paddingTop: 6, fontSize: 9 }}>
-                    <span style={{ color: '#0d9488', fontWeight: 600 }}>Strict Zod verified</span>
-                    <span style={{ background: '#115e59', color: '#ffffff', padding: '2px 6px', borderRadius: 4, fontWeight: 600 }}>
-                      Ready to publish
-                    </span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#57534e' }}>
+                    <span>Scale / Leading</span>
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: '#1c1917' }}>{currentConfig.fontSize}</span>
                   </div>
+
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 4, paddingTop: 6, borderTop: '1px solid #e7e5e4' }}>
+                    <span style={{ color: '#57534e' }}>Alignment</span>
+                    <div style={{ display: 'flex', gap: 2, background: '#e7e5e4', borderRadius: 4, padding: 2 }}>
+                      <button 
+                        type="button" 
+                        title="Align Left"
+                        style={{ border: 'none', background: currentConfig.alignment === 'left' ? '#fff' : 'transparent', borderRadius: 3, padding: '2px 4px', cursor: 'pointer', display: 'flex' }}
+                      >
+                        <AlignLeft size={11} color={currentConfig.alignment === 'left' ? '#0d9488' : '#78716c'} />
+                      </button>
+                      <button 
+                        type="button" 
+                        title="Align Center"
+                        style={{ border: 'none', background: currentConfig.alignment === 'center' ? '#fff' : 'transparent', borderRadius: 3, padding: '2px 4px', cursor: 'pointer', display: 'flex' }}
+                      >
+                        <AlignCenter size={11} color={currentConfig.alignment === 'center' ? '#0d9488' : '#78716c'} />
+                      </button>
+                      <button 
+                        type="button" 
+                        title="Align Right"
+                        style={{ border: 'none', background: currentConfig.alignment === 'right' ? '#fff' : 'transparent', borderRadius: 3, padding: '2px 4px', cursor: 'pointer', display: 'flex' }}
+                      >
+                        <AlignRight size={11} color={currentConfig.alignment === 'right' ? '#0d9488' : '#78716c'} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Inspector Section 2: Colors & Surface Tokens */}
+              <div style={{ background: '#fafaf9', border: '1px solid #e7e5e4', borderRadius: 8, padding: '10px', marginBottom: 12 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, fontWeight: 600, color: '#292524', marginBottom: 8 }}>
+                  <Palette size={12} color="#0d9488" />
+                  <span>Surface & Color Tokens</span>
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 11 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ color: '#57534e' }}>Background</span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                      <span style={{ width: 12, height: 12, borderRadius: 3, background: currentConfig.bgHex, border: '1px solid #d6d3d1' }} />
+                      <span style={{ fontWeight: 500, color: '#1c1917' }}>{currentConfig.bgName}</span>
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ color: '#57534e' }}>Padding Y/X</span>
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: '#1c1917' }}>{currentConfig.padding}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Inspector Section 3: Live Block Attributes */}
+              <div style={{ background: '#ffffff', border: '1px solid #e7e5e4', borderRadius: 8, padding: '10px' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#78716c', marginBottom: 6 }}>
+                  Block Configuration
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 5, fontSize: 11 }}>
+                  {currentConfig.details.map((item, idx) => (
+                    <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: idx < currentConfig.details.length - 1 ? '1px solid #f5f5f4' : 'none', paddingBottom: 4 }}>
+                      <span style={{ color: '#78716c', fontSize: 10 }}>{item.label}</span>
+                      <span style={{ fontWeight: 500, color: '#1c1917', fontSize: 11 }}>{item.value}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
 
-            {/* Prompt Input Box */}
-            <div style={{ borderTop: '1px solid #e7e5e4', paddingTop: 10, marginTop: 12 }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#f5f5f4', borderRadius: 6, padding: '6px 10px', fontSize: 11, color: '#a8a29e' }}>
-                <span>Ask your agent to write or edit...</span>
-                <Sparkles size={12} color="#0d9488" />
+            {/* Bottom Quality & Build Status */}
+            <div style={{ borderTop: '1px solid #e7e5e4', paddingTop: 12, marginTop: 12 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginBottom: 10 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, color: '#047857' }}>
+                  <Check size={11} strokeWidth={3} />
+                  <span>Valid HTML5 & Accessible Semantics</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, color: '#047857' }}>
+                  <Check size={11} strokeWidth={3} />
+                  <span>Direct checkout links (No vendor lock-in)</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, color: '#047857' }}>
+                  <Check size={11} strokeWidth={3} />
+                  <span>Zero bloat · Cloudflare edge compiled</span>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#f5f5f4', borderRadius: 6, padding: '6px 10px', fontSize: 11 }}>
+                <span style={{ color: '#57534e', fontSize: 10 }}>Output: Static bundle</span>
+                <span style={{ background: '#115e59', color: '#ffffff', padding: '2px 6px', borderRadius: 4, fontSize: 10, fontWeight: 600 }}>
+                  Ready to Deploy
+                </span>
               </div>
             </div>
           </div>
