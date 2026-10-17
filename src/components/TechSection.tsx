@@ -16,8 +16,8 @@ export const TechSection: React.FC = () => {
             Built for Speed, Privacy, <span className="gradient-text-cyan">& Edge Performance.</span>
           </h2>
           <p className="section-subtitle">
-            We reject surveillance telemetry, vendor lock-in, and bloatware. 
-            Whether deploying edge web builders or compiling native 3D games, our software runs on open standards and modern distributed systems.
+            We reject surveillance telemetry, vendor lock-in, and bloatware.
+            Whether deploying edge web builders or compiling native 2D and 3D games, our software runs on open standards and modern distributed systems.
           </p>
         </div>
 
@@ -26,9 +26,9 @@ export const TechSection: React.FC = () => {
             <div className="feature-icon-wrapper">
               <Cpu size={24} />
             </div>
-            <h3 style={{ fontSize: 20 }}>Godot 4.3 Engine</h3>
+            <h3 style={{ fontSize: 20 }}>Godot 4 Engine</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.6 }}>
-              Native cross-platform compilation targeting Vulkan and Metal. Headless automated Blender 
+              Native cross-platform compilation targeting Vulkan and Metal. Headless automated Blender
               asset pipelines export high-performance 3D character meshes directly into clean bytecode.
             </p>
           </div>
@@ -39,7 +39,7 @@ export const TechSection: React.FC = () => {
             </div>
             <h3 style={{ fontSize: 20 }}>Nakama Game Cluster</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.6 }}>
-              Shared state relay and authentication backbone. Delivers 30Hz compressed state packets, 
+              Shared state relay and authentication backbone. Delivers 30Hz compressed state packets,
               instant matchmaking, and synchronized multiplayer brawling with global low latency.
             </p>
           </div>
@@ -50,7 +50,7 @@ export const TechSection: React.FC = () => {
             </div>
             <h3 style={{ fontSize: 20 }}>Edge Compute & Workers</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.6 }}>
-              Cloudflare edge compute powers both our upcoming visual web builder deployments and real-time 
+              Cloudflare edge compute powers both our upcoming visual web builder deployments and real-time
               Durable Object game rooms with sub-millisecond global cold starts.
             </p>
           </div>
@@ -61,7 +61,7 @@ export const TechSection: React.FC = () => {
             </div>
             <h3 style={{ fontSize: 20 }}>Zero Telemetry / Privacy-First</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.6 }}>
-              No ad tracking, third-party analytics pixels, or spyware. Across every Inaayah tool, webapp, and 
+              No ad tracking, third-party analytics pixels, or spyware. Across every Inaayah tool, webapp, and
               game, your drafts, configurations, and playtime remain 100% on your local machine.
             </p>
           </div>
@@ -72,7 +72,7 @@ export const TechSection: React.FC = () => {
             </div>
             <h3 style={{ fontSize: 20 }}>Dynamic Multi-Tier Catalog</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.6 }}>
-              Inaayah Launcher queries Cloudflare edge gateways and GitHub manifests dynamically. 
+              Inaayah Launcher queries Cloudflare edge gateways and GitHub manifests dynamically.
               New titles, patches, and artwork publish instantly without rebuilding the desktop launcher.
             </p>
           </div>
@@ -83,8 +83,8 @@ export const TechSection: React.FC = () => {
             </div>
             <h3 style={{ fontSize: 20 }}>Open Release Pipelines</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.6 }}>
-              Automated multi-OS GitHub Actions matrices compile universal macOS bundles (.dmg), 
-              Windows NSIS packages (.exe), and Linux AppImages directly from tagged source releases.
+              Automated multi-OS GitHub Actions matrices compile universal macOS bundles,
+              Windows and Linux packages directly from tagged source releases, including runtime-only game archives.
             </p>
           </div>
         </div>

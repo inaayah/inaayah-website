@@ -16,30 +16,68 @@ export const GamesSection: React.FC = () => {
             Crafted for <span className="gradient-text-cyan">Adrenaline & Cozy Strategy.</span>
           </h2>
           <p className="section-subtitle">
-            From 3D neo-cyberpunk streets to medieval marketplace cobblestones, each title is engineered for instant feedback and multiplayer excellence.
+            From hand-drawn comic streets and 3D arcade action to cozy medieval marketplaces, discover the worlds of Inaayah Studio.
           </p>
         </div>
 
         <div className="games-grid">
-          {/* Game 1: AetherRush (Featured Full Width) */}
-          <div className="glass-panel game-card-featured">
+          {/* Featured release: Vigilante: Red City */}
+          <div id="vigilante-red-city" className="glass-panel game-card-featured">
+            <div className="game-card-img-wrapper" style={{ height: 'auto', minHeight: 440 }}>
+              <img src="/images/vigilante-red-city-cover.jpg" alt="Murat, Zeynep and Emir in Vigilante: Red City" className="game-card-img" />
+              <div style={{ position: 'absolute', top: 20, left: 20, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                <span className="badge badge-cyan">Featured · v1.0.0 Live</span>
+                <span className="badge badge-gold">Comic Beat ’Em Up</span>
+              </div>
+            </div>
+            <div className="game-card-content">
+              <div>
+                <span className="badge" style={{ marginBottom: 12 }}>One Family. One City. Bring Her Home.</span>
+                <h3 style={{ fontSize: 30, marginBottom: 10 }}>Vigilante: Red City</h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: 15, lineHeight: 1.6 }}>
+                  Vance wants the family garage. When the Demirs refuse, he takes Inaayah.
+                  Fight as Murat, Zeynep or Emir across neon streets, subway platforms,
+                  docks and foundries to the final rescue above Red City.
+                </p>
+                <ul className="game-features-list">
+                  <li><CheckCircle size={16} color="var(--accent-cyan)" /><span><strong>Five Connected Stages:</strong> Comic scenes, varied enemies and five boss battles.</span></li>
+                  <li><CheckCircle size={16} color="var(--accent-cyan)" /><span><strong>Fight Together:</strong> Solo, shared-screen, split-screen and direct online co-op.</span></li>
+                  <li><CheckCircle size={16} color="var(--accent-cyan)" /><span><strong>Vocal Nasheed Soundtrack:</strong> An emotional journey with recorded combat sounds.</span></li>
+                  <li><CheckCircle size={16} color="var(--accent-cyan)" /><span><strong>Your Completion Gift:</strong> Unlock sketchbook memories and the complete 71-page in-game comic.</span></li>
+                </ul>
+              </div>
+              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 24, paddingTop: 20, borderTop: '1px solid var(--border-subtle)' }}>
+                <a href="#launcher" className="btn btn-primary" style={{ padding: '12px 24px' }}><Download size={16} /><span>Play via Launcher</span></a>
+                <a href="https://releases.inaayah.dev/api/games/vigilante-red-city/download/darwin" className="btn btn-secondary" style={{ padding: '12px 18px' }}>macOS</a>
+                <a href="https://releases.inaayah.dev/api/games/vigilante-red-city/download/win32" className="btn btn-secondary" style={{ padding: '12px 18px' }}>Windows</a>
+                <a href="https://releases.inaayah.dev/api/games/vigilante-red-city/download/linux" className="btn btn-secondary" style={{ padding: '12px 18px' }}>Linux</a>
+              </div>
+              <p style={{ color: 'var(--text-muted)', fontSize: 12, lineHeight: 1.5, marginTop: 14 }}>
+                Tested on Apple Silicon. Intel Mac, Windows and Linux native playtesting is pending.
+                macOS downloads are ad-hoc signed. Online co-op needs a reachable host; no automatic relay.
+              </p>
+            </div>
+          </div>
+
+          {/* AetherRush remains available in the studio catalog */}
+          <div className="glass-panel game-card-standard">
             <div className="game-card-img-wrapper" style={{ height: 'auto', minHeight: 340 }}>
-              <img 
-                src="/images/aether-rush-cover.jpg" 
-                alt="AetherRush 3D Arcade Brawler" 
-                className="game-card-img" 
+              <img
+                src="/images/aether-rush-cover.jpg"
+                alt="AetherRush 3D Arcade Brawler"
+                className="game-card-img"
               />
-              <div 
-                style={{ 
-                  position: 'absolute', 
-                  top: 20, 
-                  left: 20, 
-                  display: 'flex', 
-                  gap: 8, 
-                  flexWrap: 'wrap' 
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 20,
+                  left: 20,
+                  display: 'flex',
+                  gap: 8,
+                  flexWrap: 'wrap'
                 }}
               >
-                <span className="badge badge-cyan">v1.2.0 Live</span>
+                <span className="badge badge-cyan">v1.3.0 Live</span>
                 <span className="badge badge-gold">Godot 4.3</span>
               </div>
             </div>
@@ -49,8 +87,8 @@ export const GamesSection: React.FC = () => {
                 <span className="badge" style={{ marginBottom: 12 }}>3D Action · Arcade Brawler</span>
                 <h3 style={{ fontSize: 30, marginBottom: 10 }}>AetherRush: Cyber Brawler 3D</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: 15, lineHeight: 1.6 }}>
-                  Fight through neo-metropolitan streets in this pulse-pounding 2.5D beat 'em up. 
-                  Master combo chains, acrobatic kicks, aerial recoveries, and takedowns across neon-lit 
+                  Fight through neo-metropolitan streets in this pulse-pounding 2.5D beat 'em up.
+                  Master combo chains, acrobatic kicks, aerial recoveries, and takedowns across neon-lit
                   highways and criminal syndicate strongholds with synchronized online co-op.
                 </p>
 
@@ -79,14 +117,14 @@ export const GamesSection: React.FC = () => {
                   <Download size={16} />
                   <span>Play via Launcher</span>
                 </a>
-                <a 
-                  href="https://github.com/inaayah/aether-rush/releases/tag/v1.2.0" 
-                  target="_blank" 
-                  rel="noreferrer" 
+                <a
+                  href="https://releases.inaayah.dev/api/games/aether-rush/download/darwin"
+                  target="_blank"
+                  rel="noreferrer"
                   className="btn btn-secondary"
                   style={{ padding: '12px 20px' }}
                 >
-                  <span>Standalone Binaries ↗</span>
+                  <span>macOS Standalone ↗</span>
                 </a>
               </div>
             </div>
@@ -95,10 +133,10 @@ export const GamesSection: React.FC = () => {
           {/* Game 2: Kettle Court (Half Width) */}
           <div className="glass-panel game-card-standard">
             <div className="game-card-img-wrapper">
-              <img 
-                src="/images/kettle-court-cover.jpg" 
-                alt="Kettle Court Medieval Table Game" 
-                className="game-card-img" 
+              <img
+                src="/images/kettle-court-cover.jpg"
+                alt="Kettle Court Medieval Table Game"
+                className="game-card-img"
               />
               <div style={{ position: 'absolute', top: 16, left: 16, display: 'flex', gap: 8 }}>
                 <span className="badge badge-green">Instant Web Play</span>
@@ -111,7 +149,7 @@ export const GamesSection: React.FC = () => {
                 <span className="badge" style={{ marginBottom: 10 }}>Digital Board Game · Cozy Strategy</span>
                 <h3 style={{ fontSize: 24, marginBottom: 10 }}>Kettle Court</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.6 }}>
-                  Step into a bustling medieval fairground! Claim artisan stalls across Bakery Row, Candle Row, 
+                  Step into a bustling medieval fairground! Claim artisan stalls across Bakery Row, Candle Row,
                   and Harbor Row, draw from the Weather Deck, and share hot kettle stipends with 2 to 5 players.
                 </p>
 
@@ -132,10 +170,10 @@ export const GamesSection: React.FC = () => {
               </div>
 
               <div style={{ display: 'flex', gap: 12, marginTop: 20, paddingTop: 16, borderTop: '1px solid var(--border-subtle)' }}>
-                <a 
-                  href="https://kettle-court.inaayah.dev/" 
-                  target="_blank" 
-                  rel="noreferrer" 
+                <a
+                  href="https://kettle-court.inaayah.dev/"
+                  target="_blank"
+                  rel="noreferrer"
                   className="btn btn-glow-magenta"
                   style={{ flex: 1 }}
                 >
@@ -150,10 +188,10 @@ export const GamesSection: React.FC = () => {
           {/* Game 3: Cyber Tactics (Half Width Teaser) */}
           <div className="glass-panel game-card-standard">
             <div className="game-card-img-wrapper">
-              <img 
-                src="/images/cyber-tactics-cover.jpg" 
-                alt="Cyber Tactics: Syndicate Wars" 
-                className="game-card-img" 
+              <img
+                src="/images/cyber-tactics-cover.jpg"
+                alt="Cyber Tactics: Syndicate Wars"
+                className="game-card-img"
                 style={{ filter: 'brightness(0.85)' }}
               />
               <div style={{ position: 'absolute', top: 16, left: 16, display: 'flex', gap: 8 }}>
@@ -167,7 +205,7 @@ export const GamesSection: React.FC = () => {
                 <span className="badge" style={{ marginBottom: 10 }}>Turn-Based Tactics · Sci-Fi RPG</span>
                 <h3 style={{ fontSize: 24, marginBottom: 10 }}>Cyber Tactics: Syndicate Wars</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.6 }}>
-                  Lead an elite cell of cybernetic mercenaries fighting corporate supremacy in turn-based 
+                  Lead an elite cell of cybernetic mercenaries fighting corporate supremacy in turn-based
                   tactical combat. Customize neural implants, flank armored enforcers, and breach security networks.
                 </p>
 
@@ -188,9 +226,9 @@ export const GamesSection: React.FC = () => {
               </div>
 
               <div style={{ display: 'flex', gap: 12, marginTop: 20, paddingTop: 16, borderTop: '1px solid var(--border-subtle)' }}>
-                <button 
-                  disabled 
-                  className="btn btn-secondary" 
+                <button
+                  disabled
+                  className="btn btn-secondary"
                   style={{ flex: 1, opacity: 0.6, cursor: 'not-allowed' }}
                 >
                   <span>Coming Late 2026 (Alpha Preview)</span>
@@ -202,20 +240,20 @@ export const GamesSection: React.FC = () => {
           {/* Game 4: Sundered Depths (Coming Soon / In Development) */}
           <div className="glass-panel game-card-featured" style={{ marginTop: 24 }}>
             <div className="game-card-img-wrapper" style={{ height: "auto", minHeight: 340 }}>
-              <img 
-                src="/images/sundered-depths-banner.jpg" 
-                alt="Sundered Depths" 
-                className="game-card-img" 
+              <img
+                src="/images/sundered-depths-banner.jpg"
+                alt="Sundered Depths"
+                className="game-card-img"
                 style={{ filter: "brightness(0.9)" }}
               />
-              <div 
-                style={{ 
-                  position: "absolute", 
-                  top: 20, 
-                  left: 20, 
-                  display: "flex", 
-                  gap: 8, 
-                  flexWrap: "wrap" 
+              <div
+                style={{
+                  position: "absolute",
+                  top: 20,
+                  left: 20,
+                  display: "flex",
+                  gap: 8,
+                  flexWrap: "wrap"
                 }}
               >
                 <span className="badge badge-gold">In Development</span>
@@ -229,9 +267,9 @@ export const GamesSection: React.FC = () => {
                 <span className="badge" style={{ marginBottom: 12 }}>Co-Op Action Roguelite · Endless Horde Survival</span>
                 <h3 style={{ fontSize: 30, marginBottom: 10 }}>Sundered Depths</h3>
                 <p style={{ color: "var(--text-secondary)", fontSize: 15, lineHeight: 1.6 }}>
-                  Plunge shoulder-to-shoulder into subterranean catacombs and abyssal rifts. 
-                  Fight off escalating 360-degree hordes, adapt to randomized floor objectives, 
-                  level up game-changing boons, and conquer terrifying dungeon lords in 
+                  Plunge shoulder-to-shoulder into subterranean catacombs and abyssal rifts.
+                  Fight off escalating 360-degree hordes, adapt to randomized floor objectives,
+                  level up game-changing boons, and conquer terrifying dungeon lords in
                   couch co-op (dynamic shared screen &amp; split-screen) or online multiplayer.
                 </p>
 
@@ -252,9 +290,9 @@ export const GamesSection: React.FC = () => {
               </div>
 
               <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 24, paddingTop: 20, borderTop: "1px solid var(--border-subtle)" }}>
-                <button 
-                  disabled 
-                  className="btn btn-secondary" 
+                <button
+                  disabled
+                  className="btn btn-secondary"
                   style={{ flex: 1, opacity: 0.6, cursor: "not-allowed", padding: "12px 20px" }}
                 >
                   <span>Coming Soon (In Development)</span>

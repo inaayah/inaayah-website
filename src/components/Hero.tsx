@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Download, 
-  ShieldCheck, 
-  Sparkles, 
-  Zap, 
-  ChevronDown, 
-  Play, 
-  Code2, 
-  Gamepad2, 
-  Compass, 
+import {
+  Download,
+  ShieldCheck,
+  Sparkles,
+  Zap,
+  ChevronDown,
+  Play,
+  Code2,
+  Gamepad2,
+  Compass,
   ArrowRight,
   ArrowUpRight
 } from 'lucide-react';
@@ -176,15 +176,15 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
 
         {/* Expanded Subtitle */}
         <p className="hero-subtitle">
-          Inaayah is an independent creative software studio. We design high-energy 3D games, 
-          a visual website builder with an integrated live co-pilot, and edge-native web utilities—hosted 
+          Inaayah is an independent creative software studio. We design story-driven 2D and 3D games,
+          a visual website builder with an integrated live co-pilot, and edge-native web utilities—hosted
           directly on the web with custom domain support.
         </p>
 
         {/* Studio CTA Row */}
         <div id="launcher" className="hero-cta-group">
           <div className="download-cta-row">
-            <button 
+            <button
               onClick={() => handleScroll('builder')}
               className="btn btn-primary"
               style={{ padding: '16px 32px', fontSize: 16 }}
@@ -194,8 +194,8 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
               <ArrowRight size={16} />
             </button>
 
-            <a 
-              href={activePlatform.url} 
+            <a
+              href={activePlatform.url}
               className="btn btn-secondary"
               style={{ padding: '16px 28px', fontSize: 15 }}
             >
@@ -203,7 +203,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
               <span>Get Launcher ({activePlatform.name})</span>
             </a>
 
-            <button 
+            <button
               onClick={() => setShowAllPlatforms(!showAllPlatforms)}
               className="btn btn-secondary"
               style={{ padding: '16px 18px', fontSize: 14 }}
@@ -215,13 +215,13 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
           </div>
 
           {showAllPlatforms && (
-            <div 
-              className="glass-panel" 
-              style={{ 
-                padding: '16px 24px', 
-                display: 'flex', 
-                gap: 16, 
-                flexWrap: 'wrap', 
+            <div
+              className="glass-panel"
+              style={{
+                padding: '16px 24px',
+                display: 'flex',
+                gap: 16,
+                flexWrap: 'wrap',
                 justifyContent: 'center',
                 maxWidth: 620,
                 marginTop: 8
@@ -234,8 +234,8 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                     key={key}
                     href={p.url}
                     className="btn btn-secondary"
-                    style={{ 
-                      padding: '10px 16px', 
+                    style={{
+                      padding: '10px 16px',
                       fontSize: 13,
                       borderColor: detectedOs === key ? 'var(--accent-cyan)' : 'var(--border-glass)'
                     }}
@@ -275,14 +275,14 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
         </div>
 
         {/* Interactive Studio Switcher Segmented Control */}
-        <div 
+        <div
           className="studio-tabs-wrapper"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
             <div className="studio-tabs">
-              <button 
+              <button
                 onClick={() => handleSelectTab('builder')}
                 className={`studio-tab-btn tab-builder ${activeTab === 'builder' ? 'active' : ''} ${activeTab === 'builder' && isAutoPlay ? 'is-autoplay' : ''} ${isHovered ? 'is-paused' : ''}`}
                 title="Inaayah Builder"
@@ -292,17 +292,17 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                 <span className="badge badge-gold" style={{ fontSize: 9, padding: '1px 6px' }}>Pre-Alpha</span>
               </button>
 
-              <button 
+              <button
                 onClick={() => handleSelectTab('games')}
                 className={`studio-tab-btn tab-games ${activeTab === 'games' ? 'active' : ''} ${activeTab === 'games' && isAutoPlay ? 'is-autoplay' : ''} ${isHovered ? 'is-paused' : ''}`}
-                title="AetherRush 3D & Launcher"
+                title="Vigilante: Red City & Launcher"
               >
                 <Gamepad2 size={16} />
-                <span>Launcher & AetherRush 3D</span>
+                <span>Launcher & Vigilante</span>
                 <span className="badge badge-cyan" style={{ fontSize: 9, padding: '1px 6px' }}>Live v1.2</span>
               </button>
 
-              <button 
+              <button
                 onClick={() => handleSelectTab('kettle')}
                 className={`studio-tab-btn tab-kettle ${activeTab === 'kettle' ? 'active' : ''} ${activeTab === 'kettle' && isAutoPlay ? 'is-autoplay' : ''} ${isHovered ? 'is-paused' : ''}`}
                 title="Kettle Court Web Game"
@@ -317,14 +317,14 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 11, color: 'var(--text-muted)' }}>
               {isAutoPlay ? (
                 <>
-                  <span 
-                    style={{ 
-                      width: 6, 
-                      height: 6, 
-                      borderRadius: '50%', 
+                  <span
+                    style={{
+                      width: 6,
+                      height: 6,
+                      borderRadius: '50%',
                       background: isHovered ? 'var(--accent-gold)' : 'var(--accent-cyan)',
                       boxShadow: isHovered ? '0 0 6px var(--accent-gold)' : '0 0 6px var(--accent-cyan)'
-                    }} 
+                    }}
                   />
                   <span>
                     {isHovered ? 'Paused (hovering) · Click any tab to pin' : 'Auto-previewing studio portfolio · Click any tab to pin'}
@@ -334,16 +334,16 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                 <>
                   <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#64748b' }} />
                   <span>Pinned to selection ·</span>
-                  <button 
+                  <button
                     onClick={() => setIsAutoPlay(true)}
-                    style={{ 
-                      background: 'transparent', 
-                      border: 'none', 
-                      color: 'var(--accent-cyan)', 
-                      fontSize: 11, 
-                      cursor: 'pointer', 
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      color: 'var(--accent-cyan)',
+                      fontSize: 11,
+                      cursor: 'pointer',
                       textDecoration: 'underline',
-                      padding: 0 
+                      padding: 0
                     }}
                   >
                     Resume auto-play
@@ -355,7 +355,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
         </div>
 
         {/* Interactive Mockup Frame that switches based on activeTab */}
-        <div 
+        <div
           className="mockup-container"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
@@ -376,7 +376,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: 'var(--text-secondary)' }}>
                   <img src="/icon.png" alt="Inaayah" style={{ width: 14, height: 14, borderRadius: 3 }} />
                   <span style={{ fontWeight: 600, letterSpacing: '0.05em' }}>
-                    {activeTab === 'games' && `INAAYAH LAUNCHER ${latestVersion.toUpperCase()} · 3D ARCADE SUITE`}
+                    {activeTab === 'games' && `INAAYAH LAUNCHER ${latestVersion.toUpperCase()} · VIGILANTE: RED CITY`}
                     {activeTab === 'kettle' && 'KETTLE COURT · CLOUDFLARE EDGE DURABLE OBJECTS'}
                   </span>
                 </div>
@@ -386,15 +386,15 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
               {/* TAB 2: GAMES & LAUNCHER */}
             {activeTab === 'games' && (
               <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#0b0e14' }}>
-                <img 
-                  src="/images/aether-rush-banner.jpg" 
-                  alt="Inaayah Launcher Interface" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }} 
+                <img
+                  src="/images/vigilante-red-city-banner.jpg"
+                  alt="Vigilante: Red City — the Demir family"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }}
                 />
-                <div 
-                  style={{ 
-                    position: 'absolute', 
-                    inset: 0, 
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
                     background: 'linear-gradient(180deg, rgba(11,14,20,0.1) 0%, rgba(11,14,20,0.85) 75%, rgba(11,14,20,0.98) 100%)',
                     display: 'flex',
                     flexDirection: 'column',
@@ -405,15 +405,15 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                   <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}>
                     <div style={{ textAlign: 'left' }}>
                       <span className="badge badge-cyan" style={{ marginBottom: 8 }}>Featured Studio Title</span>
-                      <h2 style={{ fontSize: 32, fontWeight: 900, marginBottom: 8, color: '#fff' }}>AetherRush: Cyber Brawler 3D</h2>
+                      <h2 style={{ fontSize: 32, fontWeight: 900, marginBottom: 8, color: '#fff' }}>Vigilante: Red City</h2>
                       <p style={{ color: 'var(--text-secondary)', fontSize: 14, maxWidth: 520 }}>
-                        High-octane 2.5D beat 'em up featuring full controller support, 6 dynamic stages, and live Nakama multiplayer.
+                        Bring Inaayah home in a five-stage comic rescue adventure. Three heroes, local and online co-op, and a vocal nasheed soundtrack.
                       </p>
                     </div>
                     <div style={{ display: 'flex', gap: 12 }}>
-                      <button 
+                      <button
                         onClick={() => handleScroll('games')}
-                        className="btn btn-primary" 
+                        className="btn btn-primary"
                         style={{ padding: '12px 24px' }}
                       >
                         <Play size={16} fill="currentColor" />
@@ -428,15 +428,15 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
             {/* TAB 3: KETTLE COURT */}
             {activeTab === 'kettle' && (
               <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#0b0e14' }}>
-                <img 
-                  src="/images/kettle-court-banner.jpg" 
-                  alt="Kettle Court Table Game" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }} 
+                <img
+                  src="/images/kettle-court-banner.jpg"
+                  alt="Kettle Court Table Game"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }}
                 />
-                <div 
-                  style={{ 
-                    position: 'absolute', 
-                    inset: 0, 
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
                     background: 'linear-gradient(180deg, rgba(11,14,20,0.1) 0%, rgba(11,14,20,0.85) 75%, rgba(11,14,20,0.98) 100%)',
                     display: 'flex',
                     flexDirection: 'column',
@@ -453,11 +453,11 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                       </p>
                     </div>
                     <div style={{ display: 'flex', gap: 12 }}>
-                      <a 
-                        href="https://kettle-court.inaayah.dev/" 
-                        target="_blank" 
+                      <a
+                        href="https://kettle-court.inaayah.dev/"
+                        target="_blank"
                         rel="noreferrer"
-                        className="btn btn-glow-magenta" 
+                        className="btn btn-glow-magenta"
                         style={{ padding: '12px 24px' }}
                       >
                         <Play size={16} fill="currentColor" />

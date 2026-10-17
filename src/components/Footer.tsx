@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
               <span style={{ fontWeight: 800, letterSpacing: '0.05em' }}>INAAYAH STUDIO</span>
             </div>
             <p style={{ color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.6 }}>
-              Independent creative software studio crafting high-energy indie games, 
+              Independent creative software studio crafting high-energy indie games,
               tactile visual web tools, and open software.
             </p>
           </div>
@@ -32,6 +32,7 @@ export const Footer: React.FC = () => {
                   </a>
                 </li>
                 <li><a href="#launcher" className="nav-link">Inaayah Launcher</a></li>
+                <li><a href="#vigilante-red-city" className="nav-link">Vigilante: Red City</a></li>
                 <li><a href="#games" className="nav-link">AetherRush 3D</a></li>
                 <li><a href="https://kettle-court.inaayah.dev/" target="_blank" rel="noreferrer" className="nav-link">Kettle Court</a></li>
                 <li><a href="#games" className="nav-link">Cyber Tactics</a></li>
@@ -40,7 +41,7 @@ export const Footer: React.FC = () => {
 
             <div>
               <h4 style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)', marginBottom: 14 }}>
-                Open Source
+                Downloads & Resources
               </h4>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, fontSize: 13, color: 'var(--text-secondary)' }}>
                 <li>
@@ -52,6 +53,9 @@ export const Footer: React.FC = () => {
                   <a href="https://github.com/inaayah/inaayah-launcher/releases" target="_blank" rel="noreferrer" className="nav-link">
                     Launcher Releases ↗
                   </a>
+                </li>
+                <li>
+                  <a href="#vigilante-red-city" className="nav-link">Vigilante: Red City ↗</a>
                 </li>
                 <li>
                   <a href="https://github.com/inaayah/aether-rush/releases" target="_blank" rel="noreferrer" className="nav-link">
