@@ -375,6 +375,8 @@ a {
 
 /* App Mockup Frame */
 .mockup-container {
+  height: clamp(500px, min(62vw, 72svh), 640px);
+  box-sizing: border-box;
   max-width: 1040px;
   margin: 0 auto;
   position: relative;
@@ -385,6 +387,10 @@ a {
 }
 
 .mockup-inner {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: #0d111a;
@@ -392,6 +398,9 @@ a {
 }
 
 .mockup-titlebar {
+  flex-shrink: 0;
+  min-height: 44px;
+  gap: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -409,6 +418,45 @@ a {
   width: 10px;
   height: 10px;
   border-radius: 50%;
+}
+
+.mockup-titlebar > div:not(.mockup-dots) { min-width: 0; }
+.mockup-titlebar span, .studio-preview-caption {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mockup-dots { flex-shrink: 0; }
+.studio-preview-caption { color: var(--text-secondary); font-size: 12px; letter-spacing: .05em; font-weight: 600; }
+.studio-preview-panel {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  overflow: auto;
+  background: #0b0e14;
+}
+.studio-builder-teaser {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 36px;
+  padding: clamp(24px, 4vw, 52px);
+  background: radial-gradient(ellipse at 85% 30%, #153c3b 0%, #0b141b 55%, #0b0e14 100%);
+  text-align: left;
+}
+.studio-builder-copy h2 { font-size: clamp(28px, 4vw, 42px); line-height: 1.15; margin: 20px 0 16px; }
+.studio-builder-copy p { color: var(--text-secondary); font-size: 15px; line-height: 1.65; }
+.studio-builder-steps { display: flex; flex-wrap: wrap; gap: 20px; margin: 24px 0; font-size: 13px; color: #75ded3; }
+.studio-builder-steps span { display: flex; align-items: center; gap: 6px; }
+.studio-builder-paper { background: #ede9df; color: #1a4744; padding: 36px 28px; border-radius: 4px; box-shadow: 14px 18px 0 #12312f; }
+.studio-builder-paper > span { font: 10px var(--font-mono); letter-spacing: .13em; }
+.studio-builder-paper > div { font: 36px/1.2 'Fraunces', serif; margin: 36px 0 24px; }
+.studio-builder-paper i { display: block; height: 3px; width: 48px; background: #1a4744; margin-bottom: 22px; }
+.studio-builder-paper small { font-size: 12px; }
+@media (max-width: 720px) {
+  .studio-builder-teaser { grid-template-columns: 1fr; }
+  .studio-builder-paper { display: none; }
 }
 
 /* Section Common */

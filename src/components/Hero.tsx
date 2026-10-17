@@ -12,7 +12,6 @@ import {
   ArrowRight,
   ArrowUpRight
 } from 'lucide-react';
-import { InaayahEditorPreview } from './InaayahEditorPreview';
 
 interface PlatformOption {
   os: 'mac' | 'windows' | 'linux';
@@ -364,7 +363,37 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
           }}
         >
           {activeTab === 'builder' ? (
-            <InaayahEditorPreview />
+            <div className="mockup-inner">
+              <div className="mockup-titlebar">
+                <div className="mockup-dots" aria-hidden="true">
+                  <div className="mockup-dot" style={{ background: '#ff5f56' }} />
+                  <div className="mockup-dot" style={{ background: '#ffbd2e' }} />
+                  <div className="mockup-dot" style={{ background: '#27c93f' }} />
+                </div>
+                <span className="studio-preview-caption">INAAYAH BUILDER · VISUAL WEBSITE CREATION</span>
+              </div>
+              <div className="studio-builder-teaser studio-preview-panel">
+                <div className="studio-builder-copy">
+                  <span className="badge badge-gold">Pre-Alpha</span>
+                  <h2>A home for your next great idea.</h2>
+                  <p>Shape your site with visual blocks, refine it with your co-pilot, and publish on your own domain.</p>
+                  <div className="studio-builder-steps">
+                    <span><Code2 size={16} /> Arrange</span>
+                    <span><Sparkles size={16} /> Refine</span>
+                    <span><ArrowUpRight size={16} /> Publish</span>
+                  </div>
+                  <button className="btn btn-primary" onClick={() => handleScroll('builder')}>
+                    Explore the Builder <ArrowRight size={16} />
+                  </button>
+                </div>
+                <div className="studio-builder-paper" aria-hidden="true">
+                  <span>YOUR SPACE ON THE WEB</span>
+                  <div>Make something<br /><em>worth sharing.</em></div>
+                  <i />
+                  <small>Stories. Projects. Possibilities.</small>
+                </div>
+              </div>
+            </div>
           ) : (
             <div className="mockup-inner">
               <div className="mockup-titlebar">
@@ -385,7 +414,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
 
               {/* TAB 2: GAMES & LAUNCHER */}
             {activeTab === 'games' && (
-              <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#0b0e14' }}>
+              <div className="studio-preview-panel">
                 <img
                   src="/images/vigilante-red-city-banner.jpg"
                   alt="Vigilante: Red City — the Demir family"
@@ -399,13 +428,13 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'flex-end',
-                    padding: '36px'
+                    padding: 'clamp(20px, 4vw, 36px)'
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}>
                     <div style={{ textAlign: 'left' }}>
                       <span className="badge badge-cyan" style={{ marginBottom: 8 }}>Featured Studio Title</span>
-                      <h2 style={{ fontSize: 32, fontWeight: 900, marginBottom: 8, color: '#fff' }}>Vigilante: Red City</h2>
+                      <h2 style={{ fontSize: 'clamp(24px, 4vw, 32px)', fontWeight: 900, marginBottom: 8, color: '#fff' }}>Vigilante: Red City</h2>
                       <p style={{ color: 'var(--text-secondary)', fontSize: 14, maxWidth: 520 }}>
                         Bring Inaayah home in a five-stage comic rescue adventure. Three heroes, local and online co-op, and a vocal nasheed soundtrack.
                       </p>
@@ -427,7 +456,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
 
             {/* TAB 3: KETTLE COURT */}
             {activeTab === 'kettle' && (
-              <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#0b0e14' }}>
+              <div className="studio-preview-panel">
                 <img
                   src="/images/kettle-court-banner.jpg"
                   alt="Kettle Court Table Game"
@@ -441,13 +470,13 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'flex-end',
-                    padding: '36px'
+                    padding: 'clamp(20px, 4vw, 36px)'
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}>
                     <div style={{ textAlign: 'left' }}>
                       <span className="badge badge-green" style={{ marginBottom: 8 }}>Instant Web Play · Edge Durable Objects</span>
-                      <h2 style={{ fontSize: 32, fontWeight: 900, marginBottom: 8, color: '#fff' }}>Kettle Court: Medieval Strategy</h2>
+                      <h2 style={{ fontSize: 'clamp(24px, 4vw, 32px)', fontWeight: 900, marginBottom: 8, color: '#fff' }}>Kettle Court: Medieval Strategy</h2>
                       <p style={{ color: 'var(--text-secondary)', fontSize: 14, maxWidth: 520 }}>
                         Turn-based cozy fairground strategy game for 2 to 5 players. Play directly in any desktop or mobile browser with zero installs.
                       </p>
