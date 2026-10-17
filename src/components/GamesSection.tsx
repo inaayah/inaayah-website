@@ -1,5 +1,5 @@
 import React from 'react';
-import { Gamepad2, Play, Download, CheckCircle, ArrowUpRight } from 'lucide-react';
+import { Gamepad2, Play, Download, CheckCircle, ArrowUpRight, ChevronDown } from 'lucide-react';
 
 export const GamesSection: React.FC = () => {
   return (
@@ -9,7 +9,7 @@ export const GamesSection: React.FC = () => {
           <div className="section-tag">
             <span className="badge badge-cyan">
               <Gamepad2 size={13} />
-              Gaming Division · Shipped Titles
+              Gaming Division
             </span>
           </div>
           <h2 className="section-title">
@@ -52,254 +52,88 @@ export const GamesSection: React.FC = () => {
                 <a href="https://releases.inaayah.dev/api/games/vigilante-red-city/download/win32" className="btn btn-secondary" style={{ padding: '12px 18px' }}>Windows</a>
                 <a href="https://releases.inaayah.dev/api/games/vigilante-red-city/download/linux" className="btn btn-secondary" style={{ padding: '12px 18px' }}>Linux</a>
               </div>
-              <p style={{ color: 'var(--text-muted)', fontSize: 12, lineHeight: 1.5, marginTop: 14 }}>
-                Tested on Apple Silicon. Intel Mac, Windows and Linux native playtesting is pending.
-                macOS downloads are ad-hoc signed. Online co-op needs a reachable host; no automatic relay.
-              </p>
+              <p className="game-availability">Available for macOS, Windows and Linux. Play solo or bring family and friends.</p>
             </div>
           </div>
 
-          {/* AetherRush remains available in the studio catalog */}
-          <div className="glass-panel game-card-standard">
-            <div className="game-card-img-wrapper" style={{ height: 'auto', minHeight: 340 }}>
-              <img
-                src="/images/aether-rush-cover.jpg"
-                alt="AetherRush 3D Arcade Brawler"
-                className="game-card-img"
-              />
-              <div
-                style={{
-                  position: 'absolute',
-                  top: 20,
-                  left: 20,
-                  display: 'flex',
-                  gap: 8,
-                  flexWrap: 'wrap'
-                }}
-              >
-                <span className="badge badge-cyan">v1.3.0 Live</span>
-                <span className="badge badge-gold">Godot 4.3</span>
-              </div>
-            </div>
-
-            <div className="game-card-content">
-              <div>
-                <span className="badge" style={{ marginBottom: 12 }}>3D Action · Arcade Brawler</span>
-                <h3 style={{ fontSize: 30, marginBottom: 10 }}>AetherRush: Cyber Brawler 3D</h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: 15, lineHeight: 1.6 }}>
-                  Fight through neo-metropolitan streets in this pulse-pounding 2.5D beat 'em up.
-                  Master combo chains, acrobatic kicks, aerial recoveries, and takedowns across neon-lit
-                  highways and criminal syndicate strongholds with synchronized online co-op.
-                </p>
-
-                <ul className="game-features-list">
-                  <li>
-                    <CheckCircle size={16} color="var(--accent-cyan)" />
-                    <span><strong>6 Full Action Stages:</strong> Downtown Avenue, Subway, Docks & Syndicate Tower</span>
-                  </li>
-                  <li>
-                    <CheckCircle size={16} color="var(--accent-cyan)" />
-                    <span><strong>Boss Mechanics:</strong> Heavyweight stagger resistance and grab immunities</span>
-                  </li>
-                  <li>
-                    <CheckCircle size={16} color="var(--accent-cyan)" />
-                    <span><strong>Synchronized Online Co-Op:</strong> Low-latency Nakama WebSocket match relay</span>
-                  </li>
-                  <li>
-                    <CheckCircle size={16} color="var(--accent-cyan)" />
-                    <span><strong>Full Gamepad Support:</strong> Xbox, PlayStation, and generic arcade sticks</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginTop: 24, paddingTop: 20, borderTop: '1px solid var(--border-subtle)' }}>
-                <a href="#launcher" className="btn btn-primary" style={{ padding: '12px 24px' }}>
-                  <Download size={16} />
-                  <span>Play via Launcher</span>
-                </a>
-                <a
-                  href="https://releases.inaayah.dev/api/games/aether-rush/download/darwin"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-secondary"
-                  style={{ padding: '12px 20px' }}
-                >
-                  <span>macOS Standalone ↗</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Game 2: Kettle Court (Half Width) */}
-          <div className="glass-panel game-card-standard">
+          <h3 className="game-row-heading">More to play</h3>
+          <article className="glass-panel game-card-compact" id="aether-rush">
             <div className="game-card-img-wrapper">
-              <img
-                src="/images/kettle-court-cover.jpg"
-                alt="Kettle Court Medieval Table Game"
-                className="game-card-img"
-              />
-              <div style={{ position: 'absolute', top: 16, left: 16, display: 'flex', gap: 8 }}>
-                <span className="badge badge-green">Instant Web Play</span>
-                <span className="badge">No Install Needed</span>
-              </div>
+              <img src="/images/aether-rush-cover.jpg" alt="AetherRush 3D Arcade Brawler" className="game-card-img" loading="lazy" />
             </div>
-
-            <div className="game-card-content">
-              <div>
-                <span className="badge" style={{ marginBottom: 10 }}>Digital Board Game · Cozy Strategy</span>
-                <h3 style={{ fontSize: 24, marginBottom: 10 }}>Kettle Court</h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.6 }}>
-                  Step into a bustling medieval fairground! Claim artisan stalls across Bakery Row, Candle Row,
-                  and Harbor Row, draw from the Weather Deck, and share hot kettle stipends with 2 to 5 players.
-                </p>
-
-                <ul className="game-features-list">
-                  <li>
-                    <CheckCircle size={15} color="var(--accent-green)" />
-                    <span>40-step cobblestone circuit & 7 artisan districts</span>
-                  </li>
-                  <li>
-                    <CheckCircle size={15} color="var(--accent-green)" />
-                    <span>Dynamic Weather Deck (Sun, Drizzle, Gust, Downpour)</span>
-                  </li>
-                  <li>
-                    <CheckCircle size={15} color="var(--accent-green)" />
-                    <span>No player elimination — casual, strategic recovery</span>
-                  </li>
+            <div className="game-compact-content">
+              <span className="badge badge-cyan">v1.3.0 · Available now</span>
+              <h3>AetherRush: Cyber Brawler 3D</h3>
+              <p>A neon-soaked arcade brawler with acrobatic combat and online co-op.</p>
+              <details className="game-details">
+                <summary>Game details <ChevronDown size={15} aria-hidden="true" /></summary>
+                <ul>
+                  <li>Six action stages across streets, subways, docks and Syndicate Tower.</li>
+                  <li>Combo chains, aerial recoveries, boss battles and gamepad support.</li>
+                  <li>Play together with synchronized online co-op.</li>
                 </ul>
-              </div>
-
-              <div style={{ display: 'flex', gap: 12, marginTop: 20, paddingTop: 16, borderTop: '1px solid var(--border-subtle)' }}>
-                <a
-                  href="https://kettle-court.inaayah.dev/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-glow-magenta"
-                  style={{ flex: 1 }}
-                >
-                  <Play size={16} fill="currentColor" />
-                  <span>Play in Browser Now</span>
-                  <ArrowUpRight size={16} />
-                </a>
-              </div>
+              </details>
             </div>
-          </div>
+            <div className="game-compact-actions">
+              <a href="#launcher" className="btn btn-primary"><Download size={15} />Play via Launcher</a>
+              <a href="https://releases.inaayah.dev/api/games/aether-rush/download/darwin" className="btn btn-secondary">macOS download <ArrowUpRight size={14} /></a>
+            </div>
+          </article>
 
-          {/* Game 3: Cyber Tactics (Half Width Teaser) */}
-          <div className="glass-panel game-card-standard">
+          <article className="glass-panel game-card-compact" id="kettle-court">
             <div className="game-card-img-wrapper">
-              <img
-                src="/images/cyber-tactics-cover.jpg"
-                alt="Cyber Tactics: Syndicate Wars"
-                className="game-card-img"
-                style={{ filter: 'brightness(0.85)' }}
-              />
-              <div style={{ position: 'absolute', top: 16, left: 16, display: 'flex', gap: 8 }}>
-                <span className="badge badge-gold">In Development</span>
-                <span className="badge">Alpha Teaser</span>
-              </div>
+              <img src="/images/kettle-court-cover.jpg" alt="Kettle Court medieval marketplace board game" className="game-card-img" loading="lazy" />
             </div>
-
-            <div className="game-card-content">
-              <div>
-                <span className="badge" style={{ marginBottom: 10 }}>Turn-Based Tactics · Sci-Fi RPG</span>
-                <h3 style={{ fontSize: 24, marginBottom: 10 }}>Cyber Tactics: Syndicate Wars</h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.6 }}>
-                  Lead an elite cell of cybernetic mercenaries fighting corporate supremacy in turn-based
-                  tactical combat. Customize neural implants, flank armored enforcers, and breach security networks.
-                </p>
-
-                <ul className="game-features-list">
-                  <li>
-                    <CheckCircle size={15} color="var(--accent-gold)" />
-                    <span>Tactical cover & destructible neon environments</span>
-                  </li>
-                  <li>
-                    <CheckCircle size={15} color="var(--accent-gold)" />
-                    <span>Deep cyberware augmentation & neuro-hacking trees</span>
-                  </li>
-                  <li>
-                    <CheckCircle size={15} color="var(--accent-gold)" />
-                    <span>Set in the shared AetherRush syndicate universe</span>
-                  </li>
+            <div className="game-compact-content">
+              <span className="badge badge-green">Play in your browser</span>
+              <h3>Kettle Court</h3>
+              <p>A cozy marketplace board game for 2–5 players. No installation needed.</p>
+              <details className="game-details">
+                <summary>Game details <ChevronDown size={15} aria-hidden="true" /></summary>
+                <ul>
+                  <li>Claim artisan stalls around a 40-step circuit and seven districts.</li>
+                  <li>Weather cards bring sun, drizzle, gusts and downpours.</li>
+                  <li>Shared stipends and no player elimination keep everyone in the game.</li>
                 </ul>
-              </div>
-
-              <div style={{ display: 'flex', gap: 12, marginTop: 20, paddingTop: 16, borderTop: '1px solid var(--border-subtle)' }}>
-                <button
-                  disabled
-                  className="btn btn-secondary"
-                  style={{ flex: 1, opacity: 0.6, cursor: 'not-allowed' }}
-                >
-                  <span>Coming Late 2026 (Alpha Preview)</span>
-                </button>
-              </div>
+              </details>
             </div>
+            <div className="game-compact-actions">
+              <a href="https://kettle-court.inaayah.dev/" target="_blank" rel="noreferrer" className="btn btn-glow-magenta"><Play size={15} fill="currentColor" />Play in Browser <ArrowUpRight size={14} /></a>
+            </div>
+          </article>
+
+          <h3 className="game-row-heading game-upcoming-heading">In development</h3>
+          <div className="game-upcoming-grid">
+            <article className="glass-panel game-card-mini">
+              <div className="game-card-img-wrapper">
+                <img src="/images/cyber-tactics-cover.jpg" alt="Cyber Tactics: Syndicate Wars concept art" className="game-card-img" loading="lazy" />
+              </div>
+              <div className="game-mini-content">
+                <span className="badge badge-gold">In development</span>
+                <h3>Cyber Tactics: Syndicate Wars</h3>
+                <p>Turn-based tactics · Sci-fi RPG</p>
+                <details className="game-details">
+                  <summary>Project preview <ChevronDown size={15} aria-hidden="true" /></summary>
+                  <p>Lead cybernetic mercenaries through the AetherRush syndicate universe, using tactical cover, cyberware and neural upgrades.</p>
+                </details>
+              </div>
+            </article>
+            <article className="glass-panel game-card-mini">
+              <div className="game-card-img-wrapper">
+                <img src="/images/sundered-depths-banner.jpg" alt="Sundered Depths fantasy adventure concept art" className="game-card-img" loading="lazy" />
+              </div>
+              <div className="game-mini-content">
+                <span className="badge badge-gold">In development</span>
+                <h3>Sundered Depths</h3>
+                <p>Co-op action roguelite · Horde survival</p>
+                <details className="game-details">
+                  <summary>Project preview <ChevronDown size={15} aria-hidden="true" /></summary>
+                  <p>Descend through subterranean biomes with five classes, changing objectives and couch or online co-op. Currently in development.</p>
+                </details>
+              </div>
+            </article>
           </div>
 
-          {/* Game 4: Sundered Depths (Coming Soon / In Development) */}
-          <div className="glass-panel game-card-featured" style={{ marginTop: 24 }}>
-            <div className="game-card-img-wrapper" style={{ height: "auto", minHeight: 340 }}>
-              <img
-                src="/images/sundered-depths-banner.jpg"
-                alt="Sundered Depths"
-                className="game-card-img"
-                style={{ filter: "brightness(0.9)" }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  top: 20,
-                  left: 20,
-                  display: "flex",
-                  gap: 8,
-                  flexWrap: "wrap"
-                }}
-              >
-                <span className="badge badge-gold">In Development</span>
-                <span className="badge">Coming Soon</span>
-                <span className="badge badge-cyan">Godot 4.3</span>
-              </div>
-            </div>
-
-            <div className="game-card-content">
-              <div>
-                <span className="badge" style={{ marginBottom: 12 }}>Co-Op Action Roguelite · Endless Horde Survival</span>
-                <h3 style={{ fontSize: 30, marginBottom: 10 }}>Sundered Depths</h3>
-                <p style={{ color: "var(--text-secondary)", fontSize: 15, lineHeight: 1.6 }}>
-                  Plunge shoulder-to-shoulder into subterranean catacombs and abyssal rifts.
-                  Fight off escalating 360-degree hordes, adapt to randomized floor objectives,
-                  level up game-changing boons, and conquer terrifying dungeon lords in
-                  couch co-op (dynamic shared screen &amp; split-screen) or online multiplayer.
-                </p>
-
-                <ul className="game-features-list">
-                  <li>
-                    <CheckCircle size={16} color="var(--accent-gold)" />
-                    <span><strong>5 Playable Classes:</strong> Swordsman, Axe Fighter, Archer, Mage, Rogue with melee defense</span>
-                  </li>
-                  <li>
-                    <CheckCircle size={16} color="var(--accent-gold)" />
-                    <span><strong>Dynamic Floor Variety:</strong> Survival surges, kill quotas, and runic keystone hunts</span>
-                  </li>
-                  <li>
-                    <CheckCircle size={16} color="var(--accent-gold)" />
-                    <span><strong>Multi-Biome Descent:</strong> The Vermin Catacombs, Abyssal Foundry &amp; Cursed Necropolis</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 24, paddingTop: 20, borderTop: "1px solid var(--border-subtle)" }}>
-                <button
-                  disabled
-                  className="btn btn-secondary"
-                  style={{ flex: 1, opacity: 0.6, cursor: "not-allowed", padding: "12px 20px" }}
-                >
-                  <span>Coming Soon (In Development)</span>
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
