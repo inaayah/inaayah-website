@@ -26,7 +26,7 @@ export const GamesSection: React.FC = () => {
             <div className="game-card-img-wrapper" style={{ height: 'auto', minHeight: 440 }}>
               <img src="/images/vigilante-red-city-cover.jpg" alt="Murat, Zeynep and Emir in Vigilante: Red City" className="game-card-img" />
               <div style={{ position: 'absolute', top: 20, left: 20, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                <span className="badge badge-cyan">Featured · v1.0.0 Live</span>
+                <span className="badge badge-cyan">Featured · v1.0.1 Live</span>
                 <span className="badge badge-gold">Comic Beat ’Em Up</span>
               </div>
             </div>

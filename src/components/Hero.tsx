@@ -299,7 +299,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
               >
                 <Gamepad2 size={16} />
                 <span>Launcher & Vigilante</span>
-                <span className="badge badge-cyan" style={{ fontSize: 9, padding: '1px 6px' }}>Live v1.0.0</span>
+                <span className="badge badge-cyan" style={{ fontSize: 9, padding: '1px 6px' }}>Live v1.0.1</span>
               </button>
 
               <button
