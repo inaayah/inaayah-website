@@ -29,7 +29,7 @@ export const LabsSection: React.FC = () => {
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
               <a 
-                href="https://qa.inaayah.dev" 
+                href="https://qa-builder.inaayah.dev" 
                 target="_blank" 
                 rel="noreferrer"
                 className="btn btn-secondary"

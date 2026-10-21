@@ -57,11 +57,11 @@ export const BuilderSection: React.FC = () => {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginTop: 16, padding: '0 8px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--text-secondary)' }}>
               <span className="badge badge-gold" style={{ fontSize: 10 }}>Internal Testing Phase</span>
-              <span>Interactive sandbox reflecting live state at <a href="https://qa.inaayah.dev" target="_blank" rel="noreferrer" style={{ color: '#14b8a6', textDecoration: 'underline' }}>qa.inaayah.dev</a></span>
+              <span>Interactive sandbox reflecting live state at <a href="https://qa-builder.inaayah.dev" target="_blank" rel="noreferrer" style={{ color: '#14b8a6', textDecoration: 'underline' }}>qa-builder.inaayah.dev</a></span>
             </div>
             <div style={{ display: 'flex', gap: 14 }}>
               <a 
-                href="https://qa.inaayah.dev/s/demo" 
+                href="https://qa-builder.inaayah.dev/s/demo" 
                 target="_blank" 
                 rel="noreferrer"
                 className="btn btn-secondary"
@@ -174,18 +174,18 @@ export const BuilderSection: React.FC = () => {
 
               <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
                 <a 
-                  href="https://qa.inaayah.dev" 
+                  href="https://qa-builder.inaayah.dev" 
                   target="_blank" 
                   rel="noreferrer"
                   className="btn btn-primary"
                   style={{ fontSize: 13, padding: '10px 20px', background: 'linear-gradient(135deg, #14b8a6 0%, #0f766e 100%)' }}
                 >
-                  <span>Open QA Instance (qa.inaayah.dev)</span>
+                  <span>Open QA Instance (qa-builder.inaayah.dev)</span>
                   <ArrowUpRight size={14} />
                 </a>
 
                 <a 
-                  href="https://qa.inaayah.dev/s/demo" 
+                  href="https://qa-builder.inaayah.dev/s/demo" 
                   target="_blank" 
                   rel="noreferrer"
                   className="btn btn-secondary"

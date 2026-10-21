@@ -286,7 +286,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
             Live at aurastudio.inaayah.dev
           </span>
           <a
-            href="https://qa.inaayah.dev/"
+            href="https://qa-builder.inaayah.dev/"
             target="_blank"
             rel="noreferrer"
             style={{
