@@ -1,7 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Gamepad2, Play, Download, CheckCircle, ArrowUpRight, ChevronDown } from 'lucide-react';
 
 export const GamesSection: React.FC = () => {
+  const [versions, setVersions] = useState<Record<string, string>>({});
+  useEffect(() => {
+    let active = true;
+    let pending: AbortController | undefined;
+    const refresh = async () => {
+      pending?.abort();
+      const controller = new AbortController();
+      pending = controller;
+      try {
+        const response = await fetch('https://releases.inaayah.dev/api/games', { cache: 'no-store', signal: controller.signal });
+        if (!response.ok) return;
+        const catalog: unknown = await response.json();
+        if (active && Array.isArray(catalog)) {
+          setVersions(Object.fromEntries(catalog.filter(item => typeof item.id === 'string' &&
+            typeof item.version === 'string' && /^\d+\.\d+\.\d+$/.test(item.version)).map(item => [item.id, item.version])));
+        }
+      } catch { /* Keep the last successful version during a transient outage. */ }
+    };
+    void refresh();
+    const timer = window.setInterval(refresh, 60000);
+    window.addEventListener('focus', refresh);
+    return () => { active = false; pending?.abort(); window.clearInterval(timer); window.removeEventListener('focus', refresh); };
+  }, []);
   return (
     <section id="games" className="section" style={{ background: 'linear-gradient(180deg, transparent 0%, rgba(17, 22, 34, 0.4) 50%, transparent 100%)' }}>
       <div className="container">
@@ -26,7 +49,7 @@ export const GamesSection: React.FC = () => {
             <div className="game-card-img-wrapper" style={{ height: 'auto', minHeight: 440 }}>
               <img src="/images/vigilante-red-city-cover.jpg" alt="Murat, Zeynep and Emir in Vigilante: Red City" className="game-card-img" />
               <div style={{ position: 'absolute', top: 20, left: 20, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                <span className="badge badge-cyan">Featured · v1.0.2 Live</span>
+                <span className="badge badge-cyan">Featured{versions['vigilante-red-city'] ? ` · v${versions['vigilante-red-city']} Live` : ' · Available now'}</span>
                 <span className="badge badge-gold">Comic Beat ’Em Up</span>
               </div>
             </div>
@@ -62,7 +85,7 @@ export const GamesSection: React.FC = () => {
               <img src="/images/aether-rush-cover.jpg" alt="AetherRush 3D Arcade Brawler" className="game-card-img" loading="lazy" />
             </div>
             <div className="game-compact-content">
-              <span className="badge badge-cyan">v1.3.0 · Available now</span>
+              <span className="badge badge-cyan">{versions['aether-rush'] ? `v${versions['aether-rush']} · ` : ''}Available now</span>
               <h3>AetherRush: Cyber Brawler 3D</h3>
               <p>A neon-soaked arcade brawler with acrobatic combat and online co-op.</p>
               <details className="game-details">
