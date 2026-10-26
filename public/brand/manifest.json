@@ -18,9 +18,8 @@
       "name": "Inaayah Games",
       "category": "division",
       "url": "https://inaayah.dev/games",
-      "logoUrl": "https://inaayah.dev/brand/inaayah-icon-180.png",
-      "svgUrl": "https://inaayah.dev/brand/inaayah-symbol.svg",
-      "localLogo": "/brand/inaayah-icon-180.png",
+      "logoUrl": "https://inaayah.dev/brand/inaayah-games-icon.png",
+      "localLogo": "/brand/inaayah-games-icon.png",
       "accent": "#00F0FF"
     },
     "inaayah-arcade": {
@@ -28,9 +27,8 @@
       "name": "Inaayah Arcade",
       "category": "division",
       "url": "https://arcade.inaayah.dev/",
-      "logoUrl": "https://inaayah.dev/brand/inaayah-icon-180.png",
-      "svgUrl": "https://inaayah.dev/brand/inaayah-symbol.svg",
-      "localLogo": "/brand/inaayah-icon-180.png",
+      "logoUrl": "https://inaayah.dev/brand/inaayah-games-icon.png",
+      "localLogo": "/brand/inaayah-games-icon.png",
       "accent": "#00F5D4"
     },
     "vigilante-red-city": {
