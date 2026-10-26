@@ -245,6 +245,52 @@ a {
   color: #fff;
 }
 
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  color: var(--text-primary);
+}
+
+.brand-symbol {
+  display: block;
+  width: var(--brand-size, 32px);
+  height: var(--brand-size, 32px);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.brand-wordmark {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.brand-name {
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.08em;
+}
+
+.brand-division {
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .brand-logo { gap: 8px; }
+  .brand-name { font-size: 14px; }
+  .brand-symbol { width: 26px; height: 26px; }
+}
+
 .nav-links {
   display: flex;
   align-items: center;

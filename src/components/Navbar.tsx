@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Download, ChevronDown, Sparkles } from 'lucide-react';
+import { BrandLogo } from './BrandLogo';
 
 interface NavbarProps {
   onScrollTo: (id: string) => void;
+  onNavigate?: (path: string, sectionId?: string) => void;
+  isGamesRoute?: boolean;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onScrollTo }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  onScrollTo,
+  onNavigate,
+  isGamesRoute = false,
+}) => {
   const [downloadUrl, setDownloadUrl] = useState('https://releases.inaayah.dev/api/launcher/download/mac');
   const [osName, setOsName] = useState('macOS');
   const [version, setVersion] = useState('v0.2.5');
@@ -41,18 +48,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollTo }) => {
   return (
     <header className="navbar">
       <div className="container navbar-inner">
-        <a href="#" className="nav-logo">
-          <img 
-            src="/icon.png" 
-            alt="Inaayah Studio" 
-            style={{ width: 28, height: 28, borderRadius: 6, boxShadow: '0 0 14px rgba(0, 240, 255, 0.4)' }} 
-          />
-          <span>INAAYAH STUDIO</span>
+        <a
+          href={isGamesRoute ? '/games' : '/'}
+          className="nav-logo"
+          onClick={(e) => {
+            if (onNavigate) {
+              e.preventDefault();
+              onNavigate(isGamesRoute ? '/games' : '/');
+            }
+          }}
+        >
+          <BrandLogo division={isGamesRoute ? 'games' : 'studio'} />
         </a>
 
         <nav className="nav-links">
           <a 
-            href="#builder" 
+            href="/#builder"
             className="nav-link" 
             onClick={(e) => { e.preventDefault(); onScrollTo('builder'); }}
             style={{ display: 'flex', alignItems: 'center', gap: 6 }}
@@ -61,11 +72,27 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollTo }) => {
             <span className="badge badge-gold" style={{ fontSize: 9, padding: '1px 6px' }}>Pre-Alpha</span>
           </a>
           <a 
-            href="#games" 
+            href="/games"
             className="nav-link" 
-            onClick={(e) => { e.preventDefault(); onScrollTo('games'); }}
+            onClick={(e) => {
+              e.preventDefault();
+              if (onNavigate) onNavigate('/games');
+              else onScrollTo('games');
+            }}
+            style={{
+              color: isGamesRoute ? 'var(--accent-cyan)' : undefined,
+              fontWeight: isGamesRoute ? 700 : undefined,
+            }}
           >
             Games & Launcher
+          </a>
+          <a
+            href="https://arcade.inaayah.dev"
+            target="_blank"
+            rel="noreferrer"
+            className="nav-link"
+          >
+            Web Arcade ↗
           </a>
           <a 
             href="#technology" 

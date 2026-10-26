@@ -1,21 +1,33 @@
 import React from 'react';
+import { BrandLogo } from './BrandLogo';
 
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate?: (path: string, sectionId?: string) => void;
+  isGamesRoute?: boolean;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onNavigate, isGamesRoute = false }) => {
+  const navigateToSection = (event: React.MouseEvent<HTMLAnchorElement>, path: string, sectionId: string) => {
+    if (!onNavigate || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    event.preventDefault();
+    onNavigate(path, sectionId);
+  };
+
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer-inner">
           <div style={{ maxWidth: 360 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-              <img src="/icon.png" alt="Inaayah" style={{ width: 24, height: 24, borderRadius: 5 }} />
-              <span style={{ fontWeight: 800, letterSpacing: '0.05em' }}>INAAYAH STUDIO</span>
+              <BrandLogo division={isGamesRoute ? 'games' : 'studio'} size={28} />
             </div>
             <p style={{ color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.6 }}>
-              Independent creative software studio crafting high-energy indie games,
-              tactile visual web tools, and open software.
+              {isGamesRoute
+                ? 'Gaming division of Inaayah Studio — crafting DRM-free desktop co-op campaigns and instant daily browser games.'
+                : 'Independent creative software studio crafting high-energy indie games, tactile visual web tools, and open software.'}
             </p>
           </div>
 
@@ -26,16 +38,18 @@ export const Footer: React.FC = () => {
               </h4>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, fontSize: 13, color: 'var(--text-secondary)' }}>
                 <li>
-                  <a href="#builder" className="nav-link" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <a href="/#builder" onClick={(event) => navigateToSection(event, '/', 'builder')} className="nav-link" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                     <span>Inaayah Builder</span>
                     <span className="badge badge-gold" style={{ fontSize: 8, padding: '0 4px' }}>Pre-Alpha</span>
                   </a>
                 </li>
-                <li><a href="#launcher" className="nav-link">Inaayah Launcher</a></li>
-                <li><a href="#vigilante-red-city" className="nav-link">Vigilante: Red City</a></li>
-                <li><a href="#games" className="nav-link">AetherRush 3D</a></li>
-                <li><a href="https://kettle-court.inaayah.dev/" target="_blank" rel="noreferrer" className="nav-link">Kettle Court</a></li>
-                <li><a href="#games" className="nav-link">Cyber Tactics</a></li>
+                <li><a href="/games" onClick={(e) => { if (onNavigate) { e.preventDefault(); onNavigate('/games'); } }} className="nav-link">Games & Launcher (/games)</a></li>
+                <li><a href="https://arcade.inaayah.dev" target="_blank" rel="noreferrer" className="nav-link">Inaayah Web Arcade ↗</a></li>
+                <li><a href="/games#vigilante-red-city" onClick={(event) => navigateToSection(event, '/games', 'vigilante-red-city')} className="nav-link">Vigilante: Red City</a></li>
+                <li><a href="/games#aether-rush" onClick={(event) => navigateToSection(event, '/games', 'aether-rush')} className="nav-link">AetherRush 3D</a></li>
+                <li><a href="https://arcade.inaayah.dev/eyetest" target="_blank" rel="noreferrer" className="nav-link">Optik: Daily EyeTest ↗</a></li>
+                <li><a href="https://kettle-court.inaayah.dev/" target="_blank" rel="noreferrer" className="nav-link">Kettle Court ↗</a></li>
+                <li><a href="/games#games" onClick={(event) => navigateToSection(event, '/games', 'games')} className="nav-link">Cyber Tactics</a></li>
               </ul>
             </div>
 
@@ -55,7 +69,7 @@ export const Footer: React.FC = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="#vigilante-red-city" className="nav-link">Vigilante: Red City ↗</a>
+                  <a href="/games#vigilante-red-city" onClick={(event) => navigateToSection(event, '/games', 'vigilante-red-city')} className="nav-link">Vigilante: Red City ↗</a>
                 </li>
                 <li>
                   <a href="https://github.com/inaayah/aether-rush/releases" target="_blank" rel="noreferrer" className="nav-link">

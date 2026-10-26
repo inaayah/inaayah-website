@@ -403,7 +403,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                   <div className="mockup-dot" style={{ background: '#27c93f' }} />
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: 'var(--text-secondary)' }}>
-                  <img src="/icon.png" alt="Inaayah" style={{ width: 14, height: 14, borderRadius: 3 }} />
+                  <img src="/brand/inaayah-symbol.svg" alt="Inaayah" style={{ width: 14, height: 14 }} />
                   <span style={{ fontWeight: 600, letterSpacing: '0.05em' }}>
                     {activeTab === 'games' && `INAAYAH LAUNCHER ${latestVersion.toUpperCase()} · VIGILANTE: RED CITY`}
                     {activeTab === 'kettle' && 'KETTLE COURT · CLOUDFLARE EDGE DURABLE OBJECTS'}

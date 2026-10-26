@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Gamepad2, Play, Download, CheckCircle, ArrowUpRight, ChevronDown } from 'lucide-react';
+import { Gamepad2, Play, Download, CheckCircle, ArrowUpRight, ChevronDown, Sparkles, Globe } from 'lucide-react';
 
-export const GamesSection: React.FC = () => {
+interface GamesSectionProps {
+  isStandalonePage?: boolean;
+}
+
+export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = false }) => {
   const [versions, setVersions] = useState<Record<string, string>>({});
   useEffect(() => {
     let active = true;
@@ -32,15 +36,57 @@ export const GamesSection: React.FC = () => {
           <div className="section-tag">
             <span className="badge badge-cyan">
               <Gamepad2 size={13} />
-              Gaming Division
+              {isStandalonePage ? 'Inaayah Games · Desktop Launcher & Web Arcade' : 'Gaming Division'}
             </span>
           </div>
           <h2 className="section-title">
-            Crafted for <span className="gradient-text-cyan">Adrenaline & Cozy Strategy.</span>
+            Crafted for <span className="gradient-text-cyan">Adrenaline, Precision & Cozy Strategy.</span>
           </h2>
           <p className="section-subtitle">
-            From hand-drawn comic streets and 3D arcade action to cozy medieval marketplaces, discover the worlds of Inaayah Studio.
+            Play native 2.5D & 3D co-op campaigns through the DRM-free <strong>Inaayah Desktop Launcher</strong>, or jump straight into instant daily browser games at <a href="https://arcade.inaayah.dev" target="_blank" rel="noreferrer" style={{ color: 'var(--accent-cyan)', textDecoration: 'underline' }}>arcade.inaayah.dev</a>.
           </p>
+        </div>
+
+        {/* Dedicated Desktop Launcher Banner (always visible on /games, and linked as #launcher) */}
+        <div
+          id={isStandalonePage ? 'launcher' : 'launcher-spotlight'}
+          className="glass-panel"
+          style={{
+            padding: '24px 28px',
+            marginBottom: 28,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: 20,
+            border: '1px solid rgba(0, 240, 255, 0.28)',
+            background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.09) 0%, rgba(17, 22, 34, 0.75) 100%)'
+          }}
+        >
+          <div style={{ maxWidth: 560 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+              <span className="badge badge-cyan">Inaayah Desktop Launcher</span>
+              <span className="badge badge-gold">100% DRM-Free · Auto-Updating</span>
+            </div>
+            <h3 style={{ fontSize: 22, marginBottom: 6 }}>One Native Hub for Desktop Releases</h3>
+            <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.55 }}>
+              Install, patch, and launch our full Godot 4 desktop games with SHA-256 verified delta downloads and controller support.
+            </p>
+          </div>
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+            <a href="https://releases.inaayah.dev/api/launcher/download/mac" className="btn btn-primary" style={{ padding: '11px 18px', fontSize: 13 }}>
+              <Download size={15} />
+              <span>macOS (.dmg)</span>
+            </a>
+            <a href="https://releases.inaayah.dev/api/launcher/download/windows" className="btn btn-secondary" style={{ padding: '11px 16px', fontSize: 13 }}>
+              <Download size={15} />
+              <span>Windows (.exe)</span>
+            </a>
+            <a href="https://releases.inaayah.dev/api/launcher/download/linux" className="btn btn-secondary" style={{ padding: '11px 16px', fontSize: 13 }}>
+              <Download size={15} />
+              <span>Linux (.AppImage)</span>
+            </a>
+          </div>
         </div>
 
         <div className="games-grid">
@@ -122,6 +168,45 @@ export const GamesSection: React.FC = () => {
             </div>
             <div className="game-compact-actions">
               <a href="https://kettle-court.inaayah.dev/" target="_blank" rel="noreferrer" className="btn btn-glow-magenta"><Play size={15} fill="currentColor" />Play in Browser <ArrowUpRight size={14} /></a>
+            </div>
+          </article>
+
+          {/* Inaayah Web Arcade Hub Spotlight (arcade.inaayah.dev + Optik: Daily EyeTest) */}
+          <h3 className="game-row-heading" style={{ marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+            <span>Inaayah Web Arcade · Instant Browser Games</span>
+            <a
+              href="https://arcade.inaayah.dev"
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-secondary"
+              style={{ padding: '8px 16px', fontSize: 13 }}
+            >
+              <Globe size={14} color="var(--accent-cyan)" />
+              <span>Visit arcade.inaayah.dev</span>
+              <ArrowUpRight size={14} />
+            </a>
+          </h3>
+
+          <article className="glass-panel game-card-compact" id="eyetest">
+            <div className="game-card-img-wrapper">
+              <img src="/images/eyetest-cover.jpg" alt="Optik: Daily EyeTest optical calibration game" className="game-card-img" loading="lazy" />
+            </div>
+            <div className="game-compact-content">
+              <span className="badge badge-green">Daily Browser Ritual · 10-Game Pool</span>
+              <h3>Optik: Daily EyeTest</h3>
+              <p>5 daily visual calibration rounds drawn from a rotating pool of 10 optical mini-games.</p>
+              <details className="game-details">
+                <summary>Game details <ChevronDown size={15} aria-hidden="true" /></summary>
+                <ul>
+                  <li>Rotating 10-challenge pool: Chroma, Centroid, Kerning, Bisect, Angle, Parallel, Symmetry, Aperture, Circumcenter & Midtone.</li>
+                  <li>Pure 0–100% Optical Accuracy + 1.00×–1.25× Speed Multiplier.</li>
+                  <li>Instant ~3 KB SVG visual scorecards & head-to-head challenge links.</li>
+                </ul>
+              </details>
+            </div>
+            <div className="game-compact-actions">
+              <a href="https://arcade.inaayah.dev/eyetest" target="_blank" rel="noreferrer" className="btn btn-glow-magenta"><Play size={15} fill="currentColor" />Play Today&apos;s EyeTest <ArrowUpRight size={14} /></a>
+              <a href="https://arcade.inaayah.dev/" target="_blank" rel="noreferrer" className="btn btn-secondary"><Sparkles size={14} />All Arcade Games <ArrowUpRight size={14} /></a>
             </div>
           </article>
 
