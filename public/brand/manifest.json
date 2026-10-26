@@ -1,0 +1,79 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-10-26",
+  "baseUrl": "https://inaayah.dev",
+  "brands": {
+    "inaayah-studio": {
+      "id": "inaayah-studio",
+      "name": "Inaayah Studio",
+      "category": "division",
+      "url": "https://inaayah.dev/",
+      "logoUrl": "https://inaayah.dev/brand/inaayah-icon-180.png",
+      "svgUrl": "https://inaayah.dev/brand/inaayah-symbol.svg",
+      "localLogo": "/brand/inaayah-icon-180.png",
+      "accent": "#00F5D4"
+    },
+    "inaayah-games": {
+      "id": "inaayah-games",
+      "name": "Inaayah Games",
+      "category": "division",
+      "url": "https://inaayah.dev/games",
+      "logoUrl": "https://inaayah.dev/icon.png",
+      "localLogo": "/brand/inaayah-games-icon.png",
+      "accent": "#00F0FF"
+    },
+    "inaayah-arcade": {
+      "id": "inaayah-arcade",
+      "name": "Inaayah Arcade",
+      "category": "division",
+      "url": "https://arcade.inaayah.dev/",
+      "logoUrl": "https://inaayah.dev/brand/inaayah-arcade-icon.svg",
+      "localLogo": "/brand/inaayah-arcade-icon.svg",
+      "accent": "#00F5D4"
+    },
+    "vigilante-red-city": {
+      "id": "vigilante-red-city",
+      "name": "Vigilante: Red City",
+      "category": "desktop-game",
+      "url": "https://inaayah.dev/games#vigilante-red-city",
+      "logoUrl": "https://inaayah.dev/images/vigilante-red-city-icon.png",
+      "coverUrl": "https://inaayah.dev/images/vigilante-red-city-cover.jpg",
+      "bannerUrl": "https://inaayah.dev/images/vigilante-red-city-banner.jpg",
+      "localLogo": "/brand/vigilante-red-city-icon.png",
+      "accent": "#F43F5E"
+    },
+    "kettle-court": {
+      "id": "kettle-court",
+      "name": "Kettle Court",
+      "category": "web-game",
+      "url": "https://kettle-court.inaayah.dev/",
+      "logoUrl": "https://inaayah.dev/brand/kettle-court-icon.svg",
+      "coverUrl": "https://inaayah.dev/images/kettle-court-cover.jpg",
+      "bannerUrl": "https://inaayah.dev/images/kettle-court-banner.jpg",
+      "localLogo": "/brand/kettle-court-icon.svg",
+      "accent": "#F59E0B"
+    },
+    "eyetest": {
+      "id": "eyetest",
+      "name": "Optik: Daily EyeTest",
+      "category": "web-game",
+      "url": "https://arcade.inaayah.dev/eyetest",
+      "logoUrl": "https://inaayah.dev/brand/eyetest-icon.svg",
+      "coverUrl": "https://inaayah.dev/images/eyetest-cover.jpg",
+      "bannerUrl": "https://inaayah.dev/images/eyetest-banner.jpg",
+      "localLogo": "/brand/eyetest-icon.svg",
+      "accent": "#00F5D4"
+    },
+    "aether-rush": {
+      "id": "aether-rush",
+      "name": "AetherRush: Cyber Brawler 3D",
+      "category": "desktop-game",
+      "url": "https://inaayah.dev/games#aether-rush",
+      "logoUrl": "https://inaayah.dev/images/aether-rush-cover.jpg",
+      "coverUrl": "https://inaayah.dev/images/aether-rush-cover.jpg",
+      "bannerUrl": "https://inaayah.dev/images/aether-rush-banner.jpg",
+      "localLogo": "https://inaayah.dev/images/aether-rush-cover.jpg",
+      "accent": "#38BDF8"
+    }
+  }
+}
