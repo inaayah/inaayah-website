@@ -43,7 +43,7 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
             Crafted for <span className="gradient-text-cyan">Adrenaline, Precision & Cozy Strategy.</span>
           </h2>
           <p className="section-subtitle">
-            Play native 2.5D & 3D co-op campaigns through the DRM-free <strong>Inaayah Desktop Launcher</strong>, or jump straight into instant daily browser games at <a href="https://arcade.inaayah.dev" target="_blank" rel="noreferrer" style={{ color: 'var(--accent-cyan)', textDecoration: 'underline' }}>arcade.inaayah.dev</a>.
+            Play native 2.5D & 3D co-op campaigns through the <strong>Inaayah Desktop Launcher</strong>, or jump straight into instant daily browser games at <a href="https://arcade.inaayah.dev" target="_blank" rel="noreferrer" style={{ color: 'var(--accent-cyan)', textDecoration: 'underline' }}>arcade.inaayah.dev</a>.
           </p>
         </div>
 
@@ -66,7 +66,7 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
           <div style={{ maxWidth: 560 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
               <span className="badge badge-cyan">Inaayah Desktop Launcher</span>
-              <span className="badge badge-gold">100% DRM-Free · Auto-Updating</span>
+              <span className="badge badge-gold">SHA-256 Verified · Auto-Updating</span>
             </div>
             <h3 style={{ fontSize: 22, marginBottom: 6 }}>One Native Hub for Desktop Releases</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.55 }}>

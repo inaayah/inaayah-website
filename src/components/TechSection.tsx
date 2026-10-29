@@ -13,11 +13,11 @@ export const TechSection: React.FC = () => {
             </span>
           </div>
           <h2 className="section-title">
-            Built for Speed, Privacy, <span className="gradient-text-cyan">& Edge Performance.</span>
+            Built for Speed, Reliability, <span className="gradient-text-cyan">& Edge Performance.</span>
           </h2>
           <p className="section-subtitle">
-            We reject surveillance telemetry, vendor lock-in, and bloatware.
-            Whether deploying edge web builders or compiling native 2D and 3D games, our software runs on open standards and modern distributed systems.
+            Engineered for low-latency responsiveness and native desktop performance.
+            Whether deploying edge web builders or compiling native 2D and 3D games, our software runs on modern distributed systems.
           </p>
         </div>
 
@@ -59,10 +59,10 @@ export const TechSection: React.FC = () => {
             <div className="feature-icon-wrapper" style={{ background: 'rgba(0, 255, 136, 0.1)', color: 'var(--accent-green)' }}>
               <ShieldCheck size={24} />
             </div>
-            <h3 style={{ fontSize: 20 }}>Zero Telemetry / Privacy-First</h3>
+            <h3 style={{ fontSize: 20 }}>Verified Integrity & Cloud Sync</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.6 }}>
-              No ad tracking, third-party analytics pixels, or spyware. Across every Inaayah tool, webapp, and
-              game, your drafts, configurations, and playtime remain 100% on your local machine.
+              Cryptographic SHA-256 package verification, seamless delta patching, and lightweight
+              account synchronization across desktop and browser experiences.
             </p>
           </div>
 

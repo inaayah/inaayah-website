@@ -260,7 +260,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
           <div style={{ display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap', justifyContent: 'center', color: 'var(--text-muted)', fontSize: 13, marginTop: 8 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <ShieldCheck size={16} color="var(--accent-green)" />
-              <span>Zero Telemetry / No Surveillance</span>
+              <span>SHA-256 Verified Releases</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <Zap size={16} color="var(--accent-gold)" />
@@ -268,7 +268,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <Sparkles size={16} color="var(--accent-cyan)" />
-              <span>100% DRM-Free & Open Standards</span>
+              <span>Native Cross-Platform Builds</span>
             </div>
           </div>
         </div>

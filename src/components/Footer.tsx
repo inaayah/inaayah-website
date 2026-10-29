@@ -26,8 +26,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, isGamesRoute = false
             </div>
             <p style={{ color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.6 }}>
               {isGamesRoute
-                ? 'Gaming division of Inaayah Studio — crafting DRM-free desktop co-op campaigns and instant daily browser games.'
-                : 'Independent creative software studio crafting high-energy indie games, tactile visual web tools, and open software.'}
+                ? 'Gaming division of Inaayah Studio — crafting native desktop co-op campaigns and instant daily browser games.'
+                : 'Independent creative software studio crafting high-energy indie games, tactile visual web tools, and modern software.'}
             </p>
           </div>
 
@@ -96,7 +96,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, isGamesRoute = false
 
         <div className="footer-copy">
           <div>
-            © {CURRENT_YEAR} Inaayah Studio. Zero telemetry. 100% DRM-Free.
+            © {CURRENT_YEAR} Inaayah Studio. All rights reserved.
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-muted)' }}>
             <span>Built with passion & precision</span>

@@ -153,7 +153,7 @@ const BLOCK_CONFIGS: Record<string, BlockConfig> = {
     details: [
       { label: 'Colophon', value: 'Aura Studio · Kyoto & Global' },
       { label: 'Links', value: 'Shipping, Care, Inquiries' },
-      { label: 'Licensing', value: '100% DRM-Free Open' }
+      { label: 'Licensing', value: 'Commercial & Indie Ready' }
     ]
   }
 };
