@@ -6,13 +6,13 @@
   "source_game_version": "1.2.3",
   "release_artifact": {
     "artifact": "vigilante-red-city-play-testing.aab",
-    "version_code": 2,
+    "version_code": 3,
     "version_name": "1.2.3",
-    "sha256": "4db7a8a9fa1991af8b5f530153ebd308139ea28fc8ffa4074e095311cf2063be",
-    "status": "Installed for local testing; interactive-device and Play checks pending"
+    "sha256": "e03afb9a2695b9432b0d263a8ee67b92ec4e7d88f9cd39b539b6ba4b10f7b5f1",
+    "status": "Selected Galaxy S25 Ultra privacy/save checks passed; Play validation pending"
   },
   "approval_scope": "Public policy documents only; not Play release or legal compliance certification",
-  "metadata_sha256": "b30714f2c8ba1acf5d698649c62cd6c4950223ab9bb03bc681346a27ea93ff72",
+  "metadata_sha256": "3bbc9a9e66e5e483e1ebae10b98f6e11ca74e6fba8c2fc134c24c5c3e3449eb4",
   "documents": [
     {
       "source": "PRIVACY_POLICY.md",
