@@ -45,7 +45,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, isGamesRoute = false
                 </li>
                 <li><a href="/games" onClick={(e) => { if (onNavigate) { e.preventDefault(); onNavigate('/games'); } }} className="nav-link">Games & Launcher (/games)</a></li>
                 <li><a href="https://arcade.inaayah.dev" target="_blank" rel="noreferrer" className="nav-link">Inaayah Web Arcade ↗</a></li>
-                <li><a href="/games#vigilante-red-city" onClick={(event) => navigateToSection(event, '/games', 'vigilante-red-city')} className="nav-link">Vigilante: Red City</a></li>
+                <li><a href="/games/vigilante-red-city/" onClick={(event) => navigateToSection(event, '/games/vigilante-red-city/', '')} className="nav-link">Vigilante: Red City</a></li>
                 <li><a href="/games#aether-rush" onClick={(event) => navigateToSection(event, '/games', 'aether-rush')} className="nav-link">AetherRush 3D</a></li>
                 <li><a href="https://arcade.inaayah.dev/eyetest" target="_blank" rel="noreferrer" className="nav-link">Optik: Daily EyeTest ↗</a></li>
                 <li><a href="https://kettle-court.inaayah.dev/" target="_blank" rel="noreferrer" className="nav-link">Kettle Court ↗</a></li>
@@ -69,8 +69,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, isGamesRoute = false
                   </a>
                 </li>
                 <li>
-                  <a href="/games#vigilante-red-city" onClick={(event) => navigateToSection(event, '/games', 'vigilante-red-city')} className="nav-link">Vigilante: Red City ↗</a>
+                  <a href="/games/vigilante-red-city/" onClick={(event) => navigateToSection(event, '/games/vigilante-red-city/', '')} className="nav-link">Vigilante: Red City ↗</a>
                 </li>
+                <li><a href="/games/vigilante-red-city/privacy" className="nav-link">Vigilante privacy</a></li>
+                <li><a href="/games/vigilante-red-city/terms" className="nav-link">Vigilante terms</a></li>
+                <li><a href="/games/vigilante-red-city/delete-data" className="nav-link">Delete Vigilante data</a></li>
                 <li>
                   <a href="https://github.com/inaayah/aether-rush/releases" target="_blank" rel="noreferrer" className="nav-link">
                     AetherRush Releases ↗

@@ -1,0 +1,36 @@
+{
+  "document_version": "0.3.0",
+  "status": "approved",
+  "effective_on": "2026-11-01",
+  "package": "dev.inaayah.vigilanteredcity",
+  "source_game_version": "1.2.3",
+  "release_artifact": {
+    "artifact": "vigilante-red-city-play-testing.aab",
+    "version_code": 2,
+    "version_name": "1.2.3",
+    "sha256": "4db7a8a9fa1991af8b5f530153ebd308139ea28fc8ffa4074e095311cf2063be",
+    "status": "Local testing candidate; physical-device and Play checks pending"
+  },
+  "approval_scope": "Public policy documents only; not Play release or legal compliance certification",
+  "metadata_sha256": "803a671acc3f85ce70e2b40e5e0cc36a37248843025658811a9b8309ecc47778",
+  "documents": [
+    {
+      "source": "PRIVACY_POLICY.md",
+      "url": "https://inaayah.dev/games/vigilante-red-city/privacy",
+      "source_sha256": "d1bb75a6227d3ee83deace0cd7526df8514743394dbc32fe365935c7c4b9b0a0",
+      "html_sha256": "2cc963c59fc5c2b820d7696e949bc2a132bf560fe38ce72ee869d9e338ad7cf0"
+    },
+    {
+      "source": "DATA_DELETION.md",
+      "url": "https://inaayah.dev/games/vigilante-red-city/delete-data",
+      "source_sha256": "0550c10b0b853ea7b51ba04b7fd612dbafc2dd45e56436861d8c863041db418f",
+      "html_sha256": "ec57994971b2684d5e11ac1b854a0c37a13e26c94d1cc59458f094a04f4d266b"
+    },
+    {
+      "source": "TERMS_OF_USE.md",
+      "url": "https://inaayah.dev/games/vigilante-red-city/terms",
+      "source_sha256": "17f0faf06bae07eab87323d4dd2f71d5663f8b9251010a6a7c062dc21d208f3e",
+      "html_sha256": "07641a306e39072306681ed84eb068f6b9798aa381fb468661a7c041a3bc7428"
+    }
+  ]
+}

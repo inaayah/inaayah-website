@@ -102,7 +102,7 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
             <div className="game-card-content">
               <div>
                 <span className="badge" style={{ marginBottom: 12 }}>One Family. One City. Bring Her Home.</span>
-                <h3 style={{ fontSize: 30, marginBottom: 10 }}>Vigilante: Red City</h3>
+                <h3 style={{ fontSize: 30, marginBottom: 10 }}><a href="/games/vigilante-red-city/">Vigilante: Red City</a></h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: 15, lineHeight: 1.6 }}>
                   Vance wants the family garage. When the Demirs refuse, he takes Inaayah.
                   Fight as Murat, Zeynep or Emir across neon streets, subway platforms,
@@ -116,9 +116,10 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
                 </ul>
               </div>
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 24, paddingTop: 20, borderTop: '1px solid var(--border-subtle)' }}>
-                <a href="#launcher" className="btn btn-primary" style={{ padding: '12px 24px' }}><Download size={16} /><span>Play via Launcher</span></a>
+                <a href="/games/vigilante-red-city/" className="btn btn-secondary" style={{ padding: '12px 18px' }}>Explore the game <ArrowUpRight size={16} /></a>
+                <a href="/games#launcher" className="btn btn-primary" style={{ padding: '12px 24px' }}><Download size={16} /><span>Play via Launcher</span></a>
               </div>
-              <p className="game-availability">Available through Inaayah Launcher for macOS, Windows and Linux. Sign in to install and receive updates.</p>
+              <p className="game-availability">Available through Inaayah Launcher for macOS, Windows and Linux. Play solo or bring family and friends.</p>
             </div>
           </div>
 

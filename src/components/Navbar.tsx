@@ -109,7 +109,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <a 
               href={downloadUrl}
               className="split-btn-action"
-              title={`Direct download for ${osName} (${version})`}
+              title={`Download Inaayah Launcher for ${osName} (${version})`}
             >
               <Download size={14} color="var(--accent-cyan)" />
               <span>Get Launcher {version}</span>

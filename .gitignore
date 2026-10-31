@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local policy reviews are never included in production builds.
+.legal-preview/
