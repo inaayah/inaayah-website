@@ -63,8 +63,8 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
             background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.09) 0%, rgba(17, 22, 34, 0.75) 100%)'
           }}
         >
-          <div style={{ maxWidth: 560 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+          <div style={{ maxWidth: 560, minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
               <span className="badge badge-cyan">Inaayah Desktop Launcher</span>
               <span className="badge badge-gold">SHA-256 Verified · Auto-Updating</span>
             </div>
@@ -117,11 +117,8 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
               </div>
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 24, paddingTop: 20, borderTop: '1px solid var(--border-subtle)' }}>
                 <a href="#launcher" className="btn btn-primary" style={{ padding: '12px 24px' }}><Download size={16} /><span>Play via Launcher</span></a>
-                <a href="https://releases.inaayah.dev/api/games/vigilante-red-city/download/darwin" className="btn btn-secondary" style={{ padding: '12px 18px' }}>macOS</a>
-                <a href="https://releases.inaayah.dev/api/games/vigilante-red-city/download/win32" className="btn btn-secondary" style={{ padding: '12px 18px' }}>Windows</a>
-                <a href="https://releases.inaayah.dev/api/games/vigilante-red-city/download/linux" className="btn btn-secondary" style={{ padding: '12px 18px' }}>Linux</a>
               </div>
-              <p className="game-availability">Available for macOS, Windows and Linux. Play solo or bring family and friends.</p>
+              <p className="game-availability">Available through Inaayah Launcher for macOS, Windows and Linux. Sign in to install and receive updates.</p>
             </div>
           </div>
 
@@ -145,7 +142,6 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
             </div>
             <div className="game-compact-actions">
               <a href="#launcher" className="btn btn-primary"><Download size={15} />Play via Launcher</a>
-              <a href="https://releases.inaayah.dev/api/games/aether-rush/download/darwin" className="btn btn-secondary">macOS download <ArrowUpRight size={14} /></a>
             </div>
           </article>
 
