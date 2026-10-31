@@ -234,7 +234,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                       style={{
                         padding: '8px 12px',
                         fontSize: 12,
-                        borderColor: detectedOs === key ? 'rgba(255, 255, 255, 0.28)' : 'var(--border-glass)'
+                        borderColor: detectedOs === key ? 'var(--brand-accent)' : 'var(--border-glass)'
                       }}
                     >
                       <Download size={13} />
@@ -266,9 +266,9 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
             <div className="stage-dock">
               <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
                 <div style={{ display: 'flex', gap: 6 }} aria-hidden="true">
-                  <div style={{ width: 9, height: 9, borderRadius: '50%', background: 'rgba(255, 255, 255, 0.16)' }} />
-                  <div style={{ width: 9, height: 9, borderRadius: '50%', background: 'rgba(255, 255, 255, 0.16)' }} />
-                  <div style={{ width: 9, height: 9, borderRadius: '50%', background: 'rgba(255, 255, 255, 0.16)' }} />
+                  <div style={{ width: 9, height: 9, borderRadius: '50%', background: 'var(--border-strong)' }} />
+                  <div style={{ width: 9, height: 9, borderRadius: '50%', background: 'var(--border-strong)' }} />
+                  <div style={{ width: 9, height: 9, borderRadius: '50%', background: 'var(--border-strong)' }} />
                 </div>
 
                 <div className="stage-tabs" role="tablist" aria-label="Studio product showcase">
@@ -379,7 +379,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                       <div style={{ textAlign: 'left' }}>
                         <span className="badge badge-cyan" style={{ marginBottom: 10 }}>02 // FEATURED DESKTOP TITLE</span>
                         <h2 style={{ fontSize: 'clamp(24px, 3.8vw, 34px)', fontWeight: 800, marginBottom: 8, color: '#fff' }}>Vigilante: Red City</h2>
-                        <p style={{ color: 'var(--text-secondary)', fontSize: 14.5, maxWidth: 540 }}>
+                        <p style={{ color: '#b4bcc8', fontSize: 14.5, maxWidth: 540 }}>
                           Bring Inaayah home in a five-stage comic rescue adventure. Three heroes, local and online co-op, and a vocal nasheed soundtrack.
                         </p>
                       </div>
@@ -419,7 +419,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                       <div style={{ textAlign: 'left' }}>
                         <span className="badge badge-green" style={{ marginBottom: 10 }}>03 // INSTANT BROWSER STRATEGY</span>
                         <h2 style={{ fontSize: 'clamp(24px, 3.8vw, 34px)', fontWeight: 800, marginBottom: 8, color: '#fff' }}>Kettle Court: Medieval Strategy</h2>
-                        <p style={{ color: 'var(--text-secondary)', fontSize: 14.5, maxWidth: 540 }}>
+                        <p style={{ color: '#b4bcc8', fontSize: 14.5, maxWidth: 540 }}>
                           Turn-based cozy fairground strategy game for 2 to 5 players. Play directly in any desktop or mobile browser with zero installs.
                         </p>
                       </div>

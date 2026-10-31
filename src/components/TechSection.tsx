@@ -29,20 +29,20 @@ export const TechSection: React.FC = () => {
           <div className="bento-card">
             <div className="bento-schematic">
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
-                <span style={{ padding: '4px 8px', borderRadius: 4, background: 'rgba(255,255,255,0.04)', border: '1px solid var(--border-subtle)' }}>Blender .blend</span>
+                <span style={{ padding: '4px 8px', borderRadius: 4, background: 'var(--btn-secondary-bg)', border: '1px solid var(--border-subtle)' }}>Blender .blend</span>
                 <span style={{ color: 'var(--text-muted)' }}>→</span>
-                <span style={{ padding: '4px 8px', borderRadius: 4, background: 'rgba(255,255,255,0.04)', border: '1px solid var(--border-subtle)' }}>Godot 4.3</span>
+                <span style={{ padding: '4px 8px', borderRadius: 4, background: 'var(--btn-secondary-bg)', border: '1px solid var(--border-subtle)' }}>Godot 4.3</span>
                 <span style={{ color: 'var(--text-muted)' }}>→</span>
-                <span style={{ padding: '4px 8px', borderRadius: 4, background: 'rgba(56,189,248,0.1)', border: '1px solid rgba(56,189,248,0.28)', color: '#7dd3fc' }}>Vulkan / Metal</span>
+                <span style={{ padding: '4px 8px', borderRadius: 4, background: 'rgba(45,212,191,0.1)', border: '1px solid rgba(45,212,191,0.28)', color: 'var(--brand-accent-soft)' }}>Vulkan / Metal</span>
               </div>
               <div style={{ marginTop: 12, fontSize: 10, color: 'var(--text-muted)', display: 'flex', justifyContent: 'space-between' }}>
                 <span>PIPELINE: HEADLESS EXPORT</span>
-                <span style={{ color: 'var(--accent-green)' }}>60–120 FPS NATIVE</span>
+                <span style={{ color: 'var(--brand-accent)' }}>60–120 FPS NATIVE</span>
               </div>
             </div>
             <div className="bento-body">
               <div className="bento-title-row">
-                <Cpu size={16} color="var(--accent-cyan)" />
+                <Cpu size={16} color="var(--brand-accent)" />
                 <span>Godot 4 Engine</span>
               </div>
               <p>
@@ -56,19 +56,19 @@ export const TechSection: React.FC = () => {
           <div className="bento-card">
             <div className="bento-schematic">
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 8px', borderRadius: 4, background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-subtle)' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 8px', borderRadius: 4, background: 'var(--btn-secondary-bg)', border: '1px solid var(--border-subtle)' }}>
                   <span>OPCODE 0x04 · STATE_SYNC</span>
-                  <span style={{ color: '#fda4af' }}>30Hz Tick</span>
+                  <span style={{ color: 'var(--brand-stone)' }}>30Hz Tick</span>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 8px', borderRadius: 4, background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-subtle)' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 8px', borderRadius: 4, background: 'var(--btn-secondary-bg)', border: '1px solid var(--border-subtle)' }}>
                   <span>NAKAMA RELAY · PORT 7350</span>
-                  <span style={{ color: 'var(--accent-green)' }}>CONNECTED</span>
+                  <span style={{ color: 'var(--brand-accent)' }}>CONNECTED</span>
                 </div>
               </div>
             </div>
             <div className="bento-body">
               <div className="bento-title-row">
-                <Zap size={16} color="var(--accent-magenta)" />
+                <Zap size={16} color="var(--brand-accent)" />
                 <span>Nakama Game Cluster</span>
               </div>
               <p>
@@ -84,10 +84,10 @@ export const TechSection: React.FC = () => {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <span>CF_WORKER :: DURABLE_OBJECT</span>
-                  <span style={{ color: '#fcd34d' }}>0.4ms cold</span>
+                  <span style={{ color: 'var(--brand-amber)' }}>0.4ms cold</span>
                 </div>
-                <div style={{ height: 6, borderRadius: 99, background: 'rgba(255,255,255,0.06)', overflow: 'hidden' }}>
-                  <div style={{ width: '88%', height: '100%', background: 'linear-gradient(90deg, #38bdf8, #f59e0b)' }} />
+                <div style={{ height: 6, borderRadius: 99, background: 'var(--border-glass)', overflow: 'hidden' }}>
+                  <div style={{ width: '88%', height: '100%', background: 'linear-gradient(90deg, var(--brand-accent), var(--brand-stone))' }} />
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 10, color: 'var(--text-muted)' }}>
                   <span>300+ EDGE POPs</span>
@@ -97,7 +97,7 @@ export const TechSection: React.FC = () => {
             </div>
             <div className="bento-body">
               <div className="bento-title-row">
-                <Globe size={16} color="var(--accent-gold)" />
+                <Globe size={16} color="var(--brand-accent)" />
                 <span>Edge Compute &amp; Workers</span>
               </div>
               <p>
@@ -112,11 +112,11 @@ export const TechSection: React.FC = () => {
             <div className="bento-schematic">
               <div style={{ display: 'flex', flexDirection: 'column', gap: 5, fontSize: 10.5 }}>
                 <div style={{ color: 'var(--text-muted)' }}>$ sha256sum --check release.manifest</div>
-                <div style={{ color: '#6ee7b7', display: 'flex', justifyContent: 'space-between' }}>
+                <div style={{ color: 'var(--brand-accent-soft)', display: 'flex', justifyContent: 'space-between' }}>
                   <span>vigilante-v1.0.2.pck</span>
                   <span>VERIFIED OK</span>
                 </div>
-                <div style={{ color: '#6ee7b7', display: 'flex', justifyContent: 'space-between' }}>
+                <div style={{ color: 'var(--brand-accent-soft)', display: 'flex', justifyContent: 'space-between' }}>
                   <span>aether-rush-delta.bin</span>
                   <span>VERIFIED OK</span>
                 </div>
@@ -124,7 +124,7 @@ export const TechSection: React.FC = () => {
             </div>
             <div className="bento-body">
               <div className="bento-title-row">
-                <ShieldCheck size={16} color="var(--accent-green)" />
+                <ShieldCheck size={16} color="var(--brand-accent)" />
                 <span>Verified Integrity &amp; Cloud Sync</span>
               </div>
               <p>
@@ -137,8 +137,8 @@ export const TechSection: React.FC = () => {
           {/* Card 5: Dynamic Multi-Tier Catalog */}
           <div className="bento-card">
             <div className="bento-schematic">
-              <div style={{ padding: '8px 10px', borderRadius: 6, background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-subtle)', fontSize: 10.5 }}>
-                <div style={{ color: '#7dd3fc' }}>GET /api/games HTTP/2</div>
+              <div style={{ padding: '8px 10px', borderRadius: 6, background: 'var(--btn-secondary-bg)', border: '1px solid var(--border-subtle)', fontSize: 10.5 }}>
+                <div style={{ color: 'var(--brand-accent-soft)' }}>GET /api/games HTTP/2</div>
                 <div style={{ color: 'var(--text-muted)', marginTop: 4 }}>
                   {`{ "catalog": "edge-d1", "hot_reload": true }`}
                 </div>
@@ -146,7 +146,7 @@ export const TechSection: React.FC = () => {
             </div>
             <div className="bento-body">
               <div className="bento-title-row">
-                <Layers size={16} color="var(--accent-cyan)" />
+                <Layers size={16} color="var(--brand-accent)" />
                 <span>Dynamic Multi-Tier Catalog</span>
               </div>
               <p>
@@ -160,23 +160,23 @@ export const TechSection: React.FC = () => {
           <div className="bento-card">
             <div className="bento-schematic">
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6, textAlign: 'center', fontSize: 10 }}>
-                <div style={{ padding: '6px 4px', borderRadius: 4, background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-subtle)' }}>
+                <div style={{ padding: '6px 4px', borderRadius: 4, background: 'var(--btn-secondary-bg)', border: '1px solid var(--border-subtle)' }}>
                   <div style={{ color: 'var(--text-primary)', fontWeight: 600 }}>macOS</div>
-                  <div style={{ color: 'var(--accent-green)', marginTop: 2 }}>.dmg ✓</div>
+                  <div style={{ color: 'var(--brand-accent)', marginTop: 2 }}>.dmg ✓</div>
                 </div>
-                <div style={{ padding: '6px 4px', borderRadius: 4, background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-subtle)' }}>
+                <div style={{ padding: '6px 4px', borderRadius: 4, background: 'var(--btn-secondary-bg)', border: '1px solid var(--border-subtle)' }}>
                   <div style={{ color: 'var(--text-primary)', fontWeight: 600 }}>Windows</div>
-                  <div style={{ color: 'var(--accent-green)', marginTop: 2 }}>.exe ✓</div>
+                  <div style={{ color: 'var(--brand-accent)', marginTop: 2 }}>.exe ✓</div>
                 </div>
-                <div style={{ padding: '6px 4px', borderRadius: 4, background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-subtle)' }}>
+                <div style={{ padding: '6px 4px', borderRadius: 4, background: 'var(--btn-secondary-bg)', border: '1px solid var(--border-subtle)' }}>
                   <div style={{ color: 'var(--text-primary)', fontWeight: 600 }}>Linux</div>
-                  <div style={{ color: 'var(--accent-green)', marginTop: 2 }}>.AppImage ✓</div>
+                  <div style={{ color: 'var(--brand-accent)', marginTop: 2 }}>.AppImage ✓</div>
                 </div>
               </div>
             </div>
             <div className="bento-body">
               <div className="bento-title-row">
-                <Terminal size={16} color="#d8b4fe" />
+                <Terminal size={16} color="var(--brand-accent)" />
                 <span>Open Release Pipelines</span>
               </div>
               <p>

@@ -38,7 +38,7 @@ export const BuilderSection: React.FC = () => {
         <div className="section-header-split">
           <h2 className="section-title">
             <span className="tone-muted">Websites built with</span> editorial beauty,{' '}
-            <span className="tone-serif" style={{ color: '#5eead4' }}>
+            <span className="tone-serif">
               a live co-pilot, and custom domains.
             </span>
           </h2>
@@ -148,7 +148,7 @@ export const BuilderSection: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 style={{ fontSize: 22, color: '#fff', marginBottom: 10 }}>
+                <h3 style={{ fontSize: 22, color: 'var(--text-primary)', marginBottom: 10 }}>
                   Open Development &amp; Contributor Testing
                 </h3>
 
@@ -181,8 +181,8 @@ export const BuilderSection: React.FC = () => {
                 </div>
               </div>
 
-              <div style={{ background: 'rgba(6, 7, 10, 0.65)', padding: '24px', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border-subtle)' }}>
-                <h4 style={{ fontSize: 16, fontWeight: 700, color: '#fff', marginBottom: 6 }}>
+              <div style={{ background: 'var(--bg-subtle-box)', padding: '24px', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border-subtle)' }}>
+                <h4 style={{ fontSize: 16, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 6 }}>
                   Request Closed Alpha Access
                 </h4>
                 <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.5, marginBottom: 14 }}>
@@ -190,7 +190,7 @@ export const BuilderSection: React.FC = () => {
                 </p>
 
                 {submitted ? (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '12px 14px', background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: 'var(--radius-md)', color: '#6ee7b7', fontSize: 13 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '12px 14px', background: 'var(--badge-teal-bg)', border: '1px solid var(--badge-teal-border)', borderRadius: 'var(--radius-md)', color: 'var(--brand-accent-soft)', fontSize: 13 }}>
                     <CheckCircle2 size={16} />
                     <span>Request saved. We will reach out when alpha seats open.</span>
                   </div>
@@ -230,7 +230,7 @@ export const BuilderSection: React.FC = () => {
                   <span className="badge badge-gold">In Development</span>
                   <Bot size={18} color="var(--text-secondary)" />
                 </div>
-                <h4 style={{ fontSize: 16, marginBottom: 6, color: '#fff' }}>Live Site Co-Pilot Expansion</h4>
+                <h4 style={{ fontSize: 16, marginBottom: 6, color: 'var(--text-primary)' }}>Live Site Co-Pilot Expansion</h4>
                 <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                   Contextual drafting, seasonal promo automation, and continuous content updates directly inside your site editor.
                 </p>
@@ -246,7 +246,7 @@ export const BuilderSection: React.FC = () => {
                   <span className="badge badge-purple">Architecture Phase</span>
                   <Globe size={18} color="var(--text-secondary)" />
                 </div>
-                <h4 style={{ fontSize: 16, marginBottom: 6, color: '#fff' }}>Custom Domain &amp; Edge SSL</h4>
+                <h4 style={{ fontSize: 16, marginBottom: 6, color: 'var(--text-primary)' }}>Custom Domain &amp; Edge SSL</h4>
                 <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                   Automated DNS validation, edge SSL provisioning, and instant domain mapping for every published site.
                 </p>
@@ -262,7 +262,7 @@ export const BuilderSection: React.FC = () => {
                   <span className="badge badge-green">Concept</span>
                   <Workflow size={18} color="var(--text-secondary)" />
                 </div>
-                <h4 style={{ fontSize: 16, marginBottom: 6, color: '#fff' }}>Client-Side Web Utilities</h4>
+                <h4 style={{ fontSize: 16, marginBottom: 6, color: 'var(--text-primary)' }}>Client-Side Web Utilities</h4>
                 <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                   Single-purpose browser utilities (SVG optimizers, cryptographic helpers, image compressor) running in the browser.
                 </p>

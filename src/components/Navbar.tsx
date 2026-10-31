@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Download, ChevronDown, Sparkles } from 'lucide-react';
+import { Download, ChevronDown, Sparkles, Sun, Moon } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 
 interface NavbarProps {
@@ -17,6 +17,55 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [osName, setOsName] = useState('macOS');
   const [version, setVersion] = useState('v0.2.5');
   const [showDropdown, setShowDropdown] = useState(false);
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    if (typeof document !== 'undefined') {
+      const current = document.documentElement.getAttribute('data-theme');
+      if (current === 'light' || current === 'dark') return current;
+    }
+    if (typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: light)').matches) {
+      return 'light';
+    }
+    return 'dark';
+  });
+
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-color-scheme: light)');
+    const applyTheme = (next: 'light' | 'dark') => {
+      setTheme(next);
+      document.documentElement.setAttribute('data-theme', next);
+    };
+
+    const saved = localStorage.getItem('inaayah_theme');
+    if (saved === 'light' || saved === 'dark') {
+      applyTheme(saved);
+    } else {
+      applyTheme(media.matches ? 'light' : 'dark');
+    }
+
+    const onSystemChange = (e: MediaQueryListEvent) => {
+      const override = localStorage.getItem('inaayah_theme');
+      if (override !== 'light' && override !== 'dark') {
+        applyTheme(e.matches ? 'light' : 'dark');
+      }
+    };
+
+    media.addEventListener('change', onSystemChange);
+    return () => media.removeEventListener('change', onSystemChange);
+  }, []);
+
+  const toggleTheme = () => {
+    const next: 'light' | 'dark' = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    document.documentElement.setAttribute('data-theme', next);
+    try {
+      const sysDefault: 'light' | 'dark' = window.matchMedia?.('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      if (next === sysDefault) {
+        localStorage.removeItem('inaayah_theme');
+      } else {
+        localStorage.setItem('inaayah_theme', next);
+      }
+    } catch {}
+  };
 
   useEffect(() => {
     const ua = window.navigator.userAgent.toLowerCase();
@@ -83,7 +132,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               fontWeight: isGamesRoute ? 600 : undefined,
             }}
           >
-            Games & Launcher
+            Games &amp; Launcher
           </a>
           <a
             href="https://arcade.inaayah.dev"
@@ -102,7 +151,17 @@ export const Navbar: React.FC<NavbarProps> = ({
           </a>
         </nav>
 
-        <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+        <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 10 }}>
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="theme-toggle-btn"
+            aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+            title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+          >
+            {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+          </button>
+
           <div className="navbar-split-btn">
             <a
               href={downloadUrl}
@@ -142,8 +201,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 flexDirection: 'column',
                 gap: 4,
                 zIndex: 250,
-                boxShadow: '0 18px 44px rgba(0, 0, 0, 0.85)',
-                background: '#0b0e15',
+                boxShadow: 'var(--shadow-bezel)',
+                background: 'var(--bg-dropdown)',
                 borderColor: 'var(--border-glass)'
               }}
             >
@@ -158,8 +217,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                   justifyContent: 'flex-start',
                   padding: '8px 12px',
                   fontSize: 12,
-                  borderColor: osName === 'macOS' ? 'rgba(255, 255, 255, 0.22)' : 'transparent',
-                  background: osName === 'macOS' ? 'rgba(255, 255, 255, 0.06)' : 'transparent'
+                  borderColor: osName === 'macOS' ? 'var(--border-strong)' : 'transparent',
+                  background: osName === 'macOS' ? 'var(--btn-secondary-hover)' : 'transparent'
                 }}
                 onClick={() => setShowDropdown(false)}
               >
@@ -174,8 +233,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                   justifyContent: 'flex-start',
                   padding: '8px 12px',
                   fontSize: 12,
-                  borderColor: osName === 'Windows' ? 'rgba(255, 255, 255, 0.22)' : 'transparent',
-                  background: osName === 'Windows' ? 'rgba(255, 255, 255, 0.06)' : 'transparent'
+                  borderColor: osName === 'Windows' ? 'var(--border-strong)' : 'transparent',
+                  background: osName === 'Windows' ? 'var(--btn-secondary-hover)' : 'transparent'
                 }}
                 onClick={() => setShowDropdown(false)}
               >
@@ -190,8 +249,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                   justifyContent: 'flex-start',
                   padding: '8px 12px',
                   fontSize: 12,
-                  borderColor: osName === 'Linux' ? 'rgba(255, 255, 255, 0.22)' : 'transparent',
-                  background: osName === 'Linux' ? 'rgba(255, 255, 255, 0.06)' : 'transparent'
+                  borderColor: osName === 'Linux' ? 'var(--border-strong)' : 'transparent',
+                  background: osName === 'Linux' ? 'var(--btn-secondary-hover)' : 'transparent'
                 }}
                 onClick={() => setShowDropdown(false)}
               >
@@ -216,7 +275,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   color: 'var(--text-secondary)'
                 }}
               >
-                <Sparkles size={13} color="var(--accent-gold)" />
+                <Sparkles size={13} color="var(--brand-amber)" />
                 <span>View Full Launcher Details ↓</span>
               </button>
             </div>
