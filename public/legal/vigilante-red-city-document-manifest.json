@@ -9,10 +9,10 @@
     "version_code": 5,
     "version_name": "1.2.3",
     "sha256": "f717c10999cbe9220b582fc7d8623e8e8f87799bf7757aba123e4cbc4d8991e7",
-    "status": "Menu-layout source checks passed; installed APK verified; interactive device and Play validation pending"
+    "status": "Selected Galaxy S25 Ultra menu-layout and navigation checks passed; Play validation pending"
   },
   "approval_scope": "Public policy documents only; not Play release or legal compliance certification",
-  "metadata_sha256": "28b8b4d0c9e51ef63ff5ce8b9ef45d106e6ff2f2ac23bb026593c280e1133a9f",
+  "metadata_sha256": "5242018bcd28628c6c277e69ff28caa50b9b8f3772fbc3e9bb70c2489eacde3f",
   "documents": [
     {
       "source": "PRIVACY_POLICY.md",
