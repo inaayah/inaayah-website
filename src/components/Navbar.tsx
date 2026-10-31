@@ -31,7 +31,6 @@ export const Navbar: React.FC<NavbarProps> = ({
       setDownloadUrl('https://releases.inaayah.dev/api/launcher/download/mac');
     }
 
-    // Resolve latest release version dynamically
     fetch('https://releases.inaayah.dev/api/launcher/latest')
       .then((res) => {
         if (res.ok) return res.json();
@@ -62,26 +61,26 @@ export const Navbar: React.FC<NavbarProps> = ({
         </a>
 
         <nav className="nav-links">
-          <a 
+          <a
             href="/#builder"
-            className="nav-link" 
+            className="nav-link"
             onClick={(e) => { e.preventDefault(); onScrollTo('builder'); }}
-            style={{ display: 'flex', alignItems: 'center', gap: 6 }}
+            style={{ display: 'flex', alignItems: 'center', gap: 7 }}
           >
             <span>Website Builder</span>
             <span className="badge badge-gold" style={{ fontSize: 9, padding: '1px 6px' }}>Pre-Alpha</span>
           </a>
-          <a 
+          <a
             href="/games"
-            className="nav-link" 
+            className="nav-link"
             onClick={(e) => {
               e.preventDefault();
               if (onNavigate) onNavigate('/games');
               else onScrollTo('games');
             }}
             style={{
-              color: isGamesRoute ? 'var(--accent-cyan)' : undefined,
-              fontWeight: isGamesRoute ? 700 : undefined,
+              color: isGamesRoute ? 'var(--text-primary)' : undefined,
+              fontWeight: isGamesRoute ? 600 : undefined,
             }}
           >
             Games & Launcher
@@ -94,24 +93,23 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             Web Arcade ↗
           </a>
-          <a 
-            href="#technology" 
-            className="nav-link" 
+          <a
+            href="#technology"
+            className="nav-link"
             onClick={(e) => { e.preventDefault(); onScrollTo('technology'); }}
           >
             Engineering
           </a>
         </nav>
 
-        {/* Top-Right Download Action with Platform Dropdown */}
         <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
           <div className="navbar-split-btn">
-            <a 
+            <a
               href={downloadUrl}
               className="split-btn-action"
               title={`Download Inaayah Launcher for ${osName} (${version})`}
             >
-              <Download size={14} color="var(--accent-cyan)" />
+              <Download size={13} />
               <span>Get Launcher {version}</span>
             </a>
 
@@ -121,84 +119,83 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="split-btn-dropdown"
               title="Choose operating system or view formats"
             >
-              <ChevronDown 
-                size={14} 
-                style={{ 
-                  transform: showDropdown ? 'rotate(180deg)' : 'none', 
-                  transition: 'transform 0.2s ease' 
-                }} 
+              <ChevronDown
+                size={13}
+                style={{
+                  transform: showDropdown ? 'rotate(180deg)' : 'none',
+                  transition: 'transform 0.2s ease'
+                }}
               />
             </button>
           </div>
 
-          {/* Platform Selector Dropdown */}
           {showDropdown && (
-            <div 
+            <div
               className="glass-panel"
               style={{
                 position: 'absolute',
                 top: 'calc(100% + 10px)',
                 right: 0,
-                width: 250,
+                width: 248,
                 padding: '8px',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 4,
                 zIndex: 250,
-                boxShadow: '0 14px 40px rgba(0, 0, 0, 0.75)',
-                background: '#0e131d',
+                boxShadow: '0 18px 44px rgba(0, 0, 0, 0.85)',
+                background: '#0b0e15',
                 borderColor: 'var(--border-glass)'
               }}
             >
-              <div style={{ padding: '6px 10px', fontSize: 11, fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-                Download for OS ({version})
+              <div style={{ padding: '6px 10px', fontSize: 10, fontFamily: 'var(--font-mono)', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                Select OS ({version})
               </div>
 
               <a
                 href="https://releases.inaayah.dev/api/launcher/download/mac"
                 className="btn btn-secondary"
-                style={{ 
-                  justifyContent: 'flex-start', 
-                  padding: '8px 12px', 
+                style={{
+                  justifyContent: 'flex-start',
+                  padding: '8px 12px',
                   fontSize: 12,
-                  borderColor: osName === 'macOS' ? 'var(--accent-cyan)' : 'transparent',
-                  background: osName === 'macOS' ? 'rgba(0, 240, 255, 0.08)' : 'transparent'
+                  borderColor: osName === 'macOS' ? 'rgba(255, 255, 255, 0.22)' : 'transparent',
+                  background: osName === 'macOS' ? 'rgba(255, 255, 255, 0.06)' : 'transparent'
                 }}
                 onClick={() => setShowDropdown(false)}
               >
-                <Download size={13} color="var(--accent-cyan)" />
+                <Download size={13} />
                 <span>macOS (.dmg / arm64)</span>
               </a>
 
               <a
                 href="https://releases.inaayah.dev/api/launcher/download/windows"
                 className="btn btn-secondary"
-                style={{ 
-                  justifyContent: 'flex-start', 
-                  padding: '8px 12px', 
+                style={{
+                  justifyContent: 'flex-start',
+                  padding: '8px 12px',
                   fontSize: 12,
-                  borderColor: osName === 'Windows' ? 'var(--accent-cyan)' : 'transparent',
-                  background: osName === 'Windows' ? 'rgba(0, 240, 255, 0.08)' : 'transparent'
+                  borderColor: osName === 'Windows' ? 'rgba(255, 255, 255, 0.22)' : 'transparent',
+                  background: osName === 'Windows' ? 'rgba(255, 255, 255, 0.06)' : 'transparent'
                 }}
                 onClick={() => setShowDropdown(false)}
               >
-                <Download size={13} color="var(--accent-cyan)" />
+                <Download size={13} />
                 <span>Windows (.exe installer)</span>
               </a>
 
               <a
                 href="https://releases.inaayah.dev/api/launcher/download/linux"
                 className="btn btn-secondary"
-                style={{ 
-                  justifyContent: 'flex-start', 
-                  padding: '8px 12px', 
+                style={{
+                  justifyContent: 'flex-start',
+                  padding: '8px 12px',
                   fontSize: 12,
-                  borderColor: osName === 'Linux' ? 'var(--accent-cyan)' : 'transparent',
-                  background: osName === 'Linux' ? 'rgba(0, 240, 255, 0.08)' : 'transparent'
+                  borderColor: osName === 'Linux' ? 'rgba(255, 255, 255, 0.22)' : 'transparent',
+                  background: osName === 'Linux' ? 'rgba(255, 255, 255, 0.06)' : 'transparent'
                 }}
                 onClick={() => setShowDropdown(false)}
               >
-                <Download size={13} color="var(--accent-cyan)" />
+                <Download size={13} />
                 <span>Linux (.AppImage)</span>
               </a>
 
@@ -211,10 +208,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onScrollTo('launcher');
                 }}
                 className="btn btn-secondary"
-                style={{ 
-                  justifyContent: 'flex-start', 
-                  padding: '8px 12px', 
-                  fontSize: 12, 
+                style={{
+                  justifyContent: 'flex-start',
+                  padding: '8px 12px',
+                  fontSize: 12,
                   background: 'transparent',
                   color: 'var(--text-secondary)'
                 }}

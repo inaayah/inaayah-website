@@ -59,12 +59,11 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
   const [detectedOs, setDetectedOs] = useState<'mac' | 'windows' | 'linux'>('mac');
   const [showAllPlatforms, setShowAllPlatforms] = useState(false);
   const [platforms, setPlatforms] = useState(PLATFORMS);
-  const [latestVersion, setLatestVersion] = useState('v0.2.1');
+  const [latestVersion, setLatestVersion] = useState('v0.2.5');
   const [activeTab, setActiveTab] = useState<'builder' | 'games' | 'kettle'>('builder');
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Auto-advance slideshow every 6s until user explicitly selects a tab
   useEffect(() => {
     if (!isAutoPlay || isHovered) return;
 
@@ -80,7 +79,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
 
   const handleSelectTab = (tab: 'builder' | 'games' | 'kettle') => {
     setActiveTab(tab);
-    setIsAutoPlay(false); // User clicked: permanently stop auto-advancing
+    setIsAutoPlay(false);
   };
 
   useEffect(() => {
@@ -93,7 +92,6 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
       setDetectedOs('mac');
     }
 
-    // Fetch latest release metadata from edge gateway (with GitHub API fallback)
     const fetchLatest = async () => {
       try {
         let release: any = null;
@@ -159,347 +157,315 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
   return (
     <section id="overview" className="hero-section">
       <div className="container">
-        {/* Studio Pill */}
-        <div className="hero-pill">
-          <span className="badge badge-cyan">
-            <Sparkles size={12} />
-            Independent Creative Software & Indie Studio
+        <div className="section-rule">
+          <span className="section-index">
+            <span className="section-index-num">01 //</span>
+            <span>INAAYAH STUDIO</span>
           </span>
+          <span>INDEPENDENT GAMES &amp; WEB SOFTWARE</span>
         </div>
 
-        {/* Elevated Title */}
-        <h1 className="hero-title">
-          Crafting High-Octane Indie Games, <br />
-          <span className="gradient-text-cyan">Tactile Web Tools & Open Software.</span>
-        </h1>
-
-        {/* Expanded Subtitle */}
-        <p className="hero-subtitle">
-          Inaayah is an independent creative software studio. We design story-driven 2D and 3D games,
-          a visual website builder with an integrated live co-pilot, and edge-native web utilities—hosted
-          directly on the web with custom domain support.
-        </p>
-
-        {/* Studio CTA Row */}
-        <div id="launcher" className="hero-cta-group">
-          <div className="download-cta-row">
-            <button
-              onClick={() => handleScroll('builder')}
-              className="btn btn-primary"
-              style={{ padding: '16px 32px', fontSize: 16 }}
-            >
-              <Code2 size={18} />
-              <span>Explore Web Builder (Pre-Alpha)</span>
-              <ArrowRight size={16} />
-            </button>
-
-            <a
-              href={activePlatform.url}
-              className="btn btn-secondary"
-              style={{ padding: '16px 28px', fontSize: 15 }}
-            >
-              <Download size={18} color="var(--accent-cyan)" />
-              <span>Get Launcher ({activePlatform.name})</span>
-            </a>
-
-            <button
-              onClick={() => setShowAllPlatforms(!showAllPlatforms)}
-              className="btn btn-secondary"
-              style={{ padding: '16px 18px', fontSize: 14 }}
-              title="Select another OS"
-            >
-              <span>Other OS</span>
-              <ChevronDown size={16} style={{ transform: showAllPlatforms ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
-            </button>
+        <div className="hero-header-grid">
+          <div>
+            <div className="hero-eyebrow">
+              <span className="hero-eyebrow-dot" />
+              <span>Launcher {latestVersion} Live · Builder in Pre-Alpha</span>
+            </div>
+            <h1 className="hero-title">
+              <span className="tone-muted">Crafting high-octane</span> indie games,{' '}
+              tactile web tools, <span className="tone-muted">and</span>{' '}
+              <span className="tone-serif">edge software.</span>
+            </h1>
           </div>
 
-          {showAllPlatforms && (
-            <div
-              className="glass-panel"
-              style={{
-                padding: '16px 24px',
-                display: 'flex',
-                gap: 16,
-                flexWrap: 'wrap',
-                justifyContent: 'center',
-                maxWidth: 620,
-                marginTop: 8
-              }}
-            >
-              {(Object.keys(platforms) as Array<'mac' | 'windows' | 'linux'>).map((key) => {
-                const p = platforms[key];
-                return (
-                  <a
-                    key={key}
-                    href={p.url}
-                    className="btn btn-secondary"
-                    style={{
-                      padding: '10px 16px',
-                      fontSize: 13,
-                      borderColor: detectedOs === key ? 'var(--accent-cyan)' : 'var(--border-glass)'
-                    }}
-                  >
-                    <Download size={14} color={detectedOs === key ? 'var(--accent-cyan)' : undefined} />
-                    <span>{p.name} {p.ext}</span>
-                  </a>
-                );
-              })}
-              <a
-                href="https://github.com/inaayah/inaayah-launcher/releases/latest"
-                target="_blank"
-                rel="noreferrer"
-                className="btn btn-secondary"
-                style={{ padding: '10px 16px', fontSize: 13 }}
+          <div id="launcher" className="hero-right-col">
+            <p className="hero-subtitle">
+              Inaayah is an independent software and game studio. We build story-driven 2D and 3D co-op games,
+              a visual website builder with a live site co-pilot, and instant browser games hosted on edge infrastructure.
+            </p>
+
+            <div className="download-cta-row">
+              <button
+                onClick={() => handleScroll('builder')}
+                className="btn btn-primary"
+                style={{ padding: '12px 22px', fontSize: 14 }}
               >
-                <span>View All Assets (.zip / .tar.gz) ↗</span>
-              </a>
-            </div>
-          )}
+                <span>Explore Web Builder</span>
+                <ArrowRight size={15} />
+              </button>
 
-          {/* Studio Principles Row */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap', justifyContent: 'center', color: 'var(--text-muted)', fontSize: 13, marginTop: 8 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <ShieldCheck size={16} color="var(--accent-green)" />
-              <span>SHA-256 Verified Releases</span>
+              <a
+                href={activePlatform.url}
+                className="btn btn-secondary"
+                style={{ padding: '12px 20px', fontSize: 14 }}
+              >
+                <Download size={15} />
+                <span>Get Launcher ({activePlatform.name})</span>
+              </a>
+
+              <button
+                onClick={() => setShowAllPlatforms(!showAllPlatforms)}
+                className="btn btn-secondary"
+                style={{ padding: '12px 14px', fontSize: 13 }}
+                title="Select another OS"
+              >
+                <span>OS</span>
+                <ChevronDown size={14} style={{ transform: showAllPlatforms ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
+              </button>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <Zap size={16} color="var(--accent-gold)" />
-              <span>Sub-Second Edge Infrastructure</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <Sparkles size={16} color="var(--accent-cyan)" />
-              <span>Native Cross-Platform Builds</span>
-            </div>
+
+            {showAllPlatforms && (
+              <div
+                className="glass-panel"
+                style={{
+                  padding: '12px 14px',
+                  display: 'flex',
+                  gap: 10,
+                  flexWrap: 'wrap'
+                }}
+              >
+                {(Object.keys(platforms) as Array<'mac' | 'windows' | 'linux'>).map((key) => {
+                  const p = platforms[key];
+                  return (
+                    <a
+                      key={key}
+                      href={p.url}
+                      className="btn btn-secondary"
+                      style={{
+                        padding: '8px 12px',
+                        fontSize: 12,
+                        borderColor: detectedOs === key ? 'rgba(255, 255, 255, 0.28)' : 'var(--border-glass)'
+                      }}
+                    >
+                      <Download size={13} />
+                      <span>{p.name} {p.ext}</span>
+                    </a>
+                  );
+                })}
+                <a
+                  href="https://github.com/inaayah/inaayah-launcher/releases/latest"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn btn-secondary"
+                  style={{ padding: '8px 12px', fontSize: 12 }}
+                >
+                  <span>All Release Archives ↗</span>
+                </a>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Interactive Studio Switcher Segmented Control */}
+        {/* Double-Bezel Interactive Stage with Docked Switcher */}
         <div
-          className="studio-tabs-wrapper"
+          className="stage-bezel"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
-            <div className="studio-tabs">
-              <button
-                onClick={() => handleSelectTab('builder')}
-                className={`studio-tab-btn tab-builder ${activeTab === 'builder' ? 'active' : ''} ${activeTab === 'builder' && isAutoPlay ? 'is-autoplay' : ''} ${isHovered ? 'is-paused' : ''}`}
-                title="Inaayah Builder"
-              >
-                <Code2 size={16} />
-                <span>Inaayah Builder</span>
-                <span className="badge badge-gold" style={{ fontSize: 9, padding: '1px 6px' }}>Pre-Alpha</span>
-              </button>
+          <div className="stage-inner">
+            <div className="stage-dock">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                <div style={{ display: 'flex', gap: 6 }} aria-hidden="true">
+                  <div style={{ width: 9, height: 9, borderRadius: '50%', background: 'rgba(255, 255, 255, 0.16)' }} />
+                  <div style={{ width: 9, height: 9, borderRadius: '50%', background: 'rgba(255, 255, 255, 0.16)' }} />
+                  <div style={{ width: 9, height: 9, borderRadius: '50%', background: 'rgba(255, 255, 255, 0.16)' }} />
+                </div>
 
-              <button
-                onClick={() => handleSelectTab('games')}
-                className={`studio-tab-btn tab-games ${activeTab === 'games' ? 'active' : ''} ${activeTab === 'games' && isAutoPlay ? 'is-autoplay' : ''} ${isHovered ? 'is-paused' : ''}`}
-                title="Vigilante: Red City & Launcher"
-              >
-                <Gamepad2 size={16} />
-                <span>Launcher & Vigilante</span>
-                <span className="badge badge-cyan" style={{ fontSize: 9, padding: '1px 6px' }}>Live v1.0.2</span>
-              </button>
+                <div className="stage-tabs" role="tablist" aria-label="Studio product showcase">
+                  <button
+                    onClick={() => handleSelectTab('builder')}
+                    className={`stage-tab ${activeTab === 'builder' ? 'active' : ''} ${activeTab === 'builder' && isAutoPlay ? 'is-autoplay' : ''} ${isHovered ? 'is-paused' : ''}`}
+                  >
+                    <span className="stage-tab-index">01</span>
+                    <Code2 size={14} />
+                    <span>Inaayah Builder</span>
+                    <span className="badge badge-gold" style={{ fontSize: 9, padding: '1px 5px' }}>Pre-Alpha</span>
+                  </button>
 
-              <button
-                onClick={() => handleSelectTab('kettle')}
-                className={`studio-tab-btn tab-kettle ${activeTab === 'kettle' ? 'active' : ''} ${activeTab === 'kettle' && isAutoPlay ? 'is-autoplay' : ''} ${isHovered ? 'is-paused' : ''}`}
-                title="Kettle Court Web Game"
-              >
-                <Compass size={16} />
-                <span>Kettle Court</span>
-                <span className="badge badge-green" style={{ fontSize: 9, padding: '1px 6px' }}>Live Web</span>
-              </button>
-            </div>
+                  <button
+                    onClick={() => handleSelectTab('games')}
+                    className={`stage-tab ${activeTab === 'games' ? 'active' : ''} ${activeTab === 'games' && isAutoPlay ? 'is-autoplay' : ''} ${isHovered ? 'is-paused' : ''}`}
+                  >
+                    <span className="stage-tab-index">02</span>
+                    <Gamepad2 size={14} />
+                    <span>Launcher &amp; Vigilante</span>
+                    <span className="badge badge-cyan" style={{ fontSize: 9, padding: '1px 5px' }}>v1.0.2</span>
+                  </button>
 
-            {/* Subtle Carousel Progress & Play/Pause Status */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 11, color: 'var(--text-muted)' }}>
-              {isAutoPlay ? (
-                <>
-                  <span
-                    style={{
-                      width: 6,
-                      height: 6,
-                      borderRadius: '50%',
-                      background: isHovered ? 'var(--accent-gold)' : 'var(--accent-cyan)',
-                      boxShadow: isHovered ? '0 0 6px var(--accent-gold)' : '0 0 6px var(--accent-cyan)'
-                    }}
-                  />
-                  <span>
-                    {isHovered ? 'Paused (hovering) · Click any tab to pin' : 'Auto-previewing studio portfolio · Click any tab to pin'}
-                  </span>
-                </>
-              ) : (
-                <>
-                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#64748b' }} />
-                  <span>Pinned to selection ·</span>
+                  <button
+                    onClick={() => handleSelectTab('kettle')}
+                    className={`stage-tab ${activeTab === 'kettle' ? 'active' : ''} ${activeTab === 'kettle' && isAutoPlay ? 'is-autoplay' : ''} ${isHovered ? 'is-paused' : ''}`}
+                  >
+                    <span className="stage-tab-index">03</span>
+                    <Compass size={14} />
+                    <span>Kettle Court</span>
+                    <span className="badge badge-green" style={{ fontSize: 9, padding: '1px 5px' }}>Web</span>
+                  </button>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 11, fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>
+                {isAutoPlay ? (
+                  <span>{isHovered ? 'PAUSED' : 'AUTO-CYCLE · 6S'}</span>
+                ) : (
                   <button
                     onClick={() => setIsAutoPlay(true)}
                     style={{
                       background: 'transparent',
                       border: 'none',
-                      color: 'var(--accent-cyan)',
+                      color: 'var(--text-secondary)',
+                      fontFamily: 'var(--font-mono)',
                       fontSize: 11,
                       cursor: 'pointer',
-                      textDecoration: 'underline',
-                      padding: 0
+                      textDecoration: 'underline'
                     }}
                   >
-                    Resume auto-play
+                    RESUME CYCLE
                   </button>
-                </>
+                )}
+              </div>
+            </div>
+
+            <div
+              className="stage-viewport"
+              onClick={() => {
+                if (isAutoPlay) setIsAutoPlay(false);
+              }}
+            >
+              {activeTab === 'builder' && (
+                <div className="studio-builder-teaser">
+                  <div className="studio-builder-copy">
+                    <span className="badge badge-gold">01 // VISUAL WEB CREATION</span>
+                    <h2>A home for your next great idea.</h2>
+                    <p>Shape your site with structured editorial blocks, refine copy with your integrated co-pilot, and publish on your own custom domain.</p>
+                    <div className="studio-builder-steps">
+                      <span>01. ARRANGE</span>
+                      <span>02. REFINE</span>
+                      <span>03. PUBLISH</span>
+                    </div>
+                    <button className="btn btn-primary" onClick={() => handleScroll('builder')}>
+                      <span>Explore the Builder</span>
+                      <ArrowRight size={15} />
+                    </button>
+                  </div>
+                  <div className="studio-builder-paper" aria-hidden="true">
+                    <span>YOUR SPACE ON THE WEB</span>
+                    <div>Make something<br /><em>worth sharing.</em></div>
+                    <i />
+                    <small>Stories. Projects. Possibilities.</small>
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'games' && (
+                <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                  <img
+                    src="/images/vigilante-red-city-banner.jpg"
+                    alt="Vigilante: Red City — the Demir family"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.92 }}
+                  />
+                  <div
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'linear-gradient(180deg, rgba(6,7,10,0.08) 0%, rgba(6,7,10,0.82) 72%, rgba(6,7,10,0.97) 100%)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'flex-end',
+                      padding: 'clamp(22px, 4vw, 40px)'
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}>
+                      <div style={{ textAlign: 'left' }}>
+                        <span className="badge badge-cyan" style={{ marginBottom: 10 }}>02 // FEATURED DESKTOP TITLE</span>
+                        <h2 style={{ fontSize: 'clamp(24px, 3.8vw, 34px)', fontWeight: 800, marginBottom: 8, color: '#fff' }}>Vigilante: Red City</h2>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: 14.5, maxWidth: 540 }}>
+                          Bring Inaayah home in a five-stage comic rescue adventure. Three heroes, local and online co-op, and a vocal nasheed soundtrack.
+                        </p>
+                      </div>
+                      <div style={{ display: 'flex', gap: 12 }}>
+                        <button
+                          onClick={() => handleScroll('games')}
+                          className="btn btn-primary"
+                        >
+                          <Play size={15} fill="currentColor" />
+                          <span>Explore Game Releases</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'kettle' && (
+                <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                  <img
+                    src="/images/kettle-court-banner.jpg"
+                    alt="Kettle Court Table Game"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.92 }}
+                  />
+                  <div
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'linear-gradient(180deg, rgba(6,7,10,0.08) 0%, rgba(6,7,10,0.82) 72%, rgba(6,7,10,0.97) 100%)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'flex-end',
+                      padding: 'clamp(22px, 4vw, 40px)'
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}>
+                      <div style={{ textAlign: 'left' }}>
+                        <span className="badge badge-green" style={{ marginBottom: 10 }}>03 // INSTANT BROWSER STRATEGY</span>
+                        <h2 style={{ fontSize: 'clamp(24px, 3.8vw, 34px)', fontWeight: 800, marginBottom: 8, color: '#fff' }}>Kettle Court: Medieval Strategy</h2>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: 14.5, maxWidth: 540 }}>
+                          Turn-based cozy fairground strategy game for 2 to 5 players. Play directly in any desktop or mobile browser with zero installs.
+                        </p>
+                      </div>
+                      <div style={{ display: 'flex', gap: 12 }}>
+                        <a
+                          href="https://kettle-court.inaayah.dev/"
+                          target="_blank"
+                          rel="noreferrer"
+                          className="btn btn-primary"
+                        >
+                          <Play size={15} fill="currentColor" />
+                          <span>Play in Browser</span>
+                          <ArrowUpRight size={15} />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               )}
             </div>
           </div>
         </div>
 
-        {/* Interactive Mockup Frame that switches based on activeTab */}
-        <div
-          className="mockup-container"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          onClick={() => {
-            if (isAutoPlay) setIsAutoPlay(false);
-          }}
-        >
-          {activeTab === 'builder' ? (
-            <div className="mockup-inner">
-              <div className="mockup-titlebar">
-                <div className="mockup-dots" aria-hidden="true">
-                  <div className="mockup-dot" style={{ background: '#ff5f56' }} />
-                  <div className="mockup-dot" style={{ background: '#ffbd2e' }} />
-                  <div className="mockup-dot" style={{ background: '#27c93f' }} />
-                </div>
-                <span className="studio-preview-caption">INAAYAH BUILDER · VISUAL WEBSITE CREATION</span>
-              </div>
-              <div className="studio-builder-teaser studio-preview-panel">
-                <div className="studio-builder-copy">
-                  <span className="badge badge-gold">Pre-Alpha</span>
-                  <h2>A home for your next great idea.</h2>
-                  <p>Shape your site with visual blocks, refine it with your co-pilot, and publish on your own domain.</p>
-                  <div className="studio-builder-steps">
-                    <span><Code2 size={16} /> Arrange</span>
-                    <span><Sparkles size={16} /> Refine</span>
-                    <span><ArrowUpRight size={16} /> Publish</span>
-                  </div>
-                  <button className="btn btn-primary" onClick={() => handleScroll('builder')}>
-                    Explore the Builder <ArrowRight size={16} />
-                  </button>
-                </div>
-                <div className="studio-builder-paper" aria-hidden="true">
-                  <span>YOUR SPACE ON THE WEB</span>
-                  <div>Make something<br /><em>worth sharing.</em></div>
-                  <i />
-                  <small>Stories. Projects. Possibilities.</small>
-                </div>
-              </div>
+        {/* Architectural Spec Strip */}
+        <div className="hero-spec-strip">
+          <div className="hero-spec-item">
+            <ShieldCheck size={16} color="var(--accent-green)" />
+            <div>
+              <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-primary)' }}>SHA-256 Verified Releases</div>
+              <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>Cryptographic delta package integrity</div>
             </div>
-          ) : (
-            <div className="mockup-inner">
-              <div className="mockup-titlebar">
-                <div className="mockup-dots">
-                  <div className="mockup-dot" style={{ background: '#ff5f56' }} />
-                  <div className="mockup-dot" style={{ background: '#ffbd2e' }} />
-                  <div className="mockup-dot" style={{ background: '#27c93f' }} />
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: 'var(--text-secondary)' }}>
-                  <img src="/brand/inaayah-symbol.svg" alt="Inaayah" style={{ width: 14, height: 14 }} />
-                  <span style={{ fontWeight: 600, letterSpacing: '0.05em' }}>
-                    {activeTab === 'games' && `INAAYAH LAUNCHER ${latestVersion.toUpperCase()} · VIGILANTE: RED CITY`}
-                    {activeTab === 'kettle' && 'KETTLE COURT · CLOUDFLARE EDGE DURABLE OBJECTS'}
-                  </span>
-                </div>
-                <div style={{ width: 48 }} />
-              </div>
-
-              {/* TAB 2: GAMES & LAUNCHER */}
-            {activeTab === 'games' && (
-              <div className="studio-preview-panel">
-                <img
-                  src="/images/vigilante-red-city-banner.jpg"
-                  alt="Vigilante: Red City — the Demir family"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }}
-                />
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background: 'linear-gradient(180deg, rgba(11,14,20,0.1) 0%, rgba(11,14,20,0.85) 75%, rgba(11,14,20,0.98) 100%)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'flex-end',
-                    padding: 'clamp(20px, 4vw, 36px)'
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}>
-                    <div style={{ textAlign: 'left' }}>
-                      <span className="badge badge-cyan" style={{ marginBottom: 8 }}>Featured Studio Title</span>
-                      <h2 style={{ fontSize: 'clamp(24px, 4vw, 32px)', fontWeight: 900, marginBottom: 8, color: '#fff' }}>Vigilante: Red City</h2>
-                      <p style={{ color: 'var(--text-secondary)', fontSize: 14, maxWidth: 520 }}>
-                        Bring Inaayah home in a five-stage comic rescue adventure. Three heroes, local and online co-op, and a vocal nasheed soundtrack.
-                      </p>
-                    </div>
-                    <div style={{ display: 'flex', gap: 12 }}>
-                      <button
-                        onClick={() => handleScroll('games')}
-                        className="btn btn-primary"
-                        style={{ padding: '12px 24px' }}
-                      >
-                        <Play size={16} fill="currentColor" />
-                        <span>Explore Game Releases</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* TAB 3: KETTLE COURT */}
-            {activeTab === 'kettle' && (
-              <div className="studio-preview-panel">
-                <img
-                  src="/images/kettle-court-banner.jpg"
-                  alt="Kettle Court Table Game"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }}
-                />
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background: 'linear-gradient(180deg, rgba(11,14,20,0.1) 0%, rgba(11,14,20,0.85) 75%, rgba(11,14,20,0.98) 100%)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'flex-end',
-                    padding: 'clamp(20px, 4vw, 36px)'
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}>
-                    <div style={{ textAlign: 'left' }}>
-                      <span className="badge badge-green" style={{ marginBottom: 8 }}>Instant Web Play · Edge Durable Objects</span>
-                      <h2 style={{ fontSize: 'clamp(24px, 4vw, 32px)', fontWeight: 900, marginBottom: 8, color: '#fff' }}>Kettle Court: Medieval Strategy</h2>
-                      <p style={{ color: 'var(--text-secondary)', fontSize: 14, maxWidth: 520 }}>
-                        Turn-based cozy fairground strategy game for 2 to 5 players. Play directly in any desktop or mobile browser with zero installs.
-                      </p>
-                    </div>
-                    <div style={{ display: 'flex', gap: 12 }}>
-                      <a
-                        href="https://kettle-court.inaayah.dev/"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="btn btn-glow-magenta"
-                        style={{ padding: '12px 24px' }}
-                      >
-                        <Play size={16} fill="currentColor" />
-                        <span>Play in Browser Now</span>
-                        <ArrowUpRight size={16} />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
-        )}
+          <div className="hero-spec-item">
+            <Zap size={16} color="var(--accent-gold)" />
+            <div>
+              <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-primary)' }}>Sub-Second Edge Infrastructure</div>
+              <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>Cloudflare Workers &amp; Nakama 7350 relays</div>
+            </div>
+          </div>
+          <div className="hero-spec-item">
+            <Sparkles size={16} color="var(--accent-cyan)" />
+            <div>
+              <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-primary)' }}>Native Cross-Platform Builds</div>
+              <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>Universal macOS, Windows x64 &amp; Linux</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

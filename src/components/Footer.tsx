@@ -1,17 +1,16 @@
 import React from 'react';
 import { BrandLogo } from './BrandLogo';
 
-
-const CURRENT_YEAR = new Date().getFullYear();
-
 interface FooterProps {
   onNavigate?: (path: string, sectionId?: string) => void;
   isGamesRoute?: boolean;
 }
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 export const Footer: React.FC<FooterProps> = ({ onNavigate, isGamesRoute = false }) => {
   const navigateToSection = (event: React.MouseEvent<HTMLAnchorElement>, path: string, sectionId: string) => {
-    if (!onNavigate || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    if (!onNavigate) return;
     event.preventDefault();
     onNavigate(path, sectionId);
   };
@@ -20,32 +19,36 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, isGamesRoute = false
     <footer className="footer">
       <div className="container">
         <div className="footer-inner">
-          <div style={{ maxWidth: 360 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+          <div style={{ maxWidth: 340 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
               <BrandLogo division={isGamesRoute ? 'games' : 'studio'} size={28} />
             </div>
-            <p style={{ color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.6 }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: 13.5, lineHeight: 1.6 }}>
               {isGamesRoute
                 ? 'Gaming division of Inaayah Studio — crafting native desktop co-op campaigns and instant daily browser games.'
                 : 'Independent creative software studio crafting high-energy indie games, tactile visual web tools, and modern software.'}
             </p>
+            <div className="status-pill">
+              <span className="status-pill-dot" />
+              <span>All edge relays operational · Nakama 7350</span>
+            </div>
           </div>
 
-          <div style={{ display: 'flex', gap: 48, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 56, flexWrap: 'wrap' }}>
             <div>
-              <h4 style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)', marginBottom: 14 }}>
-                Products & Tools
+              <h4 style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-primary)', marginBottom: 14 }}>
+                Products &amp; Tools
               </h4>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, fontSize: 13, color: 'var(--text-secondary)' }}>
                 <li>
                   <a href="/#builder" onClick={(event) => navigateToSection(event, '/', 'builder')} className="nav-link" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                     <span>Inaayah Builder</span>
-                    <span className="badge badge-gold" style={{ fontSize: 8, padding: '0 4px' }}>Pre-Alpha</span>
+                    <span className="badge badge-gold" style={{ fontSize: 9, padding: '0 5px' }}>Pre-Alpha</span>
                   </a>
                 </li>
-                <li><a href="/games" onClick={(e) => { if (onNavigate) { e.preventDefault(); onNavigate('/games'); } }} className="nav-link">Games & Launcher (/games)</a></li>
+                <li><a href="/games" onClick={(e) => { if (onNavigate) { e.preventDefault(); onNavigate('/games'); } }} className="nav-link">Games &amp; Launcher (/games)</a></li>
                 <li><a href="https://arcade.inaayah.dev" target="_blank" rel="noreferrer" className="nav-link">Inaayah Web Arcade ↗</a></li>
-                <li><a href="/games/vigilante-red-city/" onClick={(event) => navigateToSection(event, '/games/vigilante-red-city/', '')} className="nav-link">Vigilante: Red City</a></li>
+                <li><a href="/games#vigilante-red-city" onClick={(event) => navigateToSection(event, '/games', 'vigilante-red-city')} className="nav-link">Vigilante: Red City</a></li>
                 <li><a href="/games#aether-rush" onClick={(event) => navigateToSection(event, '/games', 'aether-rush')} className="nav-link">AetherRush 3D</a></li>
                 <li><a href="https://arcade.inaayah.dev/eyetest" target="_blank" rel="noreferrer" className="nav-link">Optik: Daily EyeTest ↗</a></li>
                 <li><a href="https://kettle-court.inaayah.dev/" target="_blank" rel="noreferrer" className="nav-link">Kettle Court ↗</a></li>
@@ -54,13 +57,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, isGamesRoute = false
             </div>
 
             <div>
-              <h4 style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)', marginBottom: 14 }}>
-                Downloads & Resources
+              <h4 style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-primary)', marginBottom: 14 }}>
+                Downloads &amp; Releases
               </h4>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, fontSize: 13, color: 'var(--text-secondary)' }}>
                 <li>
                   <a href="https://github.com/inaayah/inaayah-launcher" target="_blank" rel="noreferrer" className="nav-link">
-                    Launcher Repo ↗
+                    Launcher Repository ↗
                   </a>
                 </li>
                 <li>
@@ -69,11 +72,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, isGamesRoute = false
                   </a>
                 </li>
                 <li>
-                  <a href="/games/vigilante-red-city/" onClick={(event) => navigateToSection(event, '/games/vigilante-red-city/', '')} className="nav-link">Vigilante: Red City ↗</a>
+                  <a href="/games#vigilante-red-city" onClick={(event) => navigateToSection(event, '/games', 'vigilante-red-city')} className="nav-link">
+                    Vigilante: Red City ↗
+                  </a>
                 </li>
-                <li><a href="/games/vigilante-red-city/privacy" className="nav-link">Vigilante privacy</a></li>
-                <li><a href="/games/vigilante-red-city/terms" className="nav-link">Vigilante terms</a></li>
-                <li><a href="/games/vigilante-red-city/delete-data" className="nav-link">Delete Vigilante data</a></li>
                 <li>
                   <a href="https://github.com/inaayah/aether-rush/releases" target="_blank" rel="noreferrer" className="nav-link">
                     AetherRush Releases ↗
@@ -83,16 +85,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, isGamesRoute = false
             </div>
 
             <div>
-              <h4 style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)', marginBottom: 14 }}>
-                Network
+              <h4 style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-primary)', marginBottom: 14 }}>
+                Infrastructure
               </h4>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--accent-green)' }}>
-                <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--accent-green)', boxShadow: '0 0 8px var(--accent-green)' }} />
-                <span>Edge Relays Operational</span>
-              </div>
-              <p style={{ color: 'var(--text-muted)', fontSize: 12, marginTop: 8 }}>
-                Nakama 7350 · Cloudflare DO
-              </p>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, fontSize: 13, color: 'var(--text-secondary)' }}>
+                <li><a href="#technology" className="nav-link">Godot 4 Pipeline</a></li>
+                <li><a href="#technology" className="nav-link">Cloudflare Durable Objects</a></li>
+                <li><a href="#technology" className="nav-link">SHA-256 Delta Releases</a></li>
+              </ul>
             </div>
           </div>
         </div>
@@ -101,9 +101,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, isGamesRoute = false
           <div>
             © {CURRENT_YEAR} Inaayah Studio. All rights reserved.
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-muted)' }}>
-            <span>Built with passion & precision</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 11 }}>
+            <span>INAAYAH.DEV // EDGE PRODUCTION</span>
           </div>
+        </div>
+
+        <div className="footer-watermark" aria-hidden="true">
+          INAAYAH
         </div>
       </div>
     </footer>

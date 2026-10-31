@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Gamepad2, Play, Download, CheckCircle, ArrowUpRight, ChevronDown, Sparkles, Globe } from 'lucide-react';
+import { Play, Download, CheckCircle, ArrowUpRight, ChevronDown, Sparkles, Globe } from 'lucide-react';
 
 interface GamesSectionProps {
   isStandalonePage?: boolean;
@@ -8,118 +8,127 @@ interface GamesSectionProps {
 export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = false }) => {
   const [versions, setVersions] = useState<Record<string, string>>({});
   useEffect(() => {
-    let active = true;
-    let pending: AbortController | undefined;
-    const refresh = async () => {
-      pending?.abort();
-      const controller = new AbortController();
-      pending = controller;
-      try {
-        const response = await fetch('https://releases.inaayah.dev/api/games', { cache: 'no-store', signal: controller.signal });
-        if (!response.ok) return;
-        const catalog: unknown = await response.json();
-        if (active && Array.isArray(catalog)) {
-          setVersions(Object.fromEntries(catalog.filter(item => typeof item.id === 'string' &&
-            typeof item.version === 'string' && /^\d+\.\d+\.\d+$/.test(item.version)).map(item => [item.id, item.version])));
+    const controller = new AbortController();
+    fetch('https://releases.inaayah.dev/api/games', { signal: controller.signal })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((catalog: unknown) => {
+        if (Array.isArray(catalog)) {
+          setVersions(
+            Object.fromEntries(
+              catalog
+                .filter(
+                  (item) =>
+                    typeof item.id === 'string' &&
+                    typeof item.version === 'string' &&
+                    /^\d+\.\d+\.\d+$/.test(item.version)
+                )
+                .map((item) => [item.id, item.version])
+            )
+          );
         }
-      } catch { /* Keep the last successful version during a transient outage. */ }
-    };
-    void refresh();
-    const timer = window.setInterval(refresh, 60000);
-    window.addEventListener('focus', refresh);
-    return () => { active = false; pending?.abort(); window.clearInterval(timer); window.removeEventListener('focus', refresh); };
+      })
+      .catch(() => {});
+    return () => controller.abort();
   }, []);
+
   return (
-    <section id="games" className="section" style={{ background: 'linear-gradient(180deg, transparent 0%, rgba(17, 22, 34, 0.4) 50%, transparent 100%)' }}>
+    <section id="games" className="section">
       <div className="container">
-        <div className="section-header">
-          <div className="section-tag">
-            <span className="badge badge-cyan">
-              <Gamepad2 size={13} />
-              {isStandalonePage ? 'Inaayah Games · Desktop Launcher & Web Arcade' : 'Gaming Division'}
-            </span>
-          </div>
+        <div className="section-rule">
+          <span className="section-index">
+            <span className="section-index-num">03 //</span>
+            <span>{isStandalonePage ? 'INAAYAH GAMES · DESKTOP & WEB ARCADE' : 'GAMING DIVISION'}</span>
+          </span>
+          <span>DESKTOP CO-OP &amp; INSTANT WEB RELEASES</span>
+        </div>
+
+        <div className="section-header-split">
           <h2 className="section-title">
-            Crafted for <span className="gradient-text-cyan">Adrenaline, Precision & Cozy Strategy.</span>
+            <span className="tone-muted">Crafted for</span> adrenaline, precision,{' '}
+            <span className="tone-serif">and cozy strategy.</span>
           </h2>
           <p className="section-subtitle">
-            Play native 2.5D & 3D co-op campaigns through the <strong>Inaayah Desktop Launcher</strong>, or jump straight into instant daily browser games at <a href="https://arcade.inaayah.dev" target="_blank" rel="noreferrer" style={{ color: 'var(--accent-cyan)', textDecoration: 'underline' }}>arcade.inaayah.dev</a>.
+            Play native 2.5D &amp; 3D co-op campaigns through the <strong>Inaayah Desktop Launcher</strong>, or jump straight into instant daily browser games at <a href="https://arcade.inaayah.dev" target="_blank" rel="noreferrer" style={{ color: 'var(--text-primary)', textDecoration: 'underline' }}>arcade.inaayah.dev</a>.
           </p>
         </div>
 
-        {/* Dedicated Desktop Launcher Banner (always visible on /games, and linked as #launcher) */}
+        {/* Dedicated Desktop Launcher Banner in Double-Bezel Frame */}
         <div
           id={isStandalonePage ? 'launcher' : 'launcher-spotlight'}
-          className="glass-panel"
-          style={{
-            padding: '24px 28px',
-            marginBottom: 28,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: 20,
-            border: '1px solid rgba(0, 240, 255, 0.28)',
-            background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.09) 0%, rgba(17, 22, 34, 0.75) 100%)'
-          }}
+          className="bezel-outer"
+          style={{ marginBottom: 28 }}
         >
-          <div style={{ maxWidth: 560, minWidth: 0 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
-              <span className="badge badge-cyan">Inaayah Desktop Launcher</span>
-              <span className="badge badge-gold">SHA-256 Verified · Auto-Updating</span>
+          <div
+            className="bezel-inner"
+            style={{
+              padding: '24px 28px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: 20
+            }}
+          >
+            <div style={{ maxWidth: 560, minWidth: 0 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
+                <span className="badge badge-cyan">Inaayah Desktop Launcher</span>
+                <span className="badge badge-gold">SHA-256 Verified · Auto-Updating</span>
+              </div>
+              <h3 style={{ fontSize: 21, marginBottom: 6 }}>One Native Hub for Desktop Releases</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.55 }}>
+                Install, patch, and launch our full Godot 4 desktop games with SHA-256 verified delta downloads and controller support.
+              </p>
             </div>
-            <h3 style={{ fontSize: 22, marginBottom: 6 }}>One Native Hub for Desktop Releases</h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.55 }}>
-              Install, patch, and launch our full Godot 4 desktop games with SHA-256 verified delta downloads and controller support.
-            </p>
-          </div>
-          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-            <a href="https://releases.inaayah.dev/api/launcher/download/mac" className="btn btn-primary" style={{ padding: '11px 18px', fontSize: 13 }}>
-              <Download size={15} />
-              <span>macOS (.dmg)</span>
-            </a>
-            <a href="https://releases.inaayah.dev/api/launcher/download/windows" className="btn btn-secondary" style={{ padding: '11px 16px', fontSize: 13 }}>
-              <Download size={15} />
-              <span>Windows (.exe)</span>
-            </a>
-            <a href="https://releases.inaayah.dev/api/launcher/download/linux" className="btn btn-secondary" style={{ padding: '11px 16px', fontSize: 13 }}>
-              <Download size={15} />
-              <span>Linux (.AppImage)</span>
-            </a>
+            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+              <a href="https://releases.inaayah.dev/api/launcher/download/mac" className="btn btn-primary" style={{ padding: '10px 16px', fontSize: 13 }}>
+                <Download size={14} />
+                <span>macOS (.dmg)</span>
+              </a>
+              <a href="https://releases.inaayah.dev/api/launcher/download/windows" className="btn btn-secondary" style={{ padding: '10px 15px', fontSize: 13 }}>
+                <Download size={14} />
+                <span>Windows (.exe)</span>
+              </a>
+              <a href="https://releases.inaayah.dev/api/launcher/download/linux" className="btn btn-secondary" style={{ padding: '10px 15px', fontSize: 13 }}>
+                <Download size={14} />
+                <span>Linux (.AppImage)</span>
+              </a>
+            </div>
           </div>
         </div>
 
         <div className="games-grid">
           {/* Featured release: Vigilante: Red City */}
-          <div id="vigilante-red-city" className="glass-panel game-card-featured">
-            <div className="game-card-img-wrapper" style={{ height: 'auto', minHeight: 440 }}>
-              <img src="/images/vigilante-red-city-cover.jpg" alt="Murat, Zeynep and Emir in Vigilante: Red City" className="game-card-img" />
-              <div style={{ position: 'absolute', top: 20, left: 20, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                <span className="badge badge-cyan">Featured{versions['vigilante-red-city'] ? ` · v${versions['vigilante-red-city']} Live` : ' · Available now'}</span>
-                <span className="badge badge-gold">Comic Beat ’Em Up</span>
+          <div id="vigilante-red-city" className="bezel-outer" style={{ gridColumn: 'span 12' }}>
+            <div className="bezel-inner game-card-featured">
+              <div className="game-card-img-wrapper" style={{ height: 'auto', minHeight: 420 }}>
+                <img src="/images/vigilante-red-city-cover.jpg" alt="Murat, Zeynep and Emir in Vigilante: Red City" className="game-card-img" />
+                <div style={{ position: 'absolute', top: 18, left: 18, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                  <span className="badge badge-cyan">Featured{versions['vigilante-red-city'] ? ` · v${versions['vigilante-red-city']} Live` : ' · Available now'}</span>
+                  <span className="badge badge-gold">Comic Beat ’Em Up</span>
+                </div>
               </div>
-            </div>
-            <div className="game-card-content">
-              <div>
-                <span className="badge" style={{ marginBottom: 12 }}>One Family. One City. Bring Her Home.</span>
-                <h3 style={{ fontSize: 30, marginBottom: 10 }}><a href="/games/vigilante-red-city/">Vigilante: Red City</a></h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: 15, lineHeight: 1.6 }}>
-                  Vance wants the family garage. When the Demirs refuse, he takes Inaayah.
-                  Fight as Murat, Zeynep or Emir across neon streets, subway platforms,
-                  docks and foundries to the final rescue above Red City.
-                </p>
-                <ul className="game-features-list">
-                  <li><CheckCircle size={16} color="var(--accent-cyan)" /><span><strong>Five Connected Stages:</strong> Comic scenes, varied enemies and five boss battles.</span></li>
-                  <li><CheckCircle size={16} color="var(--accent-cyan)" /><span><strong>Fight Together:</strong> Solo, shared-screen, split-screen and direct online co-op.</span></li>
-                  <li><CheckCircle size={16} color="var(--accent-cyan)" /><span><strong>Vocal Nasheed Soundtrack:</strong> An emotional journey with recorded combat sounds.</span></li>
-                  <li><CheckCircle size={16} color="var(--accent-cyan)" /><span><strong>Your Completion Gift:</strong> Unlock sketchbook memories and the complete 71-page in-game comic.</span></li>
-                </ul>
+              <div className="game-card-content">
+                <div>
+                  <span className="badge" style={{ marginBottom: 12 }}>One Family. One City. Bring Her Home.</span>
+                  <h3 style={{ fontSize: 28, marginBottom: 10 }}><a href="/games/vigilante-red-city/">Vigilante: Red City</a></h3>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: 14.5, lineHeight: 1.6 }}>
+                    Vance wants the family garage. When the Demirs refuse, he takes Inaayah.
+                    Fight as Murat, Zeynep or Emir across neon streets, subway platforms,
+                    docks and foundries to the final rescue above Red City.
+                  </p>
+                  <ul className="game-features-list">
+                    <li><CheckCircle size={15} color="var(--accent-cyan)" style={{ marginTop: 3, flexShrink: 0 }} /><span><strong>Five Connected Stages:</strong> Comic scenes, varied enemies and five boss battles.</span></li>
+                    <li><CheckCircle size={15} color="var(--accent-cyan)" style={{ marginTop: 3, flexShrink: 0 }} /><span><strong>Fight Together:</strong> Solo, shared-screen, split-screen and direct online co-op.</span></li>
+                    <li><CheckCircle size={15} color="var(--accent-cyan)" style={{ marginTop: 3, flexShrink: 0 }} /><span><strong>Vocal Nasheed Soundtrack:</strong> An emotional journey with recorded combat sounds.</span></li>
+                    <li><CheckCircle size={15} color="var(--accent-cyan)" style={{ marginTop: 3, flexShrink: 0 }} /><span><strong>Your Completion Gift:</strong> Unlock sketchbook memories and the complete 71-page in-game comic.</span></li>
+                  </ul>
+                </div>
+                <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginTop: 22, paddingTop: 18, borderTop: '1px solid var(--border-subtle)' }}>
+                  <a href="/games#launcher" className="btn btn-primary" style={{ padding: '11px 20px' }}><Download size={15} /><span>Play via Launcher</span></a>
+                  <a href="/games/vigilante-red-city/" className="btn btn-secondary" style={{ padding: '11px 18px' }}>Explore the game <ArrowUpRight size={15} /></a>
+                </div>
+                <p className="game-availability">Available through Inaayah Launcher for macOS, Windows and Linux. Play solo or bring family and friends.</p>
               </div>
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 24, paddingTop: 20, borderTop: '1px solid var(--border-subtle)' }}>
-                <a href="/games/vigilante-red-city/" className="btn btn-secondary" style={{ padding: '12px 18px' }}>Explore the game <ArrowUpRight size={16} /></a>
-                <a href="/games#launcher" className="btn btn-primary" style={{ padding: '12px 24px' }}><Download size={16} /><span>Play via Launcher</span></a>
-              </div>
-              <p className="game-availability">Available through Inaayah Launcher for macOS, Windows and Linux. Play solo or bring family and friends.</p>
             </div>
           </div>
 
@@ -142,7 +151,7 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
               </details>
             </div>
             <div className="game-compact-actions">
-              <a href="#launcher" className="btn btn-primary"><Download size={15} />Play via Launcher</a>
+              <a href="#launcher" className="btn btn-primary"><Download size={14} />Play via Launcher</a>
             </div>
           </article>
 
@@ -164,11 +173,11 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
               </details>
             </div>
             <div className="game-compact-actions">
-              <a href="https://kettle-court.inaayah.dev/" target="_blank" rel="noreferrer" className="btn btn-glow-magenta"><Play size={15} fill="currentColor" />Play in Browser <ArrowUpRight size={14} /></a>
+              <a href="https://kettle-court.inaayah.dev/" target="_blank" rel="noreferrer" className="btn btn-primary"><Play size={14} fill="currentColor" />Play in Browser <ArrowUpRight size={14} /></a>
             </div>
           </article>
 
-          {/* Inaayah Web Arcade Hub Spotlight (arcade.inaayah.dev + Optik: Daily EyeTest) */}
+          {/* Inaayah Web Arcade Hub Spotlight */}
           <h3 className="game-row-heading" style={{ marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
             <span>Inaayah Web Arcade · Instant Browser Games</span>
             <a
@@ -176,11 +185,11 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
               target="_blank"
               rel="noreferrer"
               className="btn btn-secondary"
-              style={{ padding: '8px 16px', fontSize: 13 }}
+              style={{ padding: '7px 14px', fontSize: 12, textTransform: 'none', letterSpacing: 'normal', fontFamily: 'var(--font-sans)' }}
             >
-              <Globe size={14} color="var(--accent-cyan)" />
+              <Globe size={13} />
               <span>Visit arcade.inaayah.dev</span>
-              <ArrowUpRight size={14} />
+              <ArrowUpRight size={13} />
             </a>
           </h3>
 
@@ -195,19 +204,19 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
               <details className="game-details">
                 <summary>Game details <ChevronDown size={15} aria-hidden="true" /></summary>
                 <ul>
-                  <li>Rotating 10-challenge pool: Chroma, Centroid, Kerning, Bisect, Angle, Parallel, Symmetry, Aperture, Circumcenter & Midtone.</li>
+                  <li>Rotating 10-challenge pool: Chroma, Centroid, Kerning, Bisect, Angle, Parallel, Symmetry, Aperture, Circumcenter &amp; Midtone.</li>
                   <li>Pure 0–100% Optical Accuracy + 1.00×–1.25× Speed Multiplier.</li>
-                  <li>Instant ~3 KB SVG visual scorecards & head-to-head challenge links.</li>
+                  <li>Instant ~3 KB SVG visual scorecards &amp; head-to-head challenge links.</li>
                 </ul>
               </details>
             </div>
             <div className="game-compact-actions">
-              <a href="https://arcade.inaayah.dev/eyetest" target="_blank" rel="noreferrer" className="btn btn-glow-magenta"><Play size={15} fill="currentColor" />Play Today&apos;s EyeTest <ArrowUpRight size={14} /></a>
-              <a href="https://arcade.inaayah.dev/" target="_blank" rel="noreferrer" className="btn btn-secondary"><Sparkles size={14} />All Arcade Games <ArrowUpRight size={14} /></a>
+              <a href="https://arcade.inaayah.dev/eyetest" target="_blank" rel="noreferrer" className="btn btn-primary"><Play size={14} fill="currentColor" />Play Today&apos;s EyeTest <ArrowUpRight size={14} /></a>
+              <a href="https://arcade.inaayah.dev/" target="_blank" rel="noreferrer" className="btn btn-secondary"><Sparkles size={13} />All Arcade Games <ArrowUpRight size={13} /></a>
             </div>
           </article>
 
-          <h3 className="game-row-heading game-upcoming-heading">In development</h3>
+          <h3 className="game-row-heading">In development</h3>
           <div className="game-upcoming-grid">
             <article className="glass-panel game-card-mini">
               <div className="game-card-img-wrapper">
@@ -238,7 +247,6 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
               </div>
             </article>
           </div>
-
         </div>
       </div>
     </section>

@@ -11,24 +11,18 @@ export function VigilantePage() {
   const [version, setVersion] = useState('');
 
   useEffect(() => {
-    let active = true;
-    let pending: AbortController | undefined;
-    const refresh = async () => {
-      pending?.abort();
-      pending = new AbortController();
-      try {
-        const response = await fetch('https://releases.inaayah.dev/api/games', { cache: 'no-store', signal: pending.signal });
-        if (!response.ok) return;
-        const data: unknown = await response.json();
-        if (!active || !Array.isArray(data)) return;
-        const game = data.find(item => item?.id === 'vigilante-red-city');
-        if (typeof game?.version === 'string' && /^\d+\.\d+\.\d+$/.test(game.version)) setVersion(game.version);
-      } catch { /* Keep the last confirmed version while the release service is unavailable. */ }
-    };
-    void refresh();
-    const timer = window.setInterval(refresh, 60000);
-    window.addEventListener('focus', refresh);
-    return () => { active = false; pending?.abort(); window.clearInterval(timer); window.removeEventListener('focus', refresh); };
+    const controller = new AbortController();
+    fetch('https://releases.inaayah.dev/api/games', { signal: controller.signal })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data: unknown) => {
+        if (!Array.isArray(data)) return;
+        const game = data.find((item) => item?.id === 'vigilante-red-city');
+        if (typeof game?.version === 'string' && /^\d+\.\d+\.\d+$/.test(game.version)) {
+          setVersion(game.version);
+        }
+      })
+      .catch(() => {});
+    return () => controller.abort();
   }, []);
 
   return (
