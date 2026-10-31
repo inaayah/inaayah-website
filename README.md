@@ -64,7 +64,7 @@ npm run lint
 ```
 
 This places reviewed static HTML in `public/games/vigilante-red-city/` and
-maintains the legal redirect block before the broad Games SPA rewrite.
+maintains legacy and trailing-slash redirects. Cloudflare Pages serves the static extensionless document paths natively and provides the root SPA fallback without a broad Games rewrite.
 The old `/privacy/vigilante-red-city.html#delete-data` link keeps working through
 an HTTP redirect and the preserved anchor. The overview itself uses the React
 route and the policy links use full-page navigation to the static documents.
