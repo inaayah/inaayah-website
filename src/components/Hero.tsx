@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Download,
   ShieldCheck,
@@ -63,6 +63,17 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
   const [activeTab, setActiveTab] = useState<'builder' | 'games' | 'kettle'>('builder');
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
+  const osMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (osMenuRef.current && !osMenuRef.current.contains(e.target as Node)) {
+        setShowAllPlatforms(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     if (!isAutoPlay || isHovered) return;
@@ -188,71 +199,115 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
               <button
                 onClick={() => handleScroll('builder')}
                 className="btn btn-primary"
-                style={{ padding: '12px 22px', fontSize: 14 }}
+                style={{ padding: '11px 20px', fontSize: 14 }}
               >
                 <span>Explore Web Builder</span>
                 <ArrowRight size={15} />
               </button>
 
-              <a
-                href={activePlatform.url}
-                className="btn btn-secondary"
-                style={{ padding: '12px 20px', fontSize: 14 }}
-              >
-                <Download size={15} />
-                <span>Get Launcher ({activePlatform.name})</span>
-              </a>
+              <div ref={osMenuRef} style={{ position: 'relative', display: 'inline-flex' }}>
+                <div className="hero-split-btn">
+                  <a
+                    href={activePlatform.url}
+                    className="hero-split-action"
+                  >
+                    <Download size={15} />
+                    <span>Get Launcher ({activePlatform.name})</span>
+                  </a>
 
-              <button
-                onClick={() => setShowAllPlatforms(!showAllPlatforms)}
-                className="btn btn-secondary"
-                style={{ padding: '12px 14px', fontSize: 13 }}
-                title="Select another OS"
-              >
-                <span>OS</span>
-                <ChevronDown size={14} style={{ transform: showAllPlatforms ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
-              </button>
-            </div>
-
-            {showAllPlatforms && (
-              <div
-                className="glass-panel"
-                style={{
-                  padding: '12px 14px',
-                  display: 'flex',
-                  gap: 10,
-                  flexWrap: 'wrap'
-                }}
-              >
-                {(Object.keys(platforms) as Array<'mac' | 'windows' | 'linux'>).map((key) => {
-                  const p = platforms[key];
-                  return (
-                    <a
-                      key={key}
-                      href={p.url}
-                      className="btn btn-secondary"
+                  <button
+                    type="button"
+                    onClick={() => setShowAllPlatforms(!showAllPlatforms)}
+                    className="hero-split-dropdown"
+                    title="Select another operating system"
+                    aria-label="Select another operating system"
+                    aria-expanded={showAllPlatforms}
+                  >
+                    <ChevronDown
+                      size={14}
                       style={{
-                        padding: '8px 12px',
-                        fontSize: 12,
-                        borderColor: detectedOs === key ? 'var(--brand-accent)' : 'var(--border-glass)'
+                        transform: showAllPlatforms ? 'rotate(180deg)' : 'none',
+                        transition: 'transform 0.2s ease'
+                      }}
+                    />
+                  </button>
+                </div>
+
+                {showAllPlatforms && (
+                  <div
+                    className="glass-panel"
+                    style={{
+                      position: 'absolute',
+                      top: 'calc(100% + 8px)',
+                      right: 0,
+                      width: 248,
+                      padding: '8px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 4,
+                      zIndex: 80,
+                      background: 'var(--bg-dropdown)',
+                      borderColor: 'var(--border-glass)',
+                      boxShadow: 'var(--shadow-bezel)'
+                    }}
+                  >
+                    <div
+                      style={{
+                        padding: '6px 10px',
+                        fontSize: 10,
+                        fontFamily: 'var(--font-mono)',
+                        fontWeight: 600,
+                        color: 'var(--text-muted)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.08em'
                       }}
                     >
-                      <Download size={13} />
-                      <span>{p.name} {p.ext}</span>
+                      Select OS ({latestVersion})
+                    </div>
+                    {(Object.keys(platforms) as Array<'mac' | 'windows' | 'linux'>).map((key) => {
+                      const p = platforms[key];
+                      return (
+                        <a
+                          key={key}
+                          href={p.url}
+                          onClick={() => setShowAllPlatforms(false)}
+                          className="btn btn-secondary"
+                          style={{
+                            justifyContent: 'flex-start',
+                            padding: '8px 12px',
+                            fontSize: 12,
+                            borderColor: detectedOs === key ? 'var(--brand-accent)' : 'transparent',
+                            background: detectedOs === key ? 'var(--btn-secondary-hover)' : 'transparent'
+                          }}
+                        >
+                          <Download size={13} />
+                          <span>{p.name} ({p.ext})</span>
+                        </a>
+                      );
+                    })}
+                    <div style={{ height: 1, background: 'var(--border-subtle)', margin: '4px 0' }} />
+                    <a
+                      href="https://github.com/inaayah/inaayah-launcher/releases/latest"
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={() => setShowAllPlatforms(false)}
+                      className="btn btn-secondary"
+                      style={{
+                        justifyContent: 'space-between',
+                        padding: '8px 12px',
+                        fontSize: 11,
+                        color: 'var(--text-secondary)',
+                        borderColor: 'transparent',
+                        background: 'transparent'
+                      }}
+                    >
+                      <span>All Release Archives</span>
+                      <span>↗</span>
                     </a>
-                  );
-                })}
-                <a
-                  href="https://github.com/inaayah/inaayah-launcher/releases/latest"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-secondary"
-                  style={{ padding: '8px 12px', fontSize: 12 }}
-                >
-                  <span>All Release Archives ↗</span>
-                </a>
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </div>
         </div>
 

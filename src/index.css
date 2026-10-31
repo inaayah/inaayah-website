@@ -632,6 +632,58 @@ a {
   flex-wrap: wrap;
 }
 
+.hero-split-btn {
+  display: inline-flex;
+  align-items: stretch;
+  border-radius: var(--radius-md);
+  background: var(--btn-secondary-bg);
+  border: 1px solid var(--border-glass);
+  color: var(--text-primary);
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.hero-split-btn:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+.hero-split-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  background: transparent;
+  transition: background var(--transition-fast);
+}
+
+.hero-split-action:hover {
+  background: var(--btn-secondary-hover);
+}
+
+.hero-split-dropdown {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 11px;
+  background: transparent;
+  border: none;
+  border-left: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.hero-split-dropdown:hover {
+  background: var(--btn-secondary-hover);
+  color: var(--text-primary);
+}
+
 /* Studio Showcase Dock & Stage (Always Dark Cinema Viewport Inside Adaptive Bezel) */
 .stage-bezel {
   padding: 7px;
