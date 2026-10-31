@@ -8,10 +8,6 @@
 /games/vigilante-red-city/privacy/ /games/vigilante-red-city/privacy 301
 /games/vigilante-red-city/delete-data/ /games/vigilante-red-city/delete-data 301
 /games/vigilante-red-city/terms/ /games/vigilante-red-city/terms 301
-/games/vigilante-red-city/privacy /games/vigilante-red-city/privacy.html 200
-/games/vigilante-red-city/delete-data /games/vigilante-red-city/delete-data.html 200
-/games/vigilante-red-city/terms /games/vigilante-red-city/terms.html 200
 # vrc-legal:end
 /games/vigilante-red-city /games/vigilante-red-city/ 301
 /games /games/ 301
-/games/* /index.html 200
