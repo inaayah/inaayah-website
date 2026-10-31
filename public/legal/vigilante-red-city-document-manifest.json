@@ -9,10 +9,10 @@
     "version_code": 2,
     "version_name": "1.2.3",
     "sha256": "4db7a8a9fa1991af8b5f530153ebd308139ea28fc8ffa4074e095311cf2063be",
-    "status": "Local testing candidate; physical-device and Play checks pending"
+    "status": "Installed for local testing; interactive-device and Play checks pending"
   },
   "approval_scope": "Public policy documents only; not Play release or legal compliance certification",
-  "metadata_sha256": "9668a8b0ad87d5cab393f04f77616952b9caede15dbfb78e112f93803b0f6e9f",
+  "metadata_sha256": "b30714f2c8ba1acf5d698649c62cd6c4950223ab9bb03bc681346a27ea93ff72",
   "documents": [
     {
       "source": "PRIVACY_POLICY.md",
