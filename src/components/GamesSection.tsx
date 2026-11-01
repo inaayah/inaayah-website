@@ -13,11 +13,15 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
   }, []);
 
   return (
-    <section id="games" className="section">
+    <section
+      id="games"
+      className="section"
+      style={isStandalonePage ? { paddingTop: 64 } : undefined}
+    >
       <div className="container">
         <div className="section-rule">
           <span className="section-index">
-            <span className="section-index-num">03 //</span>
+            <span className="section-index-num">{isStandalonePage ? '01 //' : '03 //'}</span>
             <span>{isStandalonePage ? 'INAAYAH GAMES · DESKTOP & WEB ARCADE' : 'GAMING DIVISION'}</span>
           </span>
           <span>DESKTOP CO-OP &amp; INSTANT WEB RELEASES</span>

@@ -1,13 +1,17 @@
 import React from 'react';
 import { Cpu, ShieldCheck, Zap, Globe, Layers, Terminal } from 'lucide-react';
 
-export const TechSection: React.FC = () => {
+interface TechSectionProps {
+  sectionIndex?: string;
+}
+
+export const TechSection: React.FC<TechSectionProps> = ({ sectionIndex = '04 //' }) => {
   return (
     <section id="technology" className="section">
       <div className="container">
         <div className="section-rule">
           <span className="section-index">
-            <span className="section-index-num">04 //</span>
+            <span className="section-index-num">{sectionIndex}</span>
             <span>STUDIO ARCHITECTURE</span>
           </span>
           <span>GODOT 4 · NAKAMA 7350 · CLOUDFLARE EDGE</span>

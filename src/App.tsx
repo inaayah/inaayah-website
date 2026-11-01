@@ -77,13 +77,13 @@ export const App: React.FC = () => {
         onNavigate={navigateTo}
         isGamesRoute={isGamesRoute}
       />
-      <main style={{ flex: 1, paddingTop: isGamesRoute ? 32 : 0 }}>
+      <main style={{ flex: 1 }}>
         {isVigilantePage ? (
           <VigilantePage />
         ) : isGamesRoute ? (
           <>
             <GamesSection isStandalonePage />
-            <TechSection />
+            <TechSection sectionIndex="02 //" />
           </>
         ) : (
           <>

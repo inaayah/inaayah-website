@@ -1,4 +1,4 @@
-.vrc-page{--vrc-ink:#141c1a;--vrc-paper:#f6eedc;--vrc-gold:#f4ca50;--vrc-red:#c44d30;background:var(--vrc-ink);color:var(--vrc-paper);padding-top:44px}
+.vrc-page{--vrc-ink:#141c1a;--vrc-paper:#f6eedc;--vrc-gold:#f4ca50;--vrc-red:#c44d30;background:var(--vrc-ink);color:var(--vrc-paper)}
 .vrc-page a:focus-visible,.vrc-page button:focus-visible{outline:3px solid var(--vrc-gold);outline-offset:5px}
 .vrc-shell{width:min(1160px,calc(100% - 64px));margin-inline:auto}.vrc-page h2{font-size:clamp(28px,3.5vw,44px);line-height:1.12;letter-spacing:-.035em}.vrc-page h3{font-size:25px;line-height:1.2}
 .vrc-hero{position:relative;isolation:isolate;min-height:730px;overflow:hidden;border-bottom:1px solid #827253}.vrc-hero-art,.vrc-hero-shade{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}.vrc-hero-art{top:-25%;height:125%;object-position:65% center}.vrc-hero-shade{z-index:-1;background:linear-gradient(90deg,rgba(13,21,20,.96),rgba(13,21,20,.86) 31%,rgba(13,21,20,.24) 68%),linear-gradient(0deg,#141c1a,transparent 35%)}
