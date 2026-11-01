@@ -21,7 +21,19 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, isGamesRoute = false
         <div className="footer-inner">
           <div style={{ maxWidth: 340 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-              <BrandLogo division={isGamesRoute ? 'games' : 'studio'} size={28} />
+              <a
+                href="/"
+                onClick={(e) => {
+                  if (onNavigate) {
+                    e.preventDefault();
+                    onNavigate('/');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }}
+                style={{ display: 'inline-flex' }}
+              >
+                <BrandLogo division={isGamesRoute ? 'games' : 'studio'} size={28} />
+              </a>
             </div>
             <p style={{ color: 'var(--text-secondary)', fontSize: 13.5, lineHeight: 1.6 }}>
               {isGamesRoute

@@ -90,12 +90,13 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header className="navbar">
       <div className="container navbar-inner">
         <a
-          href={isGamesRoute ? '/games' : '/'}
+          href="/"
           className="nav-logo"
           onClick={(e) => {
             if (onNavigate) {
               e.preventDefault();
-              onNavigate(isGamesRoute ? '/games' : '/');
+              onNavigate('/');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
             }
           }}
         >
@@ -103,6 +104,20 @@ export const Navbar: React.FC<NavbarProps> = ({
         </a>
 
         <nav className="nav-links">
+          {isGamesRoute && (
+            <a
+              href="/"
+              className="nav-link"
+              onClick={(e) => {
+                if (onNavigate) {
+                  e.preventDefault();
+                  onNavigate('/');
+                }
+              }}
+            >
+              Studio Home
+            </a>
+          )}
           <a
             href="/#builder"
             className="nav-link"
