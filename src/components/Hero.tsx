@@ -466,6 +466,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                       src="/images/vigilante-red-city-banner.jpg"
                       alt="Vigilante: Red City — the Demir family"
                       className="stage-slide-art stage-slide-art-vigilante"
+                      decoding="async"
                     />
                     <div
                       style={{
@@ -514,6 +515,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                       src="/images/kettle-court-banner.jpg"
                       alt="Kettle Court Table Game"
                       className="stage-slide-art"
+                      decoding="async"
                     />
                     <div
                       style={{

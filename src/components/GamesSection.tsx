@@ -82,7 +82,13 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
           <div id="vigilante-red-city" className="bezel-outer" style={{ gridColumn: 'span 12' }}>
             <div className="bezel-inner game-card-featured">
               <div className="game-card-img-wrapper" style={{ height: 'auto', minHeight: 420 }}>
-                <img src="/images/vigilante-red-city-cover.jpg" alt="Murat, Zeynep and Emir in Vigilante: Red City" className="game-card-img" />
+                <img
+                  src="/images/vigilante-red-city-cover.jpg"
+                  alt="Murat, Zeynep and Emir in Vigilante: Red City"
+                  className="game-card-img"
+                  loading={isStandalonePage ? 'eager' : 'lazy'}
+                  decoding="async"
+                />
                 <div style={{ position: 'absolute', top: 18, left: 18, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                   <span className="badge badge-cyan">
                     <span>Featured ·</span>

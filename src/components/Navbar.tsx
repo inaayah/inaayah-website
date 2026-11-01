@@ -104,7 +104,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </a>
 
         <nav className="nav-links">
-          {isGamesRoute && (
+          {isGamesRoute ? (
             <a
               href="/"
               className="nav-link"
@@ -117,16 +117,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               Studio Home
             </a>
+          ) : (
+            <a
+              href="/#builder"
+              className="nav-link"
+              onClick={(e) => { e.preventDefault(); onScrollTo('builder'); }}
+              style={{ display: 'flex', alignItems: 'center', gap: 7 }}
+            >
+              <span>Website Builder</span>
+              <span className="badge badge-gold" style={{ fontSize: 9, padding: '1px 6px' }}>Pre-Alpha</span>
+            </a>
           )}
-          <a
-            href="/#builder"
-            className="nav-link"
-            onClick={(e) => { e.preventDefault(); onScrollTo('builder'); }}
-            style={{ display: 'flex', alignItems: 'center', gap: 7 }}
-          >
-            <span>Website Builder</span>
-            <span className="badge badge-gold" style={{ fontSize: 9, padding: '1px 6px' }}>Pre-Alpha</span>
-          </a>
           <a
             href="/games"
             className="nav-link"
