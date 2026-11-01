@@ -220,7 +220,7 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
 
           <h3 className="game-row-heading">In development</h3>
           <div className="game-upcoming-grid">
-            <article className="glass-panel game-card-mini">
+            <article id="cyber-tactics" className="glass-panel game-card-mini">
               <div className="game-card-img-wrapper">
                 <img src="/images/cyber-tactics-cover.jpg" alt="Cyber Tactics: Syndicate Wars concept art" className="game-card-img" loading="lazy" />
               </div>
@@ -234,7 +234,7 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
                 </details>
               </div>
             </article>
-            <article className="glass-panel game-card-mini">
+            <article id="sundered-depths" className="glass-panel game-card-mini">
               <div className="game-card-img-wrapper">
                 <img src="/images/sundered-depths-banner.jpg" alt="Sundered Depths fantasy adventure concept art" className="game-card-img" loading="lazy" />
               </div>
