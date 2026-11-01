@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Download, ChevronDown, Sparkles, Sun, Moon } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
+import { fetchLauncherRelease } from '../lib/releases';
 
 interface NavbarProps {
   onScrollTo: (id: string) => void;
@@ -15,7 +16,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [downloadUrl, setDownloadUrl] = useState('https://releases.inaayah.dev/api/launcher/download/mac');
   const [osName, setOsName] = useState('macOS');
-  const [version, setVersion] = useState('v0.2.5');
+  const [version, setVersion] = useState<string | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
     if (typeof document !== 'undefined') {
@@ -80,17 +81,9 @@ export const Navbar: React.FC<NavbarProps> = ({
       setDownloadUrl('https://releases.inaayah.dev/api/launcher/download/mac');
     }
 
-    fetch('https://releases.inaayah.dev/api/launcher/latest')
-      .then((res) => {
-        if (res.ok) return res.json();
-        return null;
-      })
-      .then((data) => {
-        if (!data) return;
-        const ver = data.version || data.tag_name;
-        if (ver) setVersion(ver.startsWith('v') ? ver : `v${ver}`);
-      })
-      .catch(() => {});
+    fetchLauncherRelease().then((release) => {
+      if (release?.version) setVersion(release.version);
+    });
   }, []);
 
   return (
@@ -166,10 +159,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             <a
               href={downloadUrl}
               className="split-btn-action"
-              title={`Download Inaayah Launcher for ${osName} (${version})`}
+              title={version ? `Download Inaayah Launcher for ${osName} (${version})` : `Download Inaayah Launcher for ${osName}`}
             >
               <Download size={13} />
-              <span>Get Launcher {version}</span>
+              <span>Get Launcher</span>
+              <span className="version-slot version-slot-btn">
+                {version ?? <span className="version-skeleton" aria-hidden="true" />}
+              </span>
             </a>
 
             <button
@@ -206,8 +202,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 borderColor: 'var(--border-glass)'
               }}
             >
-              <div style={{ padding: '6px 10px', fontSize: 10, fontFamily: 'var(--font-mono)', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                Select OS ({version})
+              <div style={{ padding: '6px 10px', fontSize: 10, fontFamily: 'var(--font-mono)', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span>Select OS</span>
+                <span className="version-slot version-slot-badge">
+                  {version ?? <span className="version-skeleton" aria-hidden="true" />}
+                </span>
               </div>
 
               <a

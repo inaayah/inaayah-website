@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowUpRight, Download, Gamepad2, Play, Shield, Users, Zap } from 'lucide-react';
+import { fetchGamesVersions } from '../lib/releases';
 import './VigilantePage.css';
 
 const GAME = '/games/vigilante-red-city';
@@ -8,21 +9,14 @@ const screenshots = [1, 2, 3, 4];
 
 export function VigilantePage() {
   const [playing, setPlaying] = useState(false);
-  const [version, setVersion] = useState('');
+  const [version, setVersion] = useState<string | null>(null);
 
   useEffect(() => {
-    const controller = new AbortController();
-    fetch('https://releases.inaayah.dev/api/games', { signal: controller.signal })
-      .then((response) => (response.ok ? response.json() : null))
-      .then((data: unknown) => {
-        if (!Array.isArray(data)) return;
-        const game = data.find((item) => item?.id === 'vigilante-red-city');
-        if (typeof game?.version === 'string' && /^\d+\.\d+\.\d+$/.test(game.version)) {
-          setVersion(game.version);
-        }
-      })
-      .catch(() => {});
-    return () => controller.abort();
+    fetchGamesVersions().then((versions) => {
+      if (versions['vigilante-red-city']) {
+        setVersion(`v${versions['vigilante-red-city']}`);
+      }
+    });
   }, []);
 
   return (
@@ -90,7 +84,7 @@ export function VigilantePage() {
 
       <section id="downloads" className="vrc-download-section" aria-labelledby="vrc-download-heading">
         <div className="vrc-shell">
-          <div className="vrc-section-heading"><div><p className="vrc-eyebrow">Your next fight starts here</p><h2 id="vrc-download-heading">Play Vigilante: Red City.</h2></div>{version && <span className="vrc-version">Desktop v{version}</span>}</div>
+          <div className="vrc-section-heading"><div><p className="vrc-eyebrow">Your next fight starts here</p><h2 id="vrc-download-heading">Play Vigilante: Red City.</h2></div><span className="vrc-version">Desktop <span className="version-slot version-slot-badge">{version ?? <span className="version-skeleton" aria-hidden="true" />}</span></span></div>
           <div className="vrc-download-grid">
             <div className="vrc-desktop-downloads">
               <h3>Desktop</h3><p>Get Vigilante: Red City through the Inaayah Launcher. It installs the game, checks updates and keeps your library together.</p>

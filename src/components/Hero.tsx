@@ -12,6 +12,7 @@ import {
   ArrowRight,
   ArrowUpRight
 } from 'lucide-react';
+import { fetchLauncherRelease, fetchGamesVersions } from '../lib/releases';
 
 interface PlatformOption {
   os: 'mac' | 'windows' | 'linux';
@@ -59,7 +60,8 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
   const [detectedOs, setDetectedOs] = useState<'mac' | 'windows' | 'linux'>('mac');
   const [showAllPlatforms, setShowAllPlatforms] = useState(false);
   const [platforms, setPlatforms] = useState(PLATFORMS);
-  const [latestVersion, setLatestVersion] = useState('v0.2.5');
+  const [latestVersion, setLatestVersion] = useState<string | null>(null);
+  const [vigilanteVersion, setVigilanteVersion] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'builder' | 'games' | 'kettle'>('builder');
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
@@ -103,55 +105,43 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
       setDetectedOs('mac');
     }
 
-    const fetchLatest = async () => {
-      try {
-        let release: any = null;
-        try {
-          const edgeRes = await fetch('https://releases.inaayah.dev/api/launcher/latest');
-          if (edgeRes.ok) release = await edgeRes.json();
-        } catch {}
+    fetchLauncherRelease().then((release) => {
+      if (!release) return;
+      setLatestVersion(release.version);
 
-        if (!release) {
-          const ghRes = await fetch('https://api.github.com/repos/inaayah/inaayah-launcher/releases/latest');
-          if (ghRes.ok) release = await ghRes.json();
+      const formatSize = (bytes?: number) => (bytes ? `${Math.round(bytes / (1024 * 1024))} MB` : '');
+      const assets = release.assets || [];
+      const macAsset = assets.find((a) => a.name.endsWith('.dmg'));
+      const winAsset = assets.find((a) => a.name.endsWith('.exe'));
+      const linuxAsset = assets.find((a) => a.name.endsWith('.AppImage'));
+
+      setPlatforms((prev) => ({
+        mac: {
+          ...prev.mac,
+          filename: macAsset?.name || prev.mac.filename,
+          url: 'https://releases.inaayah.dev/api/launcher/download/mac',
+          size: macAsset?.size ? formatSize(macAsset.size) : prev.mac.size
+        },
+        windows: {
+          ...prev.windows,
+          filename: winAsset?.name || prev.windows.filename,
+          url: 'https://releases.inaayah.dev/api/launcher/download/windows',
+          size: winAsset?.size ? formatSize(winAsset.size) : prev.windows.size
+        },
+        linux: {
+          ...prev.linux,
+          filename: linuxAsset?.name || prev.linux.filename,
+          url: 'https://releases.inaayah.dev/api/launcher/download/linux',
+          size: linuxAsset?.size ? formatSize(linuxAsset.size) : prev.linux.size
         }
+      }));
+    });
 
-        if (!release) return;
-        const ver = release.version || release.tag_name;
-        if (ver) setLatestVersion(ver.startsWith('v') ? ver : `v${ver}`);
-
-        const formatSize = (bytes: number) => bytes ? `${Math.round(bytes / (1024 * 1024))} MB` : '';
-        const assets: any[] = release.assets || [];
-        const macAsset = assets.find((a: any) => a.name.endsWith('.dmg'));
-        const winAsset = assets.find((a: any) => a.name.endsWith('.exe'));
-        const linuxAsset = assets.find((a: any) => a.name.endsWith('.AppImage'));
-
-        setPlatforms((prev) => ({
-          mac: {
-            ...prev.mac,
-            filename: macAsset?.name || prev.mac.filename,
-            url: 'https://releases.inaayah.dev/api/launcher/download/mac',
-            size: macAsset ? formatSize(macAsset.size) : prev.mac.size
-          },
-          windows: {
-            ...prev.windows,
-            filename: winAsset?.name || prev.windows.filename,
-            url: 'https://releases.inaayah.dev/api/launcher/download/windows',
-            size: winAsset ? formatSize(winAsset.size) : prev.windows.size
-          },
-          linux: {
-            ...prev.linux,
-            filename: linuxAsset?.name || prev.linux.filename,
-            url: 'https://releases.inaayah.dev/api/launcher/download/linux',
-            size: linuxAsset ? formatSize(linuxAsset.size) : prev.linux.size
-          }
-        }));
-      } catch (e) {
-        console.warn('Could not resolve latest release dynamically:', e);
+    fetchGamesVersions().then((versions) => {
+      if (versions['vigilante-red-city']) {
+        setVigilanteVersion(`v${versions['vigilante-red-city']}`);
       }
-    };
-
-    fetchLatest();
+    });
   }, []);
 
   const activePlatform = platforms[detectedOs];
@@ -180,7 +170,13 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
           <div>
             <div className="hero-eyebrow">
               <span className="hero-eyebrow-dot" />
-              <span>Launcher {latestVersion} Live · Builder in Pre-Alpha</span>
+              <span>
+                Launcher{' '}
+                <span className="version-slot version-slot-eyebrow">
+                  {latestVersion ?? <span className="version-skeleton" aria-hidden="true" />}
+                </span>{' '}
+                Live · Builder in Pre-Alpha
+              </span>
             </div>
             <h1 className="hero-title">
               <span className="tone-muted">Crafting high-octane</span> indie games,{' '}
@@ -259,10 +255,16 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                         fontWeight: 600,
                         color: 'var(--text-muted)',
                         textTransform: 'uppercase',
-                        letterSpacing: '0.08em'
+                        letterSpacing: '0.08em',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between'
                       }}
                     >
-                      Select OS ({latestVersion})
+                      <span>Select OS</span>
+                      <span className="version-slot version-slot-badge">
+                        {latestVersion ?? <span className="version-skeleton" aria-hidden="true" />}
+                      </span>
                     </div>
                     {(Object.keys(platforms) as Array<'mac' | 'windows' | 'linux'>).map((key) => {
                       const p = platforms[key];
@@ -344,7 +346,11 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                     <span className="stage-tab-index">02</span>
                     <Gamepad2 size={14} />
                     <span>Launcher &amp; Vigilante</span>
-                    <span className="badge badge-cyan" style={{ fontSize: 9, padding: '1px 5px' }}>v1.0.2</span>
+                    <span className="badge badge-cyan" style={{ fontSize: 9, padding: '1px 5px' }}>
+                      <span className="version-slot version-slot-badge">
+                        {vigilanteVersion ?? <span className="version-skeleton" aria-hidden="true" />}
+                      </span>
+                    </span>
                   </button>
 
                   <button
