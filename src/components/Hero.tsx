@@ -66,6 +66,27 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const osMenuRef = useRef<HTMLDivElement>(null);
+  const swipeStartXRef = useRef<number | null>(null);
+
+  const activeIndex = TABS.indexOf(activeTab);
+
+  const handleSwipeStart = (clientX: number) => {
+    swipeStartXRef.current = clientX;
+  };
+
+  const handleSwipeEnd = (clientX: number) => {
+    if (swipeStartXRef.current === null) return;
+    const deltaX = clientX - swipeStartXRef.current;
+    swipeStartXRef.current = null;
+    if (Math.abs(deltaX) < 42) return;
+
+    setIsAutoPlay(false);
+    if (deltaX < 0) {
+      setActiveTab(TABS[(activeIndex + 1) % TABS.length]);
+    } else {
+      setActiveTab(TABS[(activeIndex - 1 + TABS.length) % TABS.length]);
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -389,117 +410,151 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
 
             <div
               className="stage-viewport"
-              onClick={() => {
-                if (isAutoPlay) setIsAutoPlay(false);
+              onTouchStart={(e) => handleSwipeStart(e.touches[0].clientX)}
+              onTouchEnd={(e) => {
+                if (e.changedTouches[0]) handleSwipeEnd(e.changedTouches[0].clientX);
               }}
+              onMouseDown={(e) => handleSwipeStart(e.clientX)}
+              onMouseUp={(e) => handleSwipeEnd(e.clientX)}
             >
-              {activeTab === 'builder' && (
-                <div className="studio-builder-teaser">
-                  <div className="studio-builder-copy">
-                    <span className="badge badge-gold">01 // VISUAL WEB CREATION</span>
-                    <h2>A home for your next great idea.</h2>
-                    <p>Shape your site with structured editorial blocks, refine copy with your integrated co-pilot, and publish on your own custom domain.</p>
-                    <div className="studio-builder-steps">
-                      <span>01. ARRANGE</span>
-                      <span>02. REFINE</span>
-                      <span>03. PUBLISH</span>
+              <div
+                className="stage-track"
+                style={{
+                  transform: `translate3d(-${activeIndex * 100}%, 0, 0)`
+                }}
+              >
+                {/* Slide 01: Inaayah Builder */}
+                <div
+                  className={`stage-slide ${activeTab === 'builder' ? 'is-active' : ''}`}
+                  aria-hidden={activeTab !== 'builder'}
+                >
+                  <div className="studio-builder-teaser">
+                    <div className="studio-builder-copy stage-slide-caption">
+                      <span className="badge badge-gold">01 // VISUAL WEB CREATION</span>
+                      <h2>A home for your next great idea.</h2>
+                      <p>Shape your site with structured editorial blocks, refine copy with your integrated co-pilot, and publish on your own custom domain.</p>
+                      <div className="studio-builder-steps">
+                        <span>01. ARRANGE</span>
+                        <span>02. REFINE</span>
+                        <span>03. PUBLISH</span>
+                      </div>
+                      <button
+                        className="btn btn-primary"
+                        tabIndex={activeTab === 'builder' ? 0 : -1}
+                        onClick={() => handleScroll('builder')}
+                      >
+                        <span>Explore the Builder</span>
+                        <ArrowRight size={15} />
+                      </button>
                     </div>
-                    <button className="btn btn-primary" onClick={() => handleScroll('builder')}>
-                      <span>Explore the Builder</span>
-                      <ArrowRight size={15} />
-                    </button>
-                  </div>
-                  <div className="studio-builder-paper" aria-hidden="true">
-                    <span>YOUR SPACE ON THE WEB</span>
-                    <div>Make something<br /><em>worth sharing.</em></div>
-                    <i />
-                    <small>Stories. Projects. Possibilities.</small>
+                    <div className="studio-builder-paper" aria-hidden="true">
+                      <span>YOUR SPACE ON THE WEB</span>
+                      <div>Make something<br /><em>worth sharing.</em></div>
+                      <i />
+                      <small>Stories. Projects. Possibilities.</small>
+                    </div>
                   </div>
                 </div>
-              )}
 
-              {activeTab === 'games' && (
-                <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-                  <img
-                    src="/images/vigilante-red-city-banner.jpg"
-                    alt="Vigilante: Red City — the Demir family"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.92 }}
-                  />
-                  <div
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      background: 'linear-gradient(180deg, rgba(6,7,10,0.08) 0%, rgba(6,7,10,0.82) 72%, rgba(6,7,10,0.97) 100%)',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'flex-end',
-                      padding: 'clamp(22px, 4vw, 40px)'
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}>
-                      <div style={{ textAlign: 'left' }}>
-                        <span className="badge badge-cyan" style={{ marginBottom: 10 }}>02 // FEATURED DESKTOP TITLE</span>
-                        <h2 style={{ fontSize: 'clamp(24px, 3.8vw, 34px)', fontWeight: 800, marginBottom: 8, color: '#fff' }}>Vigilante: Red City</h2>
-                        <p style={{ color: '#b4bcc8', fontSize: 14.5, maxWidth: 540 }}>
-                          Bring Inaayah home in a five-stage comic rescue adventure. Three heroes, local and online co-op, and a vocal nasheed soundtrack.
-                        </p>
-                      </div>
-                      <div style={{ display: 'flex', gap: 12 }}>
-                        <button
-                          onClick={() => handleScroll('games')}
-                          className="btn btn-primary"
-                        >
-                          <Play size={15} fill="currentColor" />
-                          <span>Explore Game Releases</span>
-                        </button>
+                {/* Slide 02: Vigilante: Red City */}
+                <div
+                  className={`stage-slide ${activeTab === 'games' ? 'is-active' : ''}`}
+                  aria-hidden={activeTab !== 'games'}
+                >
+                  <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                    <img
+                      src="/images/vigilante-red-city-banner.jpg"
+                      alt="Vigilante: Red City — the Demir family"
+                      className="stage-slide-art"
+                    />
+                    <div
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background: 'linear-gradient(180deg, rgba(6,7,10,0.08) 0%, rgba(6,7,10,0.82) 72%, rgba(6,7,10,0.97) 100%)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end',
+                        padding: 'clamp(22px, 4vw, 40px)'
+                      }}
+                    >
+                      <div
+                        className="stage-slide-caption"
+                        style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}
+                      >
+                        <div style={{ textAlign: 'left' }}>
+                          <span className="badge badge-cyan" style={{ marginBottom: 10 }}>02 // FEATURED DESKTOP TITLE</span>
+                          <h2 style={{ fontSize: 'clamp(24px, 3.8vw, 34px)', fontWeight: 800, marginBottom: 8, color: '#fff' }}>Vigilante: Red City</h2>
+                          <p style={{ color: '#b4bcc8', fontSize: 14.5, maxWidth: 540 }}>
+                            Bring Inaayah home in a five-stage comic rescue adventure. Three heroes, local and online co-op, and a vocal nasheed soundtrack.
+                          </p>
+                        </div>
+                        <div style={{ display: 'flex', gap: 12 }}>
+                          <button
+                            onClick={() => handleScroll('games')}
+                            tabIndex={activeTab === 'games' ? 0 : -1}
+                            className="btn btn-primary"
+                          >
+                            <Play size={15} fill="currentColor" />
+                            <span>Explore Game Releases</span>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              )}
 
-              {activeTab === 'kettle' && (
-                <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-                  <img
-                    src="/images/kettle-court-banner.jpg"
-                    alt="Kettle Court Table Game"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.92 }}
-                  />
-                  <div
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      background: 'linear-gradient(180deg, rgba(6,7,10,0.08) 0%, rgba(6,7,10,0.82) 72%, rgba(6,7,10,0.97) 100%)',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'flex-end',
-                      padding: 'clamp(22px, 4vw, 40px)'
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}>
-                      <div style={{ textAlign: 'left' }}>
-                        <span className="badge badge-green" style={{ marginBottom: 10 }}>03 // INSTANT BROWSER STRATEGY</span>
-                        <h2 style={{ fontSize: 'clamp(24px, 3.8vw, 34px)', fontWeight: 800, marginBottom: 8, color: '#fff' }}>Kettle Court: Medieval Strategy</h2>
-                        <p style={{ color: '#b4bcc8', fontSize: 14.5, maxWidth: 540 }}>
-                          Turn-based cozy fairground strategy game for 2 to 5 players. Play directly in any desktop or mobile browser with zero installs.
-                        </p>
-                      </div>
-                      <div style={{ display: 'flex', gap: 12 }}>
-                        <a
-                          href="https://kettle-court.inaayah.dev/"
-                          target="_blank"
-                          rel="noreferrer"
-                          className="btn btn-primary"
-                        >
-                          <Play size={15} fill="currentColor" />
-                          <span>Play in Browser</span>
-                          <ArrowUpRight size={15} />
-                        </a>
+                {/* Slide 03: Kettle Court */}
+                <div
+                  className={`stage-slide ${activeTab === 'kettle' ? 'is-active' : ''}`}
+                  aria-hidden={activeTab !== 'kettle'}
+                >
+                  <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                    <img
+                      src="/images/kettle-court-banner.jpg"
+                      alt="Kettle Court Table Game"
+                      className="stage-slide-art"
+                    />
+                    <div
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background: 'linear-gradient(180deg, rgba(6,7,10,0.08) 0%, rgba(6,7,10,0.82) 72%, rgba(6,7,10,0.97) 100%)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end',
+                        padding: 'clamp(22px, 4vw, 40px)'
+                      }}
+                    >
+                      <div
+                        className="stage-slide-caption"
+                        style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}
+                      >
+                        <div style={{ textAlign: 'left' }}>
+                          <span className="badge badge-green" style={{ marginBottom: 10 }}>03 // INSTANT BROWSER STRATEGY</span>
+                          <h2 style={{ fontSize: 'clamp(24px, 3.8vw, 34px)', fontWeight: 800, marginBottom: 8, color: '#fff' }}>Kettle Court: Medieval Strategy</h2>
+                          <p style={{ color: '#b4bcc8', fontSize: 14.5, maxWidth: 540 }}>
+                            Turn-based cozy fairground strategy game for 2 to 5 players. Play directly in any desktop or mobile browser with zero installs.
+                          </p>
+                        </div>
+                        <div style={{ display: 'flex', gap: 12 }}>
+                          <a
+                            href="https://kettle-court.inaayah.dev/"
+                            target="_blank"
+                            rel="noreferrer"
+                            tabIndex={activeTab === 'kettle' ? 0 : -1}
+                            className="btn btn-primary"
+                          >
+                            <Play size={15} fill="currentColor" />
+                            <span>Play in Browser</span>
+                            <ArrowUpRight size={15} />
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              )}
+              </div>
             </div>
           </div>
         </div>
