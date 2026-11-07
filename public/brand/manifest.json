@@ -49,15 +49,6 @@
       "localLogo": "/brand/inaayah-sponsor-icon.svg",
       "accent": "#CC8B45"
     },
-    "inaayah-portal": {
-      "id": "inaayah-portal",
-      "name": "Inaayah Portal",
-      "category": "service",
-      "url": "https://admin.inaayah.dev/",
-      "logoUrl": "https://cdn.inaayah.dev/brand/inaayah-portal-icon.svg",
-      "localLogo": "/brand/inaayah-portal-icon.svg",
-      "accent": "#CC8B45"
-    },
     "vigilante-red-city": {
       "id": "vigilante-red-city",
       "name": "Vigilante: Red City",
