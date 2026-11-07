@@ -204,7 +204,12 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
             <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#fbbf24' }} />
             <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#34d399' }} />
           </div>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, fontWeight: 600, color: '#57534e', marginLeft: 6 }}>
+          <img
+            src="/brand/inaayah-builder-icon.svg"
+            alt="Inaayah Builder"
+            style={{ width: 20, height: 20, borderRadius: 5, marginLeft: 4 }}
+          />
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, fontWeight: 600, color: '#57534e' }}>
             inaayah-builder · aura-studio
           </span>
         </div>

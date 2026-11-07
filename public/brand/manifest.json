@@ -27,9 +27,36 @@
       "name": "Inaayah Arcade",
       "category": "division",
       "url": "https://arcade.inaayah.dev/",
-      "logoUrl": "https://inaayah.dev/brand/inaayah-games-icon.png",
-      "localLogo": "/brand/inaayah-games-icon.png",
+      "logoUrl": "https://cdn.inaayah.dev/brand/inaayah-arcade-icon.svg",
+      "localLogo": "/brand/inaayah-arcade-icon.svg",
       "accent": "#D8A24A"
+    },
+    "inaayah-builder": {
+      "id": "inaayah-builder",
+      "name": "Inaayah Builder",
+      "category": "service",
+      "url": "https://qa-builder.inaayah.dev/",
+      "logoUrl": "https://cdn.inaayah.dev/brand/inaayah-builder-icon.svg",
+      "localLogo": "/brand/inaayah-builder-icon.svg",
+      "accent": "#CC8B45"
+    },
+    "inaayah-sponsor": {
+      "id": "inaayah-sponsor",
+      "name": "Inaayah Sponsorship Studio",
+      "category": "service",
+      "url": "https://sponsor.inaayah.dev/",
+      "logoUrl": "https://cdn.inaayah.dev/brand/inaayah-sponsor-icon.svg",
+      "localLogo": "/brand/inaayah-sponsor-icon.svg",
+      "accent": "#CC8B45"
+    },
+    "inaayah-portal": {
+      "id": "inaayah-portal",
+      "name": "Inaayah Portal",
+      "category": "service",
+      "url": "https://admin.inaayah.dev/",
+      "logoUrl": "https://cdn.inaayah.dev/brand/inaayah-portal-icon.svg",
+      "localLogo": "/brand/inaayah-portal-icon.svg",
+      "accent": "#CC8B45"
     },
     "vigilante-red-city": {
       "id": "vigilante-red-city",
