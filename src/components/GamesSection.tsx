@@ -129,20 +129,15 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
             </div>
           </div>
 
-          <h3 className="game-row-heading">More to play</h3>
+          <h3 className="game-row-heading">More from Inaayah Games</h3>
           <article className="glass-panel game-card-compact" id="aether-rush">
             <div className="game-card-img-wrapper">
               <img src="/images/aether-rush-cover.jpg" alt="AetherRush 3D Arcade Brawler" className="game-card-img" loading="lazy" />
             </div>
             <div className="game-compact-content">
-              <span className="badge badge-cyan">
-                <span className="version-slot version-slot-badge">
-                  {versions['aether-rush'] ? `v${versions['aether-rush']}` : <span className="version-skeleton" aria-hidden="true" />}
-                </span>
-                <span>· Available now</span>
-              </span>
+              <span className="badge badge-gold">Coming soon</span>
               <h3>AetherRush: Cyber Brawler 3D</h3>
-              <p>A neon-soaked arcade brawler with acrobatic combat and online co-op.</p>
+              <p>Before Crossroads Garage, a young Murat and Zeynep fight to restore power to Aether City. A 3D co-op arcade brawler set before Vigilante: Red City.</p>
               <details className="game-details">
                 <summary>Game details <ChevronDown size={15} aria-hidden="true" /></summary>
                 <ul>
@@ -151,9 +146,6 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
                   <li>Play together with synchronized online co-op.</li>
                 </ul>
               </details>
-            </div>
-            <div className="game-compact-actions">
-              <a href="#launcher" className="btn btn-primary"><Download size={14} />Play via Launcher</a>
             </div>
           </article>
 

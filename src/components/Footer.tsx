@@ -89,8 +89,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, isGamesRoute = false
                   </a>
                 </li>
                 <li>
-                  <a href="https://github.com/inaayah/aether-rush/releases" target="_blank" rel="noreferrer" className="nav-link">
-                    AetherRush Releases ↗
+                  <a href="/games#aether-rush" onClick={(event) => navigateToSection(event, '/games', 'aether-rush')} className="nav-link">
+                    AetherRush · Coming soon ↗
                   </a>
                 </li>
               </ul>
