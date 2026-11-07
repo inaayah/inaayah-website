@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "updatedAt": "2026-10-26",
+  "updatedAt": "2026-11-08",
   "baseUrl": "https://inaayah.dev",
   "brands": {
     "inaayah-studio": {
@@ -11,7 +11,7 @@
       "logoUrl": "https://inaayah.dev/brand/inaayah-icon-180.png",
       "svgUrl": "https://inaayah.dev/brand/inaayah-symbol.svg",
       "localLogo": "/brand/inaayah-icon-180.png",
-      "accent": "#00F5D4"
+      "accent": "#CC8B45"
     },
     "inaayah-games": {
       "id": "inaayah-games",
@@ -20,7 +20,7 @@
       "url": "https://inaayah.dev/games",
       "logoUrl": "https://inaayah.dev/brand/inaayah-games-icon.png",
       "localLogo": "/brand/inaayah-games-icon.png",
-      "accent": "#00F0FF"
+      "accent": "#D8A24A"
     },
     "inaayah-arcade": {
       "id": "inaayah-arcade",
@@ -29,7 +29,7 @@
       "url": "https://arcade.inaayah.dev/",
       "logoUrl": "https://inaayah.dev/brand/inaayah-games-icon.png",
       "localLogo": "/brand/inaayah-games-icon.png",
-      "accent": "#00F5D4"
+      "accent": "#D8A24A"
     },
     "vigilante-red-city": {
       "id": "vigilante-red-city",
@@ -40,7 +40,7 @@
       "coverUrl": "https://inaayah.dev/images/vigilante-red-city-cover.jpg",
       "bannerUrl": "https://inaayah.dev/images/vigilante-red-city-banner.jpg",
       "localLogo": "/brand/vigilante-red-city-icon.png",
-      "accent": "#F43F5E"
+      "accent": "#C85A48"
     },
     "kettle-court": {
       "id": "kettle-court",
@@ -51,7 +51,7 @@
       "coverUrl": "https://inaayah.dev/images/kettle-court-cover.jpg",
       "bannerUrl": "https://inaayah.dev/images/kettle-court-banner.jpg",
       "localLogo": "/brand/kettle-court-icon.svg",
-      "accent": "#F59E0B"
+      "accent": "#CC8B45"
     },
     "eyetest": {
       "id": "eyetest",
@@ -62,7 +62,7 @@
       "coverUrl": "https://inaayah.dev/images/eyetest-cover.jpg",
       "bannerUrl": "https://inaayah.dev/images/eyetest-banner.jpg",
       "localLogo": "/brand/eyetest-icon.svg",
-      "accent": "#00F5D4"
+      "accent": "#CC8B45"
     },
     "aether-rush": {
       "id": "aether-rush",
@@ -73,7 +73,7 @@
       "coverUrl": "https://inaayah.dev/images/aether-rush-cover.jpg",
       "bannerUrl": "https://inaayah.dev/images/aether-rush-banner.jpg",
       "localLogo": "https://inaayah.dev/images/aether-rush-cover.jpg",
-      "accent": "#38BDF8"
+      "accent": "#8FA8D6"
     }
   }
 }

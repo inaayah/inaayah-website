@@ -18,10 +18,10 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [osName, setOsName] = useState('macOS');
   const [version, setVersion] = useState<string | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+  const [theme, setTheme] = useState<'dark' | 'midnight' | 'light'>(() => {
     if (typeof document !== 'undefined') {
       const current = document.documentElement.getAttribute('data-theme');
-      if (current === 'light' || current === 'dark') return current;
+      if (current === 'light' || current === 'dark' || current === 'midnight') return current;
     }
     if (typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: light)').matches) {
       return 'light';
@@ -31,13 +31,13 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   useEffect(() => {
     const media = window.matchMedia('(prefers-color-scheme: light)');
-    const applyTheme = (next: 'light' | 'dark') => {
+    const applyTheme = (next: 'light' | 'dark' | 'midnight') => {
       setTheme(next);
       document.documentElement.setAttribute('data-theme', next);
     };
 
     const saved = localStorage.getItem('inaayah_theme');
-    if (saved === 'light' || saved === 'dark') {
+    if (saved === 'light' || saved === 'dark' || saved === 'midnight') {
       applyTheme(saved);
     } else {
       applyTheme(media.matches ? 'light' : 'dark');
@@ -45,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
     const onSystemChange = (e: MediaQueryListEvent) => {
       const override = localStorage.getItem('inaayah_theme');
-      if (override !== 'light' && override !== 'dark') {
+      if (override !== 'light' && override !== 'dark' && override !== 'midnight') {
         applyTheme(e.matches ? 'light' : 'dark');
       }
     };
@@ -55,7 +55,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, []);
 
   const toggleTheme = () => {
-    const next: 'light' | 'dark' = theme === 'dark' ? 'light' : 'dark';
+    const next: 'light' | 'dark' | 'midnight' =
+      theme === 'dark' ? 'midnight' : theme === 'midnight' ? 'light' : 'dark';
     setTheme(next);
     document.documentElement.setAttribute('data-theme', next);
     try {
@@ -165,10 +166,22 @@ export const Navbar: React.FC<NavbarProps> = ({
             type="button"
             onClick={toggleTheme}
             className="theme-toggle-btn"
-            aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
-            title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+            aria-label={
+              theme === 'dark'
+                ? 'Switch to Starry Midnight theme'
+                : theme === 'midnight'
+                ? 'Switch to light theme'
+                : 'Switch to Gunmetal Titanium dark theme'
+            }
+            title={
+              theme === 'dark'
+                ? 'Theme: Gunmetal Titanium (Click for Starry Midnight)'
+                : theme === 'midnight'
+                ? 'Theme: Starry Midnight (Click for Light)'
+                : 'Theme: Desert Limestone Light (Click for Gunmetal Dark)'
+            }
           >
-            {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+            {theme === 'dark' ? <Sparkles size={15} /> : theme === 'midnight' ? <Sun size={15} /> : <Moon size={15} />}
           </button>
 
           <div className="navbar-split-btn">

@@ -37,7 +37,7 @@ export const TechSection: React.FC<TechSectionProps> = ({ sectionIndex = '04 //'
                 <span style={{ color: 'var(--text-muted)' }}>→</span>
                 <span style={{ padding: '4px 8px', borderRadius: 4, background: 'var(--btn-secondary-bg)', border: '1px solid var(--border-subtle)' }}>Godot 4.3</span>
                 <span style={{ color: 'var(--text-muted)' }}>→</span>
-                <span style={{ padding: '4px 8px', borderRadius: 4, background: 'rgba(45,212,191,0.1)', border: '1px solid rgba(45,212,191,0.28)', color: 'var(--brand-accent-soft)' }}>Vulkan / Metal</span>
+                <span style={{ padding: '4px 8px', borderRadius: 4, background: 'var(--badge-accent-bg)', border: '1px solid var(--badge-accent-border)', color: 'var(--brand-accent-soft)' }}>Vulkan / Metal</span>
               </div>
               <div style={{ marginTop: 12, fontSize: 10, color: 'var(--text-muted)', display: 'flex', justifyContent: 'space-between' }}>
                 <span>PIPELINE: HEADLESS EXPORT</span>

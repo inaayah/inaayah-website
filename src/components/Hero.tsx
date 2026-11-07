@@ -472,7 +472,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                       style={{
                         position: 'absolute',
                         inset: 0,
-                        background: 'linear-gradient(180deg, rgba(6,7,10,0.08) 0%, rgba(6,7,10,0.82) 72%, rgba(6,7,10,0.97) 100%)',
+                        background: 'linear-gradient(180deg, rgba(12,15,23,0.08) 0%, rgba(12,15,23,0.82) 72%, rgba(12,15,23,0.97) 100%)',
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'flex-end',
@@ -485,8 +485,8 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                       >
                         <div style={{ textAlign: 'left' }}>
                           <span className="badge badge-cyan" style={{ marginBottom: 10 }}>02 // FEATURED DESKTOP TITLE</span>
-                          <h2 style={{ fontSize: 'clamp(24px, 3.8vw, 34px)', fontWeight: 800, marginBottom: 8, color: '#fff' }}>Vigilante: Red City</h2>
-                          <p style={{ color: '#b4bcc8', fontSize: 14.5, maxWidth: 540 }}>
+                          <h2 style={{ fontSize: 'clamp(24px, 3.8vw, 34px)', fontWeight: 800, marginBottom: 8, color: '#F4F1EA' }}>Vigilante: Red City</h2>
+                          <p style={{ color: '#9AA5BC', fontSize: 14.5, maxWidth: 540 }}>
                             Bring Inaayah home in a five-stage comic rescue adventure. Three heroes, local and online co-op, and a vocal nasheed soundtrack.
                           </p>
                         </div>
@@ -521,7 +521,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                       style={{
                         position: 'absolute',
                         inset: 0,
-                        background: 'linear-gradient(180deg, rgba(6,7,10,0.08) 0%, rgba(6,7,10,0.82) 72%, rgba(6,7,10,0.97) 100%)',
+                        background: 'linear-gradient(180deg, rgba(12,15,23,0.08) 0%, rgba(12,15,23,0.82) 72%, rgba(12,15,23,0.97) 100%)',
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'flex-end',
@@ -534,8 +534,8 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                       >
                         <div style={{ textAlign: 'left' }}>
                           <span className="badge badge-green" style={{ marginBottom: 10 }}>03 // INSTANT BROWSER STRATEGY</span>
-                          <h2 style={{ fontSize: 'clamp(24px, 3.8vw, 34px)', fontWeight: 800, marginBottom: 8, color: '#fff' }}>Kettle Court: Medieval Strategy</h2>
-                          <p style={{ color: '#b4bcc8', fontSize: 14.5, maxWidth: 540 }}>
+                          <h2 style={{ fontSize: 'clamp(24px, 3.8vw, 34px)', fontWeight: 800, marginBottom: 8, color: '#F4F1EA' }}>Kettle Court: Medieval Strategy</h2>
+                          <p style={{ color: '#9AA5BC', fontSize: 14.5, maxWidth: 540 }}>
                             Turn-based cozy fairground strategy game for 2 to 5 players. Play directly in any desktop or mobile browser with zero installs.
                           </p>
                         </div>
