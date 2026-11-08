@@ -49,19 +49,19 @@ export const LabsSection: React.FC = () => {
               width: 140, 
               height: 140, 
               borderRadius: 'var(--radius-xl)', 
-              background: 'radial-gradient(circle, rgba(255, 183, 0, 0.15) 0%, rgba(17, 22, 34, 0.8) 100%)',
-              border: '1px solid rgba(255, 183, 0, 0.25)',
+              background: 'radial-gradient(circle, rgba(16, 185, 129, 0.16) 0%, rgba(18, 22, 31, 0.85) 100%)',
+              border: '1px solid rgba(16, 185, 129, 0.32)',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
               gap: 8,
-              boxShadow: '0 0 30px rgba(255, 183, 0, 0.1)',
+              boxShadow: '0 0 30px rgba(16, 185, 129, 0.12)',
               flexShrink: 0
             }}
           >
-            <Code2 size={36} color="var(--accent-gold)" />
-            <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', color: 'var(--accent-gold)' }}>
+            <Code2 size={36} color="var(--accent-green)" />
+            <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', color: 'var(--accent-green)' }}>
               LABS BETA
             </span>
           </div>

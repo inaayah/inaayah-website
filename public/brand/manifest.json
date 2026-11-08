@@ -11,7 +11,7 @@
       "logoUrl": "https://inaayah.dev/brand/inaayah-icon-180.png",
       "svgUrl": "https://inaayah.dev/brand/inaayah-symbol.svg",
       "localLogo": "/brand/inaayah-icon-180.png",
-      "accent": "#CC8B45"
+      "accent": "#F8FAFC"
     },
     "inaayah-games": {
       "id": "inaayah-games",
@@ -20,7 +20,7 @@
       "url": "https://inaayah.dev/games",
       "logoUrl": "https://inaayah.dev/brand/inaayah-games-icon.png",
       "localLogo": "/brand/inaayah-games-icon.png",
-      "accent": "#D8A24A"
+      "accent": "#E63946"
     },
     "inaayah-arcade": {
       "id": "inaayah-arcade",
@@ -29,7 +29,7 @@
       "url": "https://arcade.inaayah.dev/",
       "logoUrl": "https://cdn.inaayah.dev/brand/inaayah-arcade-icon.svg",
       "localLogo": "/brand/inaayah-arcade-icon.svg",
-      "accent": "#D8A24A"
+      "accent": "#3B82F6"
     },
     "inaayah-builder": {
       "id": "inaayah-builder",
@@ -38,7 +38,7 @@
       "url": "https://qa-builder.inaayah.dev/",
       "logoUrl": "https://cdn.inaayah.dev/brand/inaayah-builder-icon.svg",
       "localLogo": "/brand/inaayah-builder-icon.svg",
-      "accent": "#CC8B45"
+      "accent": "#10B981"
     },
     "inaayah-sponsor": {
       "id": "inaayah-sponsor",
@@ -47,7 +47,7 @@
       "url": "https://sponsor.inaayah.dev/",
       "logoUrl": "https://cdn.inaayah.dev/brand/inaayah-sponsor-icon.svg",
       "localLogo": "/brand/inaayah-sponsor-icon.svg",
-      "accent": "#CC8B45"
+      "accent": "#8B5CF6"
     },
     "vigilante-red-city": {
       "id": "vigilante-red-city",
@@ -58,7 +58,7 @@
       "coverUrl": "https://inaayah.dev/images/vigilante-red-city-cover.jpg",
       "bannerUrl": "https://inaayah.dev/images/vigilante-red-city-banner.jpg",
       "localLogo": "/brand/vigilante-red-city-icon.png",
-      "accent": "#C85A48"
+      "accent": "#E63946"
     },
     "kettle-court": {
       "id": "kettle-court",
@@ -69,7 +69,7 @@
       "coverUrl": "https://inaayah.dev/images/kettle-court-cover.jpg",
       "bannerUrl": "https://inaayah.dev/images/kettle-court-banner.jpg",
       "localLogo": "/brand/kettle-court-icon.svg",
-      "accent": "#CC8B45"
+      "accent": "#10B981"
     },
     "eyetest": {
       "id": "eyetest",
@@ -80,7 +80,7 @@
       "coverUrl": "https://inaayah.dev/images/eyetest-cover.jpg",
       "bannerUrl": "https://inaayah.dev/images/eyetest-banner.jpg",
       "localLogo": "/brand/eyetest-icon.svg",
-      "accent": "#CC8B45"
+      "accent": "#3B82F6"
     },
     "aether-rush": {
       "id": "aether-rush",
@@ -91,7 +91,7 @@
       "coverUrl": "https://inaayah.dev/images/aether-rush-cover.jpg",
       "bannerUrl": "https://inaayah.dev/images/aether-rush-banner.jpg",
       "localLogo": "https://inaayah.dev/images/aether-rush-cover.jpg",
-      "accent": "#8FA8D6"
+      "accent": "#3B82F6"
     }
   }
 }

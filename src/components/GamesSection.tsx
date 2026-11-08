@@ -56,8 +56,8 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
           >
             <div style={{ maxWidth: 560, minWidth: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
-                <span className="badge badge-cyan">Inaayah Desktop Launcher</span>
-                <span className="badge badge-gold">SHA-256 Verified · Auto-Updating</span>
+                <span className="badge badge-magenta">Inaayah Desktop Launcher</span>
+                <span className="badge badge-cyan">SHA-256 Verified · Auto-Updating</span>
               </div>
               <h3 style={{ fontSize: 21, marginBottom: 6 }}>One Native Hub for Desktop Releases</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.55 }}>
@@ -94,7 +94,7 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
                   decoding="async"
                 />
                 <div style={{ position: 'absolute', top: 18, left: 18, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                  <span className="badge badge-cyan">
+                  <span className="badge badge-magenta">
                     <span>Featured ·</span>
                     <span className="version-slot version-slot-badge">
                       {versions['vigilante-red-city'] ? `v${versions['vigilante-red-city']}` : <span className="version-skeleton" aria-hidden="true" />}
@@ -114,10 +114,10 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
                     docks and foundries to the final rescue above Red City.
                   </p>
                   <ul className="game-features-list">
-                    <li><CheckCircle size={15} color="var(--accent-cyan)" style={{ marginTop: 3, flexShrink: 0 }} /><span><strong>Five Connected Stages:</strong> Comic scenes, varied enemies and five boss battles.</span></li>
-                    <li><CheckCircle size={15} color="var(--accent-cyan)" style={{ marginTop: 3, flexShrink: 0 }} /><span><strong>Fight Together:</strong> Solo, shared-screen, split-screen and direct online co-op.</span></li>
-                    <li><CheckCircle size={15} color="var(--accent-cyan)" style={{ marginTop: 3, flexShrink: 0 }} /><span><strong>Vocal Nasheed Soundtrack:</strong> An emotional journey with recorded combat sounds.</span></li>
-                    <li><CheckCircle size={15} color="var(--accent-cyan)" style={{ marginTop: 3, flexShrink: 0 }} /><span><strong>Your Completion Gift:</strong> Unlock sketchbook memories and the complete 71-page in-game comic.</span></li>
+                    <li><CheckCircle size={15} color="var(--accent-magenta)" style={{ marginTop: 3, flexShrink: 0 }} /><span><strong>Five Connected Stages:</strong> Comic scenes, varied enemies and five boss battles.</span></li>
+                    <li><CheckCircle size={15} color="var(--accent-magenta)" style={{ marginTop: 3, flexShrink: 0 }} /><span><strong>Fight Together:</strong> Solo, shared-screen, split-screen and direct online co-op.</span></li>
+                    <li><CheckCircle size={15} color="var(--accent-magenta)" style={{ marginTop: 3, flexShrink: 0 }} /><span><strong>Vocal Nasheed Soundtrack:</strong> An emotional journey with recorded combat sounds.</span></li>
+                    <li><CheckCircle size={15} color="var(--accent-magenta)" style={{ marginTop: 3, flexShrink: 0 }} /><span><strong>Your Completion Gift:</strong> Unlock sketchbook memories and the complete 71-page in-game comic.</span></li>
                   </ul>
                 </div>
                 <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginTop: 22, paddingTop: 18, borderTop: '1px solid var(--border-subtle)' }}>
@@ -192,7 +192,7 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
               <img src="/images/eyetest-cover.jpg" alt="Optik: Daily EyeTest optical calibration game" className="game-card-img" loading="lazy" />
             </div>
             <div className="game-compact-content">
-              <span className="badge badge-green">Daily Browser Ritual · 10-Game Pool</span>
+              <span className="badge badge-cyan">Daily Browser Ritual · 10-Game Pool</span>
               <h3>Optik: Daily EyeTest</h3>
               <p>5 daily visual calibration rounds drawn from a rotating pool of 10 optical mini-games.</p>
               <details className="game-details">

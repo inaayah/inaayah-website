@@ -70,8 +70,8 @@ const BLOCK_CONFIGS: Record<string, BlockConfig> = {
     fontSize: '11px / 1.4',
     alignment: 'center',
     padding: '7px 12px',
-    bgHex: '#855016',
-    bgName: 'Oiled Teak',
+    bgHex: '#064E3B',
+    bgName: 'Imperial Emerald',
     textHex: '#ffffff',
     details: [
       { label: 'Promo Code', value: 'AUTUMN15 (-15%)' },
@@ -182,9 +182,9 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
       style={{
         borderRadius: 'var(--radius-xl)',
         overflow: 'hidden',
-        border: '1px solid rgba(220, 215, 201, 0.4)',
-        boxShadow: '0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 30px rgba(204, 139, 69, 0.16)',
-        background: '#171817',
+        border: '1px solid rgba(226, 232, 240, 0.35)',
+        boxShadow: '0 25px 60px -15px rgba(0, 0, 0, 0.75), 0 0 30px rgba(16, 185, 129, 0.16)',
+        background: '#0B0D12',
         fontFamily: "'Inter', sans-serif"
       }}
     >
@@ -359,14 +359,14 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                     justifyContent: 'space-between',
                     padding: '5px 8px',
                     borderRadius: 6,
-                    background: activePage === 'home' ? 'rgba(158, 98, 32, 0.12)' : 'transparent',
-                    color: activePage === 'home' ? '#9E6220' : '#57534e',
+                    background: activePage === 'home' ? 'rgba(16, 185, 129, 0.12)' : 'transparent',
+                    color: activePage === 'home' ? '#059669' : '#57534e',
                     fontWeight: activePage === 'home' ? 600 : 400,
                     cursor: 'pointer'
                   }}
                 >
                   <span>/ (Home)</span>
-                  <span style={{ fontSize: 9, background: 'rgba(158, 98, 32, 0.15)', color: '#9E6220', padding: '1px 5px', borderRadius: 4 }}>
+                  <span style={{ fontSize: 9, background: 'rgba(16, 185, 129, 0.15)', color: '#059669', padding: '1px 5px', borderRadius: 4 }}>
                     Live
                   </span>
                 </li>
@@ -380,8 +380,8 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                       justifyContent: 'space-between',
                       padding: '5px 8px',
                       borderRadius: 6,
-                      color: activePage === p ? '#9E6220' : '#78716c',
-                      background: activePage === p ? 'rgba(158, 98, 32, 0.12)' : 'transparent',
+                      color: activePage === p ? '#059669' : '#78716c',
+                      background: activePage === p ? 'rgba(16, 185, 129, 0.12)' : 'transparent',
                       cursor: 'pointer'
                     }}
                   >
@@ -427,7 +427,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                         width: 6, 
                         height: 6, 
                         borderRadius: '50%', 
-                        background: selectedBlock === b.id ? '#CC8B45' : '#d6d3d1' 
+                        background: selectedBlock === b.id ? '#10B981' : '#d6d3d1' 
                       }} 
                     />
                     <span>{b.label}</span>
@@ -438,7 +438,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
 
             <div style={{ marginTop: 'auto', paddingTop: 12, borderTop: '1px solid #e7e5e4', fontSize: 11, color: '#78716c' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
-                <Layers size={13} color="#CC8B45" />
+                <Layers size={13} color="#10B981" />
                 <span style={{ fontWeight: 600, color: '#1c1917' }}>Deterministic CSS</span>
               </div>
               <p style={{ margin: 0, fontSize: 10, lineHeight: 1.4 }}>
@@ -480,13 +480,13 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                 setRightTab('inspector');
               }}
               style={{
-                background: '#855016',
+                background: '#064E3B',
                 color: '#ffffff',
                 padding: '7px 12px',
                 textAlign: 'center',
                 fontSize: 11,
                 fontWeight: 500,
-                outline: selectedBlock === 'announcementBar' ? '2px solid #CC8B45' : 'none',
+                outline: selectedBlock === 'announcementBar' ? '2px solid #10B981' : 'none',
                 outlineOffset: -2,
                 cursor: 'pointer'
               }}
@@ -508,7 +508,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                 justifyContent: 'space-between',
                 padding: '12px 20px',
                 borderBottom: '1px solid #f5f5f4',
-                outline: selectedBlock === 'navbar' ? '2px solid #CC8B45' : 'none',
+                outline: selectedBlock === 'navbar' ? '2px solid #10B981' : 'none',
                 outlineOffset: -2,
                 cursor: 'pointer'
               }}
@@ -548,10 +548,10 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
               style={{
                 padding: viewport === 'mobile' ? '24px 16px' : '36px 24px',
                 textAlign: 'center',
-                outline: selectedBlock === 'hero' ? '2px solid #CC8B45' : 'none',
+                outline: selectedBlock === 'hero' ? '2px solid #10B981' : 'none',
                 outlineOffset: -2,
                 cursor: 'pointer',
-                background: selectedBlock === 'hero' ? 'rgba(204, 139, 69, 0.04)' : 'transparent'
+                background: selectedBlock === 'hero' ? 'rgba(16, 185, 129, 0.04)' : 'transparent'
               }}
             >
               <span 
@@ -561,7 +561,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                   fontWeight: 700,
                   letterSpacing: '0.2em',
                   textTransform: 'uppercase',
-                  color: '#9E6220',
+                  color: '#059669',
                   marginBottom: 8
                 }}
               >
@@ -585,7 +585,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
               <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 8 }}>
                 <span 
                   style={{
-                    background: '#9E6220',
+                    background: '#059669',
                     color: '#ffffff',
                     padding: '6px 14px',
                     borderRadius: 9999,
@@ -623,7 +623,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                 padding: '16px',
                 background: '#fafaf9',
                 borderTop: '1px solid #f5f5f4',
-                outline: selectedBlock === 'productList' ? '2px solid #CC8B45' : 'none',
+                outline: selectedBlock === 'productList' ? '2px solid #10B981' : 'none',
                 outlineOffset: -2,
                 cursor: 'pointer'
               }}
@@ -634,9 +634,9 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 8, fontSize: 11, fontWeight: 600, color: '#1c1917' }}>
                   <span>Tenmoku Yunomi</span>
-                  <span style={{ color: '#9E6220' }}>$48</span>
+                  <span style={{ color: '#059669' }}>$48</span>
                 </div>
-                <div style={{ marginTop: 4, fontSize: 10, color: '#CC8B45', fontWeight: 500 }}>
+                <div style={{ marginTop: 4, fontSize: 10, color: '#10B981', fontWeight: 500 }}>
                   Direct Pay Link / Inquire →
                 </div>
               </div>
@@ -647,9 +647,9 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 8, fontSize: 11, fontWeight: 600, color: '#1c1917' }}>
                   <span>Shino Chawan</span>
-                  <span style={{ color: '#9E6220' }}>$85</span>
+                  <span style={{ color: '#059669' }}>$85</span>
                 </div>
-                <div style={{ marginTop: 4, fontSize: 10, color: '#CC8B45', fontWeight: 500 }}>
+                <div style={{ marginTop: 4, fontSize: 10, color: '#10B981', fontWeight: 500 }}>
                   Direct Pay Link / Inquire →
                 </div>
               </div>
@@ -666,7 +666,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                 background: '#ffffff',
                 borderTop: '1px solid #f5f5f4',
                 textAlign: 'center',
-                outline: selectedBlock === 'newsletter' ? '2px solid #CC8B45' : 'none',
+                outline: selectedBlock === 'newsletter' ? '2px solid #10B981' : 'none',
                 outlineOffset: -2,
                 cursor: 'pointer'
               }}
@@ -686,7 +686,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                 />
                 <button 
                   type="button" 
-                  style={{ background: '#855016', color: '#fff', border: 'none', borderRadius: 6, padding: '6px 12px', fontSize: 11, fontWeight: 600, cursor: 'pointer' }}
+                  style={{ background: '#064E3B', color: '#fff', border: 'none', borderRadius: 6, padding: '6px 12px', fontSize: 11, fontWeight: 600, cursor: 'pointer' }}
                 >
                   Join
                 </button>
@@ -709,7 +709,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                 justifyContent: 'space-between',
                 fontSize: 10,
                 color: '#78716c',
-                outline: selectedBlock === 'footer' ? '2px solid #CC8B45' : 'none',
+                outline: selectedBlock === 'footer' ? '2px solid #10B981' : 'none',
                 outlineOffset: -2,
                 cursor: 'pointer'
               }}
@@ -758,12 +758,12 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                     border: 'none',
                     cursor: 'pointer',
                     background: rightTab === 'copilot' ? '#ffffff' : 'transparent',
-                    color: rightTab === 'copilot' ? '#9E6220' : '#78716c',
+                    color: rightTab === 'copilot' ? '#059669' : '#78716c',
                     boxShadow: rightTab === 'copilot' ? '0 1px 3px rgba(0,0,0,0.08)' : 'none',
                     transition: 'all 0.15s ease'
                   }}
                 >
-                  <Sparkles size={12} color={rightTab === 'copilot' ? '#CC8B45' : '#78716c'} />
+                  <Sparkles size={12} color={rightTab === 'copilot' ? '#10B981' : '#78716c'} />
                   <span>Site Co-Pilot</span>
                 </button>
 
@@ -783,12 +783,12 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                     border: 'none',
                     cursor: 'pointer',
                     background: rightTab === 'inspector' ? '#ffffff' : 'transparent',
-                    color: rightTab === 'inspector' ? '#9E6220' : '#78716c',
+                    color: rightTab === 'inspector' ? '#059669' : '#78716c',
                     boxShadow: rightTab === 'inspector' ? '0 1px 3px rgba(0,0,0,0.08)' : 'none',
                     transition: 'all 0.15s ease'
                   }}
                 >
-                  <Sliders size={12} color={rightTab === 'inspector' ? '#CC8B45' : '#78716c'} />
+                  <Sliders size={12} color={rightTab === 'inspector' ? '#10B981' : '#78716c'} />
                   <span>Inspector</span>
                 </button>
               </div>
@@ -798,10 +798,10 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #e7e5e4', paddingBottom: 8, marginBottom: 12 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#CC8B45', boxShadow: '0 0 6px #CC8B45' }} />
+                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#10B981', boxShadow: '0 0 6px #10B981' }} />
                       <span style={{ fontSize: 12, fontWeight: 700, color: '#1c1917' }}>Live Site Co-Pilot</span>
                     </div>
-                    <span style={{ fontSize: 10, fontWeight: 600, color: '#9E6220', background: '#FAF8F3', padding: '2px 6px', borderRadius: 4 }}>
+                    <span style={{ fontSize: 10, fontWeight: 600, color: '#059669', background: '#ECFDF5', padding: '2px 6px', borderRadius: 4 }}>
                       Ready to Assist
                     </span>
                   </div>
@@ -813,9 +813,9 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                       Feature our new Autumn ceramics collection with a 15% discount announcement bar and update the hero headline.
                     </div>
 
-                    <div style={{ background: '#FAF8F3', border: '1px solid rgba(204, 139, 69, 0.28)', borderRadius: 8, padding: '10px', fontSize: 11, color: '#855016' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontWeight: 700, fontSize: 11, color: '#9E6220', marginBottom: 6 }}>
-                        <Check size={13} color="#CC8B45" strokeWidth={3} />
+                    <div style={{ background: '#ECFDF5', border: '1px solid rgba(16, 185, 129, 0.28)', borderRadius: 8, padding: '10px', fontSize: 11, color: '#064E3B' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontWeight: 700, fontSize: 11, color: '#059669', marginBottom: 6 }}>
+                        <Check size={13} color="#10B981" strokeWidth={3} />
                         <span>Live Edits Applied</span>
                       </div>
                       <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 4, fontSize: 10, color: '#334155' }}>
@@ -823,9 +823,9 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                         <li>• Updated hero headline & specialty ceramics copy.</li>
                         <li>• Connected catalog items with direct payment links.</li>
                       </ul>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid rgba(204, 139, 69, 0.18)', marginTop: 8, paddingTop: 6, fontSize: 9 }}>
-                        <span style={{ color: '#CC8B45', fontWeight: 600 }}>Design System Intact</span>
-                        <span style={{ background: '#9E6220', color: '#ffffff', padding: '2px 6px', borderRadius: 4, fontWeight: 600 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid rgba(16, 185, 129, 0.18)', marginTop: 8, paddingTop: 6, fontSize: 9 }}>
+                        <span style={{ color: '#10B981', fontWeight: 600 }}>Design System Intact</span>
+                        <span style={{ background: '#059669', color: '#ffffff', padding: '2px 6px', borderRadius: 4, fontWeight: 600 }}>
                           Live on Web
                         </span>
                       </div>
@@ -849,7 +849,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                   <div style={{ marginTop: 12 }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#f5f5f4', borderRadius: 6, padding: '7px 10px', fontSize: 11, color: '#a8a29e', border: '1px solid #e7e5e4' }}>
                       <span>Ask co-pilot to write or edit...</span>
-                      <Sparkles size={12} color="#CC8B45" />
+                      <Sparkles size={12} color="#10B981" />
                     </div>
                   </div>
                 </div>
@@ -860,10 +860,10 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #e7e5e4', paddingBottom: 8, marginBottom: 12 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                      <Sliders size={13} color="#CC8B45" />
+                      <Sliders size={13} color="#10B981" />
                       <span style={{ fontSize: 12, fontWeight: 700, color: '#1c1917' }}>Block Properties</span>
                     </div>
-                    <span style={{ fontSize: 10, fontWeight: 600, color: '#9E6220', background: '#FAF8F3', border: '1px solid rgba(204, 139, 69, 0.32)', padding: '2px 7px', borderRadius: 4 }}>
+                    <span style={{ fontSize: 10, fontWeight: 600, color: '#059669', background: '#ECFDF5', border: '1px solid rgba(16, 185, 129, 0.32)', padding: '2px 7px', borderRadius: 4 }}>
                       {currentConfig.name}
                     </span>
                   </div>
@@ -871,7 +871,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                   {/* Tag & Category */}
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10, fontSize: 11 }}>
                     <span style={{ color: '#78716c' }}>{currentConfig.category}</span>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: '#855016', background: '#FAF8F3', padding: '1px 5px', borderRadius: 3 }}>
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: '#064E3B', background: '#ECFDF5', padding: '1px 5px', borderRadius: 3 }}>
                       {currentConfig.htmlTag}
                     </span>
                   </div>
@@ -879,7 +879,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                   {/* Typography Card */}
                   <div style={{ background: '#fafaf9', border: '1px solid #e7e5e4', borderRadius: 8, padding: '10px', marginBottom: 10 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, fontWeight: 600, color: '#292524', marginBottom: 6 }}>
-                      <Type size={12} color="#CC8B45" />
+                      <Type size={12} color="#10B981" />
                       <span>Typography</span>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: 11 }}>
@@ -895,13 +895,13 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                         <span style={{ color: '#57534e' }}>Alignment</span>
                         <div style={{ display: 'flex', gap: 2, background: '#e7e5e4', borderRadius: 4, padding: 2 }}>
                           <button type="button" style={{ border: 'none', background: currentConfig.alignment === 'left' ? '#fff' : 'transparent', borderRadius: 3, padding: '2px 4px', cursor: 'pointer', display: 'flex' }}>
-                            <AlignLeft size={11} color={currentConfig.alignment === 'left' ? '#CC8B45' : '#78716c'} />
+                            <AlignLeft size={11} color={currentConfig.alignment === 'left' ? '#10B981' : '#78716c'} />
                           </button>
                           <button type="button" style={{ border: 'none', background: currentConfig.alignment === 'center' ? '#fff' : 'transparent', borderRadius: 3, padding: '2px 4px', cursor: 'pointer', display: 'flex' }}>
-                            <AlignCenter size={11} color={currentConfig.alignment === 'center' ? '#CC8B45' : '#78716c'} />
+                            <AlignCenter size={11} color={currentConfig.alignment === 'center' ? '#10B981' : '#78716c'} />
                           </button>
                           <button type="button" style={{ border: 'none', background: currentConfig.alignment === 'right' ? '#fff' : 'transparent', borderRadius: 3, padding: '2px 4px', cursor: 'pointer', display: 'flex' }}>
-                            <AlignRight size={11} color={currentConfig.alignment === 'right' ? '#CC8B45' : '#78716c'} />
+                            <AlignRight size={11} color={currentConfig.alignment === 'right' ? '#10B981' : '#78716c'} />
                           </button>
                         </div>
                       </div>
@@ -911,7 +911,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                   {/* Surface & Color Tokens */}
                   <div style={{ background: '#fafaf9', border: '1px solid #e7e5e4', borderRadius: 8, padding: '10px', marginBottom: 10 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, fontWeight: 600, color: '#292524', marginBottom: 6 }}>
-                      <Palette size={12} color="#CC8B45" />
+                      <Palette size={12} color="#10B981" />
                       <span>Surface & Spacing</span>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: 11 }}>
@@ -966,10 +966,10 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
 
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#f5f5f4', borderRadius: 6, padding: '6px 10px', fontSize: 11, border: '1px solid #e7e5e4' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <Globe size={13} color="#9E6220" />
+                  <Globe size={13} color="#059669" />
                   <span style={{ color: '#1c1917', fontWeight: 600, fontSize: 11 }}>aurastudio.inaayah.dev</span>
                 </div>
-                <span style={{ background: '#9E6220', color: '#ffffff', padding: '2px 6px', borderRadius: 4, fontSize: 10, fontWeight: 600 }}>
+                <span style={{ background: '#059669', color: '#ffffff', padding: '2px 6px', borderRadius: 4, fontSize: 10, fontWeight: 600 }}>
                   Live Site
                 </span>
               </div>

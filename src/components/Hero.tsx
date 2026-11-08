@@ -363,7 +363,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                     <span className="stage-tab-index">01</span>
                     <img src="/brand/inaayah-builder-icon.svg?v=monolith" alt="" width="18" height="18" />
                     <span><span className="stage-tab-long-label">Inaayah </span>Builder</span>
-                    <span className="badge badge-gold" style={{ fontSize: 9, padding: '1px 5px' }}>Pre-Alpha</span>
+                    <span className="badge badge-green" style={{ fontSize: 9, padding: '1px 5px' }}>Pre-Alpha</span>
                   </button>
 
                   <button
@@ -374,7 +374,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                     <span className="stage-tab-index">02</span>
                     <Gamepad2 size={14} />
                     <span><span className="stage-tab-long-label">Launcher &amp; </span>Vigilante</span>
-                    <span className="badge badge-cyan" style={{ fontSize: 9, padding: '1px 5px' }}>
+                    <span className="badge badge-magenta" style={{ fontSize: 9, padding: '1px 5px' }}>
                       <span className="version-slot version-slot-badge">
                         {vigilanteVersion ?? <span className="version-skeleton" aria-hidden="true" />}
                       </span>
@@ -389,7 +389,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                     <span className="stage-tab-index">03</span>
                     <Compass size={14} />
                     <span>Kettle Court</span>
-                    <span className="badge badge-green" style={{ fontSize: 9, padding: '1px 5px' }}>Web</span>
+                    <span className="badge badge-cyan" style={{ fontSize: 9, padding: '1px 5px' }}>Web</span>
                   </button>
                 </div>
               </div>
@@ -438,7 +438,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                 >
                   <div className="studio-builder-teaser">
                     <div className="studio-builder-copy stage-slide-caption">
-                      <span className="badge badge-gold">01 // VISUAL WEB CREATION</span>
+                      <span className="badge badge-green">01 // VISUAL WEB CREATION</span>
                       <h2>A home for your next great idea.</h2>
                       <p>Shape your site with structured editorial blocks, refine copy with your integrated co-pilot, and publish on your own custom domain.</p>
                       <div className="studio-builder-steps">
@@ -480,7 +480,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                       style={{
                         position: 'absolute',
                         inset: 0,
-                        background: 'linear-gradient(180deg, rgba(12,15,23,0.08) 0%, rgba(12,15,23,0.82) 72%, rgba(12,15,23,0.97) 100%)',
+                        background: 'linear-gradient(180deg, rgba(11,13,18,0.08) 0%, rgba(11,13,18,0.82) 72%, rgba(11,13,18,0.97) 100%)',
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'flex-end',
@@ -492,9 +492,9 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                         style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}
                       >
                         <div style={{ textAlign: 'left' }}>
-                          <span className="badge badge-cyan" style={{ marginBottom: 10 }}>02 // FEATURED DESKTOP TITLE</span>
-                          <h2 style={{ fontSize: 'clamp(24px, 3.8vw, 34px)', fontWeight: 800, marginBottom: 8, color: '#F4F1EA' }}>Vigilante: Red City</h2>
-                          <p style={{ color: '#9AA5BC', fontSize: 14.5, maxWidth: 540 }}>
+                          <span className="badge badge-magenta" style={{ marginBottom: 10 }}>02 // FEATURED DESKTOP TITLE</span>
+                          <h2 style={{ fontSize: 'clamp(24px, 3.8vw, 34px)', fontWeight: 800, marginBottom: 8, color: '#F8FAFC' }}>Vigilante: Red City</h2>
+                          <p style={{ color: '#94A3B8', fontSize: 14.5, maxWidth: 540 }}>
                             Bring Inaayah home in a five-stage comic rescue adventure. Three heroes, local and online co-op, and a vocal nasheed soundtrack.
                           </p>
                         </div>
@@ -529,7 +529,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                       style={{
                         position: 'absolute',
                         inset: 0,
-                        background: 'linear-gradient(180deg, rgba(12,15,23,0.08) 0%, rgba(12,15,23,0.82) 72%, rgba(12,15,23,0.97) 100%)',
+                        background: 'linear-gradient(180deg, rgba(11,13,18,0.08) 0%, rgba(11,13,18,0.82) 72%, rgba(11,13,18,0.97) 100%)',
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'flex-end',
@@ -541,9 +541,9 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                         style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}
                       >
                         <div style={{ textAlign: 'left' }}>
-                          <span className="badge badge-green" style={{ marginBottom: 10 }}>03 // INSTANT BROWSER STRATEGY</span>
-                          <h2 style={{ fontSize: 'clamp(24px, 3.8vw, 34px)', fontWeight: 800, marginBottom: 8, color: '#F4F1EA' }}>Kettle Court: Medieval Strategy</h2>
-                          <p style={{ color: '#9AA5BC', fontSize: 14.5, maxWidth: 540 }}>
+                          <span className="badge badge-cyan" style={{ marginBottom: 10 }}>03 // INSTANT BROWSER STRATEGY</span>
+                          <h2 style={{ fontSize: 'clamp(24px, 3.8vw, 34px)', fontWeight: 800, marginBottom: 8, color: '#F8FAFC' }}>Kettle Court: Medieval Strategy</h2>
+                          <p style={{ color: '#94A3B8', fontSize: 14.5, maxWidth: 540 }}>
                             Turn-based cozy fairground strategy game for 2 to 5 players. Play directly in any desktop or mobile browser with zero installs.
                           </p>
                         </div>
