@@ -30,10 +30,10 @@ export const App: React.FC = () => {
 
     document.querySelectorAll<HTMLLinkElement>("link[rel='icon']").forEach((iconLink) => {
       const isPngFallback = iconLink.sizes.contains('32x32');
-      iconLink.type = isGamesRoute || isPngFallback ? 'image/png' : 'image/svg+xml';
+      iconLink.type = isPngFallback ? 'image/png' : 'image/svg+xml';
       iconLink.href = isGamesRoute
-        ? '/icon.png'
-        : isPngFallback ? '/brand/inaayah-icon-32.png' : '/favicon.svg';
+        ? '/brand/inaayah-games-icon.svg?v=opt1'
+        : isPngFallback ? '/brand/inaayah-icon-32.png?v=opt1' : '/favicon.svg?v=opt1';
     });
     const description = document.querySelector<HTMLMetaElement>('meta[name="description"]') ?? document.createElement('meta');
     description.name = 'description';

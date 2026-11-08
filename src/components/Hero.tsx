@@ -361,7 +361,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                     className={`stage-tab ${activeTab === 'builder' ? 'active' : ''} ${activeTab === 'builder' && isAutoPlay ? 'is-autoplay' : ''} ${isHovered ? 'is-paused' : ''}`}
                   >
                     <span className="stage-tab-index">01</span>
-                    <img src="/brand/inaayah-builder-icon.svg?v=monolith" alt="" width="18" height="18" />
+                    <img src="/brand/inaayah-builder-icon.svg?v=opt1" alt="" width="18" height="18" />
                     <span><span className="stage-tab-long-label">Inaayah </span>Builder</span>
                     <span className="badge badge-green" style={{ fontSize: 9, padding: '1px 5px' }}>Pre-Alpha</span>
                   </button>

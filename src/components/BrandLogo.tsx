@@ -8,10 +8,10 @@ interface BrandLogoProps {
 }
 
 const DIVISION_ICON_MAP: Record<BrandDivision, string> = {
-  studio: '/brand/inaayah-symbol.svg',
-  games: '/brand/inaayah-games-icon.svg',
-  arcade: '/brand/inaayah-arcade-icon.svg',
-  builder: '/brand/inaayah-builder-icon.svg',
+  studio: '/brand/inaayah-symbol.svg?v=opt1',
+  games: '/brand/inaayah-games-icon.svg?v=opt1',
+  arcade: '/brand/inaayah-arcade-icon.svg?v=opt1',
+  builder: '/brand/inaayah-builder-icon.svg?v=opt1',
 };
 
 export const BrandLogo = ({ division = 'studio', size = 32 }: BrandLogoProps) => {

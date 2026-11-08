@@ -207,7 +207,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
             <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#34d399' }} />
           </div>
           <img
-            src="/brand/inaayah-builder-icon.svg?v=monolith"
+            src="/brand/inaayah-builder-icon.svg?v=opt1"
             alt="Inaayah Builder"
             style={{ width: 20, height: 20, borderRadius: 5, marginLeft: 4 }}
           />
