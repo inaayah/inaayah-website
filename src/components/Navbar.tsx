@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Download, ChevronDown, Sparkles, Sun, Moon } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Download, ChevronDown, Sparkles, Sun, Moon, Menu, X } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 import { fetchLauncherRelease } from '../lib/releases';
 
@@ -18,6 +18,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [osName, setOsName] = useState('macOS');
   const [version, setVersion] = useState<string | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const mobileMenuButton = useRef<HTMLButtonElement>(null);
+  const header = useRef<HTMLElement>(null);
   const [theme, setTheme] = useState<'dark' | 'midnight' | 'light'>(() => {
     if (typeof document !== 'undefined') {
       const current = document.documentElement.getAttribute('data-theme');
@@ -28,6 +31,25 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
     return 'dark';
   });
+
+  useEffect(() => {
+    if (!showMobileMenu) return;
+
+    const closeOutside = (event: PointerEvent) => {
+      if (!header.current?.contains(event.target as Node)) setShowMobileMenu(false);
+    };
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      setShowMobileMenu(false);
+      mobileMenuButton.current?.focus();
+    };
+    document.addEventListener('pointerdown', closeOutside);
+    document.addEventListener('keydown', closeOnEscape);
+    return () => {
+      document.removeEventListener('pointerdown', closeOutside);
+      document.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [showMobileMenu]);
 
   useEffect(() => {
     const media = window.matchMedia('(prefers-color-scheme: light)');
@@ -88,12 +110,13 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, []);
 
   return (
-    <header className="navbar">
+    <header className="navbar" ref={header}>
       <div className="container navbar-inner">
         <a
           href="/"
           className="nav-logo"
           onClick={(e) => {
+            setShowMobileMenu(false);
             if (onNavigate) {
               e.preventDefault();
               onNavigate('/');
@@ -104,64 +127,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <BrandLogo division={isGamesRoute ? 'games' : 'studio'} />
         </a>
 
-        <nav className="nav-links">
-          {isGamesRoute ? (
-            <a
-              href="/"
-              className="nav-link"
-              onClick={(e) => {
-                if (onNavigate) {
-                  e.preventDefault();
-                  onNavigate('/');
-                }
-              }}
-            >
-              Studio Home
-            </a>
-          ) : (
-            <a
-              href="/#builder"
-              className="nav-link"
-              onClick={(e) => { e.preventDefault(); onScrollTo('builder'); }}
-              style={{ display: 'flex', alignItems: 'center', gap: 7 }}
-            >
-              <span>Website Builder</span>
-              <span className="badge badge-gold" style={{ fontSize: 9, padding: '1px 6px' }}>Pre-Alpha</span>
-            </a>
-          )}
-          <a
-            href="/games"
-            className="nav-link"
-            onClick={(e) => {
-              e.preventDefault();
-              if (onNavigate) onNavigate('/games');
-              else onScrollTo('games');
-            }}
-            style={{
-              color: isGamesRoute ? 'var(--text-primary)' : undefined,
-              fontWeight: isGamesRoute ? 600 : undefined,
-            }}
-          >
-            Games &amp; Launcher
-          </a>
-          <a
-            href="https://arcade.inaayah.dev"
-            target="_blank"
-            rel="noreferrer"
-            className="nav-link"
-          >
-            Web Arcade ↗
-          </a>
-          <a
-            href="#technology"
-            className="nav-link"
-            onClick={(e) => { e.preventDefault(); onScrollTo('technology'); }}
-          >
-            Engineering
-          </a>
-        </nav>
-
-        <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 10 }}>
+        <div className="nav-actions">
           <button
             type="button"
             onClick={toggleTheme}
@@ -182,6 +148,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             }
           >
             {theme === 'dark' ? <Sparkles size={15} /> : theme === 'midnight' ? <Sun size={15} /> : <Moon size={15} />}
+          </button>
+          <button
+            ref={mobileMenuButton}
+            type="button"
+            className="nav-menu-toggle theme-toggle-btn"
+            aria-label={showMobileMenu ? 'Close navigation' : 'Open navigation'}
+            aria-expanded={showMobileMenu}
+            aria-controls="studio-navigation"
+            onClick={() => setShowMobileMenu(open => !open)}
+          >
+            {showMobileMenu ? <X size={20} /> : <Menu size={20} />}
           </button>
 
           <div className="navbar-split-btn">
@@ -215,7 +192,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {showDropdown && (
             <div
-              className="glass-panel"
+              className="glass-panel nav-os-dropdown"
               style={{
                 position: 'absolute',
                 top: 'calc(100% + 10px)',
@@ -309,6 +286,70 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           )}
         </div>
+        <nav id="studio-navigation" aria-label="Studio navigation" className={`nav-links${showMobileMenu ? ' nav-links-open' : ''}`} onClick={(event) => {
+          if ((event.target as Element).closest('a')) setShowMobileMenu(false);
+        }}>
+          {isGamesRoute ? (
+            <a
+              href="/"
+              className="nav-link"
+              onClick={(e) => {
+                if (onNavigate) {
+                  e.preventDefault();
+                  onNavigate('/');
+                }
+              }}
+            >
+              Studio Home
+            </a>
+          ) : (
+            <a
+              href="/#builder"
+              className="nav-link"
+              onClick={(e) => { e.preventDefault(); onScrollTo('builder'); }}
+              style={{ display: 'flex', alignItems: 'center', gap: 7 }}
+            >
+              <span>Website Builder</span>
+              <span className="badge badge-gold" style={{ fontSize: 9, padding: '1px 6px' }}>Pre-Alpha</span>
+            </a>
+          )}
+          <a
+            href="/games"
+            className="nav-link"
+            onClick={(e) => {
+              e.preventDefault();
+              if (onNavigate) onNavigate('/games');
+              else onScrollTo('games');
+            }}
+            style={{
+              color: isGamesRoute ? 'var(--text-primary)' : undefined,
+              fontWeight: isGamesRoute ? 600 : undefined,
+            }}
+          >
+            Games &amp; Launcher
+          </a>
+          <a
+            href="https://arcade.inaayah.dev"
+            target="_blank"
+            rel="noreferrer"
+            className="nav-link"
+          >
+            Web Arcade ↗
+          </a>
+          <a
+            href="#technology"
+            className="nav-link"
+            onClick={(e) => { e.preventDefault(); onScrollTo('technology'); }}
+          >
+            Engineering
+          </a>
+          <a href="/games#launcher" className="nav-link nav-mobile-launcher" onClick={(event) => {
+            if (!onNavigate) return;
+            event.preventDefault();
+            onNavigate('/games', 'launcher');
+          }}>Desktop Launcher</a>
+        </nav>
+
       </div>
     </header>
   );

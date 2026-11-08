@@ -163,6 +163,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
   const [selectedBlock, setSelectedBlock] = useState<string>('hero');
   const [activePage, setActivePage] = useState<string>('home');
   const [rightTab, setRightTab] = useState<'copilot' | 'inspector'>('copilot');
+  const [mobilePanel, setMobilePanel] = useState<'preview' | 'blocks' | 'inspector'>('preview');
 
   const blocks = [
     { id: 'announcementBar', label: 'announcementBar' },
@@ -189,6 +190,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
     >
       {/* Top Titlebar */}
       <div 
+        className="editor-preview-titlebar"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -199,13 +201,13 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{ display: 'flex', gap: 6 }}>
+          <div className="editor-preview-dots">
             <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#f87171' }} />
             <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#fbbf24' }} />
             <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#34d399' }} />
           </div>
           <img
-            src="/brand/inaayah-builder-icon.svg"
+            src="/brand/inaayah-builder-icon.svg?v=monolith"
             alt="Inaayah Builder"
             style={{ width: 20, height: 20, borderRadius: 5, marginLeft: 4 }}
           />
@@ -275,6 +277,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
         {/* Publish & Status */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <span 
+            className="editor-preview-live-status"
             style={{
               display: compact ? 'none' : 'inline-flex',
               alignItems: 'center',
@@ -312,18 +315,28 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
         </div>
       </div>
 
+      {!compact && (
+        <div className="editor-preview-panels" role="group" aria-label="Builder preview panels">
+          {(['preview', 'blocks', 'inspector'] as const).map(panel => (
+            <button key={panel} type="button" aria-pressed={mobilePanel === panel} onClick={() => setMobilePanel(panel)}>
+              {panel === 'inspector' ? 'Inspect' : panel === 'blocks' ? 'Blocks' : 'Preview'}
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* Editor Body Grid: Left Sidebar, Canvas, Right Inspector */}
       <div 
+        className={`editor-preview-grid${compact ? ' editor-preview-grid-compact' : ''}`}
         style={{
-          display: 'grid',
-          gridTemplateColumns: compact ? '1fr' : '180px 1fr 290px',
-          minHeight: compact ? 420 : 540,
           background: '#f7f3ea'
         }}
       >
         {/* LEFT COLUMN: Site Pages & Blocks */}
         {!compact && (
           <div 
+            className="editor-preview-panel"
+            data-mobile-active={mobilePanel === 'blocks'}
             style={{
               background: 'rgba(255, 255, 255, 0.92)',
               borderRight: '1px solid #e7e5e4',
@@ -437,6 +450,8 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
 
         {/* CENTER COLUMN: Live Scandinavian Editorial Canvas */}
         <div 
+          className="editor-preview-panel editor-preview-canvas"
+          data-mobile-active={compact || mobilePanel === 'preview'}
           style={{
             padding: viewport === 'mobile' ? '20px 10px' : '24px 20px',
             display: 'flex',
@@ -482,6 +497,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
 
             {/* Block 2: Site Nav */}
             <div 
+              className="editor-preview-canvas-row"
               onClick={() => {
                 setSelectedBlock('navbar');
                 setRightTab('inspector');
@@ -500,7 +516,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
               <span style={{ fontFamily: "'Fraunces', serif", fontSize: 16, fontWeight: 600, color: '#1c1917' }}>
                 Aura Studio
               </span>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 12, color: '#57534e' }}>
+              <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 10, fontSize: 12, color: '#57534e' }}>
                 <span>Works</span>
                 <span>Shop</span>
                 <span>Journal</span>
@@ -566,7 +582,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
               <p style={{ fontSize: 12, color: '#78716c', maxWidth: 360, margin: '0 auto 16px', lineHeight: 1.5 }}>
                 Wheel-thrown in Kyoto, finished with natural wood ash glazes.
               </p>
-              <div style={{ display: 'flex', justifyContent: 'center', gap: 8 }}>
+              <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 8 }}>
                 <span 
                   style={{
                     background: '#9E6220',
@@ -666,7 +682,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
                   type="email" 
                   readOnly 
                   value="collector@domain.com" 
-                  style={{ flex: 1, padding: '6px 10px', fontSize: 11, border: '1px solid #e7e5e4', borderRadius: 6, background: '#fafaf9', color: '#78716c' }} 
+                  style={{ flex: 1, minWidth: 0, padding: '6px 10px', fontSize: 11, border: '1px solid #e7e5e4', borderRadius: 6, background: '#fafaf9', color: '#78716c' }}
                 />
                 <button 
                   type="button" 
@@ -679,6 +695,7 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
 
             {/* Block 6: Colophon Footer */}
             <div 
+              className="editor-preview-canvas-row"
               onClick={() => {
                 setSelectedBlock('footer');
                 setRightTab('inspector');
@@ -710,6 +727,8 @@ export const InaayahEditorPreview: React.FC<InaayahEditorPreviewProps> = ({ comp
         {/* RIGHT COLUMN: Dual Mode (Live Site Co-Pilot / Block Inspector) */}
         {!compact && (
           <div 
+            className="editor-preview-panel"
+            data-mobile-active={mobilePanel === 'inspector'}
             style={{
               background: 'rgba(255, 255, 255, 0.94)',
               borderLeft: '1px solid #e7e5e4',

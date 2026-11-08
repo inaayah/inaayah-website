@@ -56,11 +56,11 @@ export const BuilderSection: React.FC = () => {
             </div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginTop: 14, padding: '0 4px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: 'var(--text-secondary)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 10, fontSize: 13, color: 'var(--text-secondary)' }}>
               <span className="badge badge-gold">Internal Testing Phase</span>
               <span>Interactive sandbox reflecting live state at <a href="https://qa-builder.inaayah.dev" target="_blank" rel="noreferrer" style={{ color: 'var(--text-primary)', textDecoration: 'underline' }}>qa-builder.inaayah.dev</a></span>
             </div>
-            <div style={{ display: 'flex', gap: 10 }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
               <a
                 href="https://qa-builder.inaayah.dev/s/demo"
                 target="_blank"
@@ -139,9 +139,9 @@ export const BuilderSection: React.FC = () => {
         {/* Development Status & Early Access Waitlist in Double-Bezel Frame */}
         <div className="bezel-outer">
           <div className="bezel-inner" style={{ padding: 'clamp(24px, 3.5vw, 36px)' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 36, alignItems: 'center' }}>
+            <div className="builder-access-grid">
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+                <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 8, marginBottom: 12 }}>
                   <span className="badge badge-gold">Pre-Alpha Status</span>
                   <span style={{ fontSize: 12, fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>
                     INTERNAL TESTBED · ACTIVE R&amp;D
@@ -164,7 +164,7 @@ export const BuilderSection: React.FC = () => {
                     className="btn btn-primary"
                     style={{ fontSize: 13, padding: '10px 18px' }}
                   >
-                    <span>Open QA Instance (qa-builder.inaayah.dev)</span>
+                    <span>Open Builder QA</span>
                     <ArrowUpRight size={14} />
                   </a>
 

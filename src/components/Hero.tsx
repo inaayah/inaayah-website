@@ -6,7 +6,6 @@ import {
   Zap,
   ChevronDown,
   Play,
-  Code2,
   Gamepad2,
   Compass,
   ArrowRight,
@@ -63,7 +62,9 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
   const [latestVersion, setLatestVersion] = useState<string | null>(null);
   const [vigilanteVersion, setVigilanteVersion] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'builder' | 'games' | 'kettle'>('builder');
-  const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const [isAutoPlay, setIsAutoPlay] = useState(() =>
+    !window.matchMedia('(max-width: 760px), (prefers-reduced-motion: reduce)').matches
+  );
   const [isHovered, setIsHovered] = useState(false);
   const osMenuRef = useRef<HTMLDivElement>(null);
   const swipeStartXRef = useRef<number | null>(null);
@@ -213,16 +214,20 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
             </p>
 
             <div className="download-cta-row">
+              <a className="btn btn-primary hero-mobile-play" href="https://arcade.inaayah.dev/">
+                <Play size={15} fill="currentColor" />
+                <span>Play Web Arcade</span>
+              </a>
               <button
                 onClick={() => handleScroll('builder')}
-                className="btn btn-primary"
+                className="btn btn-primary hero-builder-cta"
                 style={{ padding: '11px 20px', fontSize: 14 }}
               >
                 <span>Explore Web Builder</span>
                 <ArrowRight size={15} />
               </button>
 
-              <div ref={osMenuRef} style={{ position: 'relative', display: 'inline-flex' }}>
+              <div ref={osMenuRef} className="hero-launcher-control">
                 <div className="hero-split-btn">
                   <a
                     href={activePlatform.url}
@@ -342,31 +347,33 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
         >
           <div className="stage-inner">
             <div className="stage-dock">
-              <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                <div style={{ display: 'flex', gap: 6 }} aria-hidden="true">
+              <div className="stage-dock-main">
+                <div className="stage-dock-dots" aria-hidden="true">
                   <div style={{ width: 9, height: 9, borderRadius: '50%', background: 'var(--border-strong)' }} />
                   <div style={{ width: 9, height: 9, borderRadius: '50%', background: 'var(--border-strong)' }} />
                   <div style={{ width: 9, height: 9, borderRadius: '50%', background: 'var(--border-strong)' }} />
                 </div>
 
-                <div className="stage-tabs" role="tablist" aria-label="Studio product showcase">
+                <div className="stage-tabs" role="group" aria-label="Studio product showcase">
                   <button
                     onClick={() => handleSelectTab('builder')}
+                    aria-pressed={activeTab === 'builder'}
                     className={`stage-tab ${activeTab === 'builder' ? 'active' : ''} ${activeTab === 'builder' && isAutoPlay ? 'is-autoplay' : ''} ${isHovered ? 'is-paused' : ''}`}
                   >
                     <span className="stage-tab-index">01</span>
-                    <Code2 size={14} />
-                    <span>Inaayah Builder</span>
+                    <img src="/brand/inaayah-builder-icon.svg?v=monolith" alt="" width="18" height="18" />
+                    <span><span className="stage-tab-long-label">Inaayah </span>Builder</span>
                     <span className="badge badge-gold" style={{ fontSize: 9, padding: '1px 5px' }}>Pre-Alpha</span>
                   </button>
 
                   <button
                     onClick={() => handleSelectTab('games')}
+                    aria-pressed={activeTab === 'games'}
                     className={`stage-tab ${activeTab === 'games' ? 'active' : ''} ${activeTab === 'games' && isAutoPlay ? 'is-autoplay' : ''} ${isHovered ? 'is-paused' : ''}`}
                   >
                     <span className="stage-tab-index">02</span>
                     <Gamepad2 size={14} />
-                    <span>Launcher &amp; Vigilante</span>
+                    <span><span className="stage-tab-long-label">Launcher &amp; </span>Vigilante</span>
                     <span className="badge badge-cyan" style={{ fontSize: 9, padding: '1px 5px' }}>
                       <span className="version-slot version-slot-badge">
                         {vigilanteVersion ?? <span className="version-skeleton" aria-hidden="true" />}
@@ -376,6 +383,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
 
                   <button
                     onClick={() => handleSelectTab('kettle')}
+                    aria-pressed={activeTab === 'kettle'}
                     className={`stage-tab ${activeTab === 'kettle' ? 'active' : ''} ${activeTab === 'kettle' && isAutoPlay ? 'is-autoplay' : ''} ${isHovered ? 'is-paused' : ''}`}
                   >
                     <span className="stage-tab-index">03</span>
@@ -402,7 +410,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                       textDecoration: 'underline'
                     }}
                   >
-                    RESUME CYCLE
+                    START AUTO-CYCLE
                   </button>
                 )}
               </div>
