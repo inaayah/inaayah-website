@@ -7,8 +7,15 @@ interface BrandLogoProps {
   size?: number;
 }
 
+const DIVISION_ICON_MAP: Record<BrandDivision, string> = {
+  studio: '/brand/inaayah-symbol.svg',
+  games: '/brand/inaayah-games-icon.svg',
+  arcade: '/brand/inaayah-arcade-icon.svg',
+  builder: '/brand/inaayah-builder-icon.svg',
+};
+
 export const BrandLogo = ({ division = 'studio', size = 32 }: BrandLogoProps) => {
-  const isGaming = division === 'games' || division === 'arcade';
+  const isTileIcon = division !== 'studio';
   return (
     <span
       className="brand-logo"
@@ -18,10 +25,10 @@ export const BrandLogo = ({ division = 'studio', size = 32 }: BrandLogoProps) =>
     >
       <img
         className="brand-symbol"
-        src={isGaming ? '/brand/inaayah-games-icon.png' : '/brand/inaayah-symbol.svg'}
+        src={DIVISION_ICON_MAP[division]}
         alt=""
         aria-hidden="true"
-        style={isGaming ? { borderRadius: 6 } : undefined}
+        style={isTileIcon ? { borderRadius: 6 } : undefined}
       />
       <span className="brand-wordmark" aria-hidden="true">
         <span className="brand-name">INAAYAH</span>
