@@ -54,15 +54,24 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
               gap: 20
             }}
           >
-            <div style={{ maxWidth: 560, minWidth: 0 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
-                <span className="badge badge-magenta">Inaayah Desktop Launcher</span>
-                <span className="badge badge-cyan">SHA-256 Verified · Auto-Updating</span>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16, maxWidth: 620, minWidth: 0 }}>
+              <img
+                src="/brand/inaayah-games-icon.svg?v=opt1"
+                alt="Inaayah Games Launcher"
+                width="48"
+                height="48"
+                style={{ borderRadius: 11, flexShrink: 0, marginTop: 2 }}
+              />
+              <div style={{ minWidth: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
+                  <span className="badge badge-magenta">Inaayah Desktop Launcher</span>
+                  <span className="badge badge-cyan">SHA-256 Verified · Auto-Updating</span>
+                </div>
+                <h3 style={{ fontSize: 21, marginBottom: 6 }}>One Native Hub for Desktop Releases</h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.55 }}>
+                  Install, patch, and launch our full Godot 4 desktop games with SHA-256 verified delta downloads and controller support.
+                </p>
               </div>
-              <h3 style={{ fontSize: 21, marginBottom: 6 }}>One Native Hub for Desktop Releases</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.55 }}>
-                Install, patch, and launch our full Godot 4 desktop games with SHA-256 verified delta downloads and controller support.
-              </p>
             </div>
             <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
               <a href="https://releases.inaayah.dev/api/launcher/download/mac" className="btn btn-primary" style={{ padding: '10px 16px', fontSize: 13 }}>
