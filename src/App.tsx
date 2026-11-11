@@ -32,8 +32,8 @@ export const App: React.FC = () => {
       const isPngFallback = iconLink.sizes.contains('32x32');
       iconLink.type = isPngFallback ? 'image/png' : 'image/svg+xml';
       iconLink.href = isGamesRoute
-        ? '/brand/inaayah-games-icon.svg?v=opt1'
-        : isPngFallback ? '/brand/inaayah-icon-32.png?v=opt1' : '/favicon.svg?v=opt1';
+        ? '/brand/inaayah-games-icon.svg?v=opt2'
+        : isPngFallback ? '/brand/inaayah-icon-32.png?v=opt2' : '/favicon.svg?v=opt2';
     });
     const description = document.querySelector<HTMLMetaElement>('meta[name="description"]') ?? document.createElement('meta');
     description.name = 'description';

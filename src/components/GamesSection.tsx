@@ -56,7 +56,7 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ isStandalonePage = f
           >
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16, maxWidth: 620, minWidth: 0 }}>
               <img
-                src="/brand/inaayah-games-icon.svg?v=opt1"
+                src="/brand/inaayah-games-icon.svg?v=opt2"
                 alt="Inaayah Games Launcher"
                 width="48"
                 height="48"

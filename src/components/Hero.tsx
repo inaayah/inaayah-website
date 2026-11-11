@@ -359,7 +359,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                     className={`stage-tab ${activeTab === 'builder' ? 'active' : ''} ${activeTab === 'builder' && isAutoPlay ? 'is-autoplay' : ''} ${isHovered ? 'is-paused' : ''}`}
                   >
                     <span className="stage-tab-index">01</span>
-                    <img src="/brand/inaayah-builder-icon.svg?v=opt1" alt="" width="18" height="18" />
+                    <img src="/brand/inaayah-builder-icon.svg?v=opt2" alt="" width="18" height="18" />
                     <span><span className="stage-tab-long-label">Inaayah </span>Builder</span>
                     <span className="badge badge-green" style={{ fontSize: 9, padding: '1px 5px' }}>Pre-Alpha</span>
                   </button>
@@ -370,7 +370,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                     className={`stage-tab ${activeTab === 'games' ? 'active' : ''} ${activeTab === 'games' && isAutoPlay ? 'is-autoplay' : ''} ${isHovered ? 'is-paused' : ''}`}
                   >
                     <span className="stage-tab-index">02</span>
-                    <img src="/brand/inaayah-games-icon.svg?v=opt1" alt="" width="18" height="18" />
+                    <img src="/brand/inaayah-games-icon.svg?v=opt2" alt="" width="18" height="18" />
                     <span><span className="stage-tab-long-label">Launcher &amp; </span>Vigilante</span>
                     <span className="badge badge-magenta" style={{ fontSize: 9, padding: '1px 5px' }}>
                       <span className="version-slot version-slot-badge">
@@ -385,7 +385,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
                     className={`stage-tab ${activeTab === 'kettle' ? 'active' : ''} ${activeTab === 'kettle' && isAutoPlay ? 'is-autoplay' : ''} ${isHovered ? 'is-paused' : ''}`}
                   >
                     <span className="stage-tab-index">03</span>
-                    <img src="/brand/kettle-court-icon.svg?v=opt1" alt="" width="18" height="18" />
+                    <img src="/brand/kettle-court-icon.svg?v=opt2" alt="" width="18" height="18" />
                     <span>Kettle Court</span>
                     <span className="badge badge-cyan" style={{ fontSize: 9, padding: '1px 5px' }}>Web</span>
                   </button>

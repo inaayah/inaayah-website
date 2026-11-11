@@ -7,25 +7,25 @@ html[data-theme="midnight"],
   --font-mono: 'JetBrains Mono', monospace;
   --font-serif: 'Fraunces', Georgia, serif;
 
-  /* 60% Chassis: Pure Neutral Carbon & Anodized Slate */
-  --bg-base: #0B0D12;
-  --bg-primary: #0F1219;
-  --bg-surface: #12161F;
-  --bg-surface-elevated: #1A202C;
-  --bg-surface-hover: #222938;
-  --bg-subtle-box: rgba(11, 13, 18, 0.82);
-  --bg-navbar: rgba(11, 13, 18, 0.90);
-  --bg-footer: #07090D;
-  --bg-dropdown: #141923;
-  --bg-bento: linear-gradient(180deg, #161B26 0%, #0E1118 100%);
+  /* 60% Fixed Chassis: Deep Carbon & Anodized Midnight-Blue Slate */
+  --bg-base: #090C12;
+  --bg-primary: #0D1322;
+  --bg-surface: #11192C;
+  --bg-surface-elevated: #17233B;
+  --bg-surface-hover: #1D2B45;
+  --bg-subtle-box: rgba(9, 12, 18, 0.84);
+  --bg-navbar: rgba(11, 16, 28, 0.92);
+  --bg-footer: #06080D;
+  --bg-dropdown: #131D33;
+  --bg-bento: linear-gradient(180deg, #152038 0%, #0B101D 100%);
   --bg-bezel-outer: rgba(248, 250, 252, 0.025);
   --bg-stage-bezel: linear-gradient(180deg, rgba(248, 250, 252, 0.06) 0%, rgba(248, 250, 252, 0.02) 100%);
 
-  /* Machined 1px Borders & Specular Edge */
-  --border-subtle: #222938;
-  --border-glass: #283142;
-  --border-strong: #38445B;
-  --border-bezel: #1E2433;
+  /* Machined 1px Midnight-Titanium Borders & Specular Edge */
+  --border-subtle: #1D2B45;
+  --border-glass: #253657;
+  --border-strong: #344C7A;
+  --border-bezel: #1A2742;
   --specular-line: linear-gradient(90deg, transparent, rgba(248, 250, 252, 0.16), transparent);
   --hero-glow: rgba(59, 130, 246, 0.08);
 
@@ -35,6 +35,7 @@ html[data-theme="midnight"],
   --accent-arcade: #3B82F6;
   --accent-builder: #10B981;
   --accent-sponsor: #8B5CF6;
+  --accent-studio: #F59E0B;
 
   --brand-accent: #3B82F6;
   --brand-accent-soft: #60A5FA;
@@ -58,7 +59,7 @@ html[data-theme="midnight"],
   --accent-green: var(--accent-builder);
   --accent-teal: var(--brand-accent);
 
-  /* 30% Typography: Crisp Titanium White & Cool Silver */
+  /* 30% Typography: Brushed Titanium White & Cool Silver */
   --text-primary: #F8FAFC;
   --text-secondary: #94A3B8;
   --text-muted: #64748B;
@@ -68,11 +69,11 @@ html[data-theme="midnight"],
   /* Controls & Badges (Crisp Titanium White Primary CTA) */
   --btn-primary-bg: #F8FAFC;
   --btn-primary-hover: #FFFFFF;
-  --btn-primary-text: #0B0D12;
+  --btn-primary-text: #090C12;
   --btn-primary-shadow: rgba(248, 250, 252, 0.16);
-  --btn-secondary-bg: #1A202C;
-  --btn-secondary-hover: #222938;
-  --badge-neutral-bg: #1A202C;
+  --btn-secondary-bg: #17233B;
+  --btn-secondary-hover: #1D2B45;
+  --badge-neutral-bg: #17233B;
   --badge-accent-bg: rgba(59, 130, 246, 0.12);
   --badge-accent-border: rgba(59, 130, 246, 0.34);
   --badge-teal-bg: var(--badge-accent-bg);
