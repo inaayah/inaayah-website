@@ -81,10 +81,7 @@ export const App: React.FC = () => {
         {isVigilantePage ? (
           <VigilantePage />
         ) : isGamesRoute ? (
-          <>
-            <GamesSection isStandalonePage />
-            <TechSection sectionIndex="02 //" />
-          </>
+          <GamesSection isStandalonePage />
         ) : (
           <>
             <Hero onScrollTo={scrollTo} />

@@ -327,13 +327,15 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             Web Arcade ↗
           </a>
-          <a
-            href="#technology"
-            className="nav-link"
-            onClick={(e) => { e.preventDefault(); onScrollTo('technology'); }}
-          >
-            Engineering
-          </a>
+          {!isGamesRoute && (
+            <a
+              href="#technology"
+              className="nav-link"
+              onClick={(e) => { e.preventDefault(); onScrollTo('technology'); }}
+            >
+              Engineering
+            </a>
+          )}
           <a href="/games#launcher" className="nav-link nav-mobile-launcher" onClick={(event) => {
             if (!onNavigate) return;
             event.preventDefault();

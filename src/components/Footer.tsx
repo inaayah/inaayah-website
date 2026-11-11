@@ -101,9 +101,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, isGamesRoute = false
                 Infrastructure
               </h4>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, fontSize: 13, color: 'var(--text-secondary)' }}>
-                <li><a href="#technology" className="nav-link">Godot 4 Pipeline</a></li>
-                <li><a href="#technology" className="nav-link">Cloudflare Durable Objects</a></li>
-                <li><a href="#technology" className="nav-link">SHA-256 Delta Releases</a></li>
+                <li><a href="/#technology" onClick={(event) => navigateToSection(event, '/', 'technology')} className="nav-link">Godot 4 Pipeline</a></li>
+                <li><a href="/#technology" onClick={(event) => navigateToSection(event, '/', 'technology')} className="nav-link">Cloudflare Durable Objects</a></li>
+                <li><a href="/#technology" onClick={(event) => navigateToSection(event, '/', 'technology')} className="nav-link">SHA-256 Delta Releases</a></li>
               </ul>
             </div>
           </div>
